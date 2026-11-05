@@ -1,0 +1,716 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,left=22mm,right=22mm,top=24mm,bottom=24mm,headheight=22pt,headsep=12pt,footskip=28pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{calc}
+
+% Set fonts matching the publication standard
+\setmainfont{Liberation Serif}[
+  BoldFont = Liberation Serif Bold,
+  ItalicFont = Liberation Serif Italic,
+  BoldItalicFont = Liberation Serif Bold Italic
+]
+\setsansfont{Liberation Sans}[
+  BoldFont = Liberation Sans Bold,
+  ItalicFont = Liberation Sans Italic,
+  BoldItalicFont = Liberation Sans Bold Italic
+]
+\setmonofont{Liberation Mono}[Scale=0.85]
+
+% Color definitions
+\definecolor{coverbg}{RGB}{13, 27, 42}       % #0D1B2A
+\definecolor{coverteal}{RGB}{79, 179, 169}   % #4FB3A9
+\definecolor{coversub}{RGB}{136, 152, 168}   % #8898A8
+\definecolor{covermuted}{RGB}{94, 113, 133}  % #5E7185
+
+\definecolor{primary}{RGB}{27, 58, 92}       % #1B3A5C (Headings, rules, TOC links)
+\definecolor{accent}{RGB}{13, 115, 119}      % #0D7377 (Callouts, highlights)
+\definecolor{muted}{RGB}{74, 85, 96}         % #4A5560 (Running headers, meta text)
+\definecolor{tealbg}{RGB}{232, 245, 244}     % #E8F5F4 (Callout box & highlight row)
+\definecolor{tblhead}{RGB}{234, 241, 246}    % #EAF1F6 (Table header row)
+\definecolor{rowalt}{RGB}{248, 250, 252}     % #F8FAFC (Subtle alternating row)
+\definecolor{passgreen}{RGB}{5, 150, 105}    % #059669
+\definecolor{failred}{RGB}{220, 38, 38}      % #DC2626
+
+\hypersetup{
+  pdftitle={AnCore: A Native macOS Chemoinformatics Workbench Integrating Multi-Scoring Consensus Docking, 3D Pharmacophore Fingerprinting, and 300 K Molecular Dynamics Triage for Structure-Based Virtual Screening},
+  pdfauthor={Norseen Hossam El-Deen; Ahmed M. Senary},
+  pdfsubject={Original Research Article - Structure-Based Virtual Screening and 300 K MD Pose Triage Workbench},
+  pdfkeywords={molecular docking, virtual screening, consensus scoring, Reciprocal Rank Fusion, interaction fingerprinting, molecular dynamics triage, Tauri, Rust, macOS, chemoinformatics},
+  colorlinks=true,
+  linkcolor=primary,
+  urlcolor=accent
+}
+
+% Header & Footer setup
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{9.5}{11.5}\selectfont\itshape\textcolor{muted}{AnCore: Native macOS Chemoinformatics \& 300 K MD Triage Workbench}}
+\fancyhead[R]{\fontsize{9.5}{11.5}\selectfont\itshape\textcolor{muted}{El-Deen \& Senary}}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primary}\leaders\hrule height \headrulewidth\hfill}}
+\fancyfoot[C]{\fontsize{10}{12}\selectfont\textcolor{muted}{\thepage}}
+
+% Section styling in primary navy
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+  {-3.0ex \@plus -0.8ex \@minus -.2ex}%
+  {1.5ex \@plus.2ex}%
+  {\normalfont\Large\bfseries\color{primary}}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+  {-2.4ex \@plus -0.6ex \@minus -.2ex}%
+  {1.0ex \@plus .2ex}%
+  {\normalfont\large\bfseries\color{primary}}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+  {-1.8ex \@plus -0.4ex \@minus -.2ex}%
+  {0.7ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries\color{accent}}}
+\makeatother
+
+\setlength{\parindent}{1.4em}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\linespread{1.06}
+\emergencystretch=1.5em
+
+\captionsetup{font={small},labelfont={bf,color=primary},skip=6pt}
+
+% Custom column types for tables
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% Callout box macro
+\newcommand{\takeaway}[2]{%
+  \vspace{6pt}\noindent\fcolorbox{accent}{tealbg}{%
+    \parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{%
+      \vspace{4pt}\textbf{\sffamily\color{primary}#1:}\hspace{0.4em}#2\vspace{4pt}%
+    }%
+  }\vspace{6pt}%
+}
+
+% Safe figure loader that embeds 300 DPI Matplotlib PNG when present on disk and provides a clean vector box fallback in isolated web previews
+\newcommand{\ancorefigure}[4]{%
+  \begin{figure}[!htbp]
+  \centering
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\textwidth]{#1}%
+  }{%
+    \fcolorbox{primary}{tealbg}{%
+      \parbox{0.92\textwidth}{%
+        \vspace{8pt}\centering
+        {\sffamily\bfseries\color{primary} [High-Resolution 300 DPI Matplotlib Figure: \texttt{#1}]}\\[4pt]
+        {\footnotesize\color{muted} #3}
+        \vspace{8pt}%
+      }%
+    }%
+  }%
+  \caption{#3}
+  \label{#4}
+  \end{figure}%
+}
+
+\begin{document}
+
+% =============================================================================
+% COVER PAGE (Unnumbered, Dark Navy Design)
+% =============================================================================
+\pagenumbering{gobble}
+\thispagestyle{empty}
+\pagecolor{coverbg}
+\noindent\hspace*{-6mm}%
+\begin{minipage}[t][0.96\textheight][t]{4mm}
+  \vspace{0pt}%
+  \textcolor{coverteal}{\rule{2.4pt}{0.95\textheight}}
+\end{minipage}%
+\hspace{8mm}%
+\begin{minipage}[t][0.96\textheight][t]{\dimexpr\textwidth-6mm\relax}
+  \vspace{0pt}%
+  \vspace*{14mm}
+  {\sffamily\fontsize{9}{11}\selectfont\addfontfeature{LetterSpace=16.0}\textcolor{coverteal}{ORIGINAL RESEARCH ARTICLE $\cdot$ CHEMOINFORMATICS \& MOLECULAR MODELING}}\par
+  \vspace{12mm}
+  {\rmfamily\bfseries\fontsize{42}{48}\selectfont\textcolor{white}{AnCore}}\par
+  \vspace{8mm}
+  {\sffamily\fontsize{10}{13}\selectfont\addfontfeature{LetterSpace=12.0}\textcolor{coverteal}{SIX-STAGE CONSENSUS DOCKING $\cdot$ 3D IFP PROFILING $\cdot$ 300 K MD TRIAGE}}\par
+  \vspace{14mm}
+  \begin{minipage}{0.92\linewidth}
+    {\sffamily\fontsize{13.5}{20}\selectfont\textcolor{white}{%
+      \textbf{A Native macOS Chemoinformatics Workbench Integrating Multi-Scoring Consensus Docking, 3D Pharmacophore Fingerprinting, and 300 K Molecular Dynamics Triage for Structure-Based Virtual Screening}%
+    }}\\[10pt]
+    {\sffamily\fontsize{11.5}{17.5}\selectfont\textcolor{coversub}{%
+      Complete six-stage software architecture, step-by-step interactive workflow with multi-molecule \texttt{.SDF} and \texttt{.PDB} ingestion, mathematical formulation, and experimental validation across 50 protein--ligand complexes spanning ABL1, ER$\alpha$, HSP90$\alpha$, EGFR, and Streptavidin.%
+    }}
+  \end{minipage}\par
+  \vfill
+  {\sffamily\bfseries\fontsize{13}{16}\selectfont\textcolor{white}{Norseen Hossam El-Deen \hspace{0.4em}\textcolor{coverteal}{$\cdot$}\hspace{0.4em} Ahmed M. Senary}}\par
+  \vspace{4mm}
+  {\sffamily\fontsize{10.5}{14}\selectfont\textcolor{covermuted}{Faculty of Pharmacy, Galala University, New Galala City, Suez, Egypt}}\par
+  \vspace{28mm}
+  \noindent{\sffamily\fontsize{9}{11}\selectfont\addfontfeature{LetterSpace=4.0}\textcolor{covermuted}{Completed Experimental \& Software Validation Manuscript \hfill November 2026}}\par
+  \vspace*{1mm}
+\end{minipage}
+\clearpage
+\nopagecolor
+
+% =============================================================================
+% TABLE OF CONTENTS
+% =============================================================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+{\hypersetup{linkcolor=primary}
+\tableofcontents
+}
+\clearpage
+
+% =============================================================================
+% TITLE BLOCK & ABSTRACT
+% =============================================================================
+\begin{center}
+  {\LARGE\bfseries\color{primary} AnCore: A Native macOS Chemoinformatics Workbench Integrating Multi-Scoring Consensus Docking, 3D Pharmacophore Fingerprinting, and 300 K Molecular Dynamics Triage for Structure-Based Virtual Screening\par}
+  \vspace{12pt}
+  {\large\bfseries Norseen Hossam El-Deen\textsuperscript{1} \hspace{0.5em}$\cdot$\hspace{0.5em} Ahmed M. Senary\textsuperscript{1,*}\par}
+  \vspace{6pt}
+  {\normalsize\itshape\color{muted} \textsuperscript{1}Faculty of Pharmacy, Galala University, New Galala City, Suez, Egypt\\[2pt]
+  \textsuperscript{*}Corresponding author and lead software architect\par}
+\end{center}
+\vspace{6pt}
+
+\subsection*{Abstract}
+\noindent\textbf{Background:} Structure-based virtual screening (SBVS) is a foundational pillar of contemporary medicinal chemistry, yet its desktop graphical ecosystem has stagnated. Widely deployed graphical front-ends rely on deprecated Python 2 toolchains or X11 emulation layers on macOS, treat single-ligand docking as the primary operational unit, and terminate screening campaigns at static empirical binding scores. Static docking potentials evaluate rigid or semi-flexible complexes at an effective temperature of $0\text{ K}$ without explicit entropic or thermal desolvation penalties, frequently allowing property-matched decoys with opportunistic hydrogen bonding or surface complementarity to outrank true biological leads.
+
+\noindent\textbf{Methodology and Software Architecture:} We present \textbf{AnCore Scientific Studio}, a standalone, native macOS chemoinformatics and molecular modeling workbench packaged as a compiled Rust/Tauri desktop application (\texttt{AnCore Studio.app} and \texttt{AnCore Studio.dmg}) with a hardware-accelerated \texttt{WKWebView} and \texttt{3Dmol.js} WebGL viewport coupled to a modular six-stage Python scientific engine. AnCore is engineered around an interactive, step-by-step discovery workflow (\textbf{Stage 1} through \textbf{Stage 6}) supporting both live RCSB Protein Data Bank structure retrieval and local \texttt{.pdb} receptor import alongside multi-molecule \texttt{.sdf}/\texttt{.mol} candidate ligand upload and SMILES enumeration. The six integrated stages comprise: (1) automated receptor curation, heavy-atom side-chain reconstruction, physiological protonation at $\text{pH }7.4$, and $5.0\text{ \AA}$ binding-cavity bounding-box calculation; (2) a two-phase co-crystal redocking quality-control gate combining local Broyden--Fletcher--Goldfarb--Shanno (BFGS) crystallographic basin relaxation with focused-box Monte Carlo torsion sampling ($\text{RMSD} \le 2.0\text{ \AA}$); (3) multi-molecule \texttt{.SDF} and SMILES standardization, $\text{ETKDGv3}$ 3D distance-geometry conformer embedding, $\text{MMFF94s}$ force-field relaxation, and Quantitative Estimate of Drug-Likeness ($\text{QED}$) profiling; (4) multi-scoring consensus virtual screening integrating AutoDock Vina, Vinardo, and AutoDock4 empirical potentials via Reciprocal Rank Fusion ($\text{RRF}, k = 10$) and Mean $Z$-score normalization; (5) automated 3D protein--ligand interaction fingerprinting ($\text{IFP}$) across five non-covalent contact classes with native hotspot Tanimoto similarity ($T_{\text{IFP}}$) and 2D radial pharmacophore mapping; and (6) a $300\text{ K}$ Dock-to-MD thermal stability triage bridge that subjects docked complexes to 50-frame ($5.0\text{ ns}$ effective window) thermalized Langevin trajectory sampling under a dual biophysical gate ($\langle\text{RMSD}\rangle \le 2.0\text{ \AA}$ and hotspot hydrogen-bond occupancy $\text{HB}_{\text{occ}} \ge 65.0\%$).
+
+\noindent\textbf{Results:} Across a five-target validation benchmark spanning distinct binding-pocket topologies---\texttt{1IEP} (ABL1 tyrosine kinase), \texttt{3ERT} (estrogen receptor $\alpha$), \texttt{1UYG} (HSP90$\alpha$ chaperone), \texttt{1M17} (EGFR tyrosine kinase), and \texttt{1STP} (streptavidin)---and 50 active and property-matched ZINC decoy complexes, the Stage 2 two-phase redocking protocol achieved a $100\%$ pass rate ($5/5$ targets $\le 2.0\text{ \AA}$, mean $\text{RMSD} = 0.419\text{ \AA}$), resolving the severe $11.71\text{ \AA}$ pose-inversion failure observed under unfocused single-phase global search on \texttt{1IEP}. In Stage 4 static consensus screening, high early enrichment ($\text{EF}_{20\%} = 2.00\times$) and active Top-1 identification were achieved on four of five targets (\texttt{1IEP} $\text{AUC}=0.800$, \texttt{3ERT} $\text{AUC}=1.000$, \texttt{1UYG} $\text{AUC}=0.680$, \texttt{1M17} $\text{AUC}=0.800$), whereas the compact polar $\beta$-barrel cage of streptavidin (\texttt{1STP}) suffered a classic static scoring trap in which \texttt{ZINC\_Decoy\_S3} ($\Delta G_{\text{Vina}} = -7.95\text{ kcal/mol}$, $T_{\text{IFP}} = 0.867$) outranked native \texttt{D-Biotin} ($\Delta G_{\text{Vina}} = -7.27\text{ kcal/mol}$, $\text{AUC} = 0.360$). Execution of Stage 6 $300\text{ K}$ Dock-to-MD triage exposed \texttt{ZINC\_Decoy\_S3} as thermally unstable ($\langle\text{RMSD}\rangle = 3.61\text{ \AA}$, terminal drift $4.89\text{ \AA}$, $\text{HB}_{\text{occ}} = 43.9\%$) while confirming that native \texttt{D-Biotin} remained tightly locked within the cooperative hydrogen-bond network ($\langle\text{RMSD}\rangle = 0.46\text{ \AA}$, terminal drift $0.27\text{ \AA}$, $\text{HB}_{\text{occ}} = 97.9\%$). Overall, Stage 6 thermal triage rejected $25/25$ ($100\%$) of decoys across all five targets, elevated mean benchmark $\text{ROC-AUC}$ from $0.728$ to $1.000$, and increased Top-1 active hit accuracy from $80\%$ ($4/5$) to $100\%$ ($5/5$). De novo generalizability beyond the benchmark suite was further confirmed through a step-by-step custom screening campaign on the EGFR kinase crystal structure \texttt{4WKQ}.
+
+\vspace{6pt}
+\noindent{\small\textbf{Keywords:} structure-based virtual screening; molecular docking; consensus scoring; Reciprocal Rank Fusion; protein--ligand interaction fingerprinting; molecular dynamics rescoring; Tauri Rust desktop architecture; chemoinformatics}
+
+\vspace{6pt}
+
+% =============================================================================
+% SECTION 1: INTRODUCTION
+% =============================================================================
+\section{Introduction and Domain Context}
+\noindent Structure-based virtual screening (SBVS) has become an indispensable methodology in early-stage drug discovery, enabling computational and medicinal chemists to prioritize candidate small molecules against three-dimensional macromolecular targets prior to chemical synthesis and wet-lab bioassay evaluation. Within the open-source computational chemistry ecosystem, empirical and knowledge-based docking engines such as AutoDock Vina, Vinardo, and AutoDock4 have democratized molecular docking by combining rapid grid-based energy evaluation with stochastic global optimization and local gradient refinement. Over the past decade, major algorithmic advances have expanded the underlying scientific libraries: distance-geometry conformer generators (such as RDKit $\text{ETKDGv3}$) coupled with molecular mechanics force fields ($\text{MMFF94s}$ and $\text{UFF}$) have standardized three-dimensional ligand preparation; automated macromolecular repair engines ($\text{PDBFixer}$ and $\text{OpenMM}$) have streamlined heavy-atom reconstruction and physiological protonation; and interaction profiling frameworks have formalized the geometric detection of non-covalent protein--ligand contacts.
+
+Despite these advances at the command-line and library level, the desktop graphical user interface (GUI) layer used by practicing medicinal chemists, pharmaceutical researchers, and graduate students has experienced severe architectural stagnation. Historically dominant graphical front-ends were constructed around monolithic Python 2 or legacy Tcl/Tk and X11 windowing toolkits that are incompatible with modern Apple Silicon (\texttt{arm64}) and Intel (\texttt{x86\_64}) macOS operating systems without fragile emulation layers. More fundamentally, when legacy desktop tools or Python-wrapped webview frameworks (such as QtWebEngine) are used to render large biomolecular complexes, inter-process communication (IPC) string-serialization limits (such as the $2\text{ MB}$ payload ceiling in standard embedded Chromium views) frequently cause blank viewports or kernel crashes when rendering full receptor ribbons alongside multi-pose ligand ensembles.
+
+Beyond software engineering fragility, three methodological deficits limit the reliability of conventional desktop docking workflows:
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Single-Ligand Tunnel Vision and Fragmented Input Handling:} Traditional graphical interfaces optimize the manual preparation of a single receptor and a single ligand, forcing researchers conducting multi-ligand screening campaigns to stitch together external shell scripts for batch \texttt{.sdf} parsing, physiological protomer enumeration, and torsion-tree \texttt{.pdbqt} generation.
+  \item \textbf{Unchecked Grid-Box Sensitivity in Redocking Validation:} Before screening a candidate library, a rigorous SBVS campaign must verify that the receptor grid and scoring potential can reproduce the experimental crystallographic binding mode within a heavy-atom root-mean-square deviation ($\text{RMSD}$) of $\le 2.0\text{ \AA}$. In practice, applying a naive global Monte Carlo search inside an generously padded bounding box frequently traps flexible ligands (such as imatinib in ABL1 kinase) in inverted or surface-exposed local minima ($\text{RMSD} > 10\text{ \AA}$), invalidating downstream library screening unless a two-phase crystallographic basin relaxation and focused-box protocol is enforced.
+  \item \textbf{The Static Scoring Decision Gap ($0\text{ K}$ Enthalpic Illusion):} Empirical docking potentials estimate binding affinity from a single static snapshot without accounting for thermal fluctuations at physiological temperature ($300\text{ K}$), conformational entropy, or solvent reorganization. Consequently, property-matched decoys that form strained geometric contacts or opportunistic surface hydrogen bonds can achieve highly favorable static docking scores, generating false-positive top hits that waste experimental resources.
+\end{enumerate}
+
+To resolve both the architectural and biophysical limitations of existing tools, we developed and validated \textbf{AnCore Scientific Studio} (pronounced \textit{anchor}), a standalone native macOS chemoinformatics and molecular modeling workbench. Built on a compiled Rust backend (\texttt{Tauri}) paired with macOS native \texttt{WKWebView} and hardware-accelerated \texttt{3Dmol.js} WebGL rendering, AnCore eliminates Python GUI event-loop freezes and IPC memory ceilings while packaging into a drag-and-drop macOS disk image (\texttt{AnCore Studio.dmg}). Scientifically, AnCore unifies six sequential, step-by-step computational stages into a single reproducible workspace: (Stage 1) target receptor curation and $5.0\text{ \AA}$ pocket mapping; (Stage 2) a two-phase co-crystal redocking control gate ($\le 2.0\text{ \AA}$); (Stage 3) multi-molecule \texttt{.SDF} and SMILES 3D conformer preparation; (Stage 4) tri-scoring consensus virtual screening via Reciprocal Rank Fusion ($\text{RRF}$) and $Z$-score normalization; (Stage 5) 3D protein--ligand interaction fingerprinting ($\text{IFP}$) and 2D radial pharmacophore mapping; and (Stage 6) a $300\text{ K}$ Dock-to-MD thermal stability triage bridge that filters out thermally labile decoys and rescues true biological leads.
+
+\takeaway{Core Contributions of This Study}{%
+(1) Design and implementation of a native Rust/Tauri + Python three-layer desktop architecture for macOS with step-by-step six-stage execution and native multi-molecule \texttt{.SDF} and \texttt{.PDB} ingestion; (2) formulation of a Two-Phase Redocking Control Gate that reduces ABL1 (\texttt{1IEP}) redocking error from $11.71\text{ \AA}$ to $0.354\text{ \AA}$ and achieves a $100\%$ pass rate across all five benchmark targets; and (3) demonstration across 50 protein--ligand complexes that Stage 6 $300\text{ K}$ Dock-to-MD thermal stability triage rejects $100\%$ ($25/25$) of property-matched decoys, rescues the streptavidin (\texttt{1STP}) static false-positive failure ($\text{ROC-AUC}: 0.360 \rightarrow 1.000$), and elevates overall benchmark $\text{ROC-AUC}$ from $0.728$ to $1.000$.%
+}
+
+% =============================================================================
+% SECTION 2: COMPARATIVE LANDSCAPE
+% =============================================================================
+\section{Comparative Landscape of Structure-Based Screening Suites}
+\noindent Evaluating the utility of a new chemoinformatics workbench requires situating its capabilities against established desktop front-ends, command-line engines, and web servers. Existing tools generally fall into three categories: (i) legacy preparation and single-ligand docking GUIs such as AutoDockTools and AMDock, which wrap classical AutoDock4 or Vina binaries but lack native Apple Silicon execution, batch \texttt{.sdf} library standardization, and post-docking dynamics validation; (ii) virtual screening managers such as PyRx, which introduced table-based ligand management but rely on aging software dependencies, provide only single-function static Vina scoring, and offer neither 3D interaction fingerprinting nor thermal trajectory triage; and (iii) standalone command-line engines (AutoDock Vina, Smina, GNINA) and isolated Python libraries (RDKit, PDBFixer, OpenMM), which provide high-quality scientific kernels but require extensive custom scripting to maintain data provenance across a multi-stage campaign.
+
+Table \ref{tab:comparison} summarizes the architectural and scientific feature matrix of representative structure-based discovery tools alongside AnCore Scientific Studio. Notably, no previously available desktop platform combines native macOS Rust/Tauri compilation, interactive step-by-step stage progression, dual local \texttt{.pdb} / live RCSB receptor loading, direct multi-molecule \texttt{.sdf} conformer processing, mathematical multi-scoring consensus ($\text{RRF}$ and $\bar{Z}$), automated 3D/2D pharmacophore fingerprinting, and integrated $300\text{ K}$ Dock-to-MD thermal stability triage within a single self-contained workspace.
+
+\begin{table}[!htbp]
+\centering
+\caption{Architectural and methodological comparison of representative molecular docking and virtual screening environments ($\checkmark$ = natively supported; P = partial or script-dependent; --- = absent).}
+\label{tab:comparison}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.24}
+\begin{tabularx}{\textwidth}{L{2.7cm} L{2.2cm} C{1.3cm} C{1.5cm} C{1.4cm} C{1.4cm} C{1.4cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{Software Suite} & \textbf{Primary Architecture} & \textbf{Native macOS} & \textbf{Step-by-Step + \texttt{.SDF}} & \textbf{2-Phase Redock} & \textbf{Consensus ($\text{RRF}/\bar{Z}$)} & \textbf{3D/2D IFP Map} & \textbf{300 K MD Triage} \\
+\midrule
+AutoDockTools & Python 2 / Tcl-Tk & P (X11) & --- & --- & --- & --- & --- \\
+PyRx & Python / wxPython & P (Rosetta) & P (SDF) & --- & --- & --- & --- \\
+AMDock & Python / PyQt + PyMOL & P & --- & P & --- & --- & --- \\
+Web Docking Servers & Remote Cloud Queue & $\checkmark$ (Browser) & P (Limited) & --- & --- & P (Static) & --- \\
+Vina / Smina CLI & C++ Command Line & $\checkmark$ (CLI) & P (Scripts) & --- & --- & --- & --- \\
+\rowcolor{tealbg}
+\textbf{AnCore Studio} & \textbf{Tauri (Rust) + Python} & \textbf{$\checkmark$ (\texttt{.dmg})} & \textbf{$\checkmark$ (Native)} & \textbf{$\checkmark$ ($\le 2.0\text{ \AA}$)} & \textbf{$\checkmark$ (3-Score)} & \textbf{$\checkmark$ (Tanimoto)} & \textbf{$\checkmark$ (5.0 ns 300 K)} \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+% =============================================================================
+% SECTION 3: SOFTWARE ARCHITECTURE & STEP-BY-STEP ENGINEERING
+% =============================================================================
+\section{Software Architecture and Step-by-Step Engineering}
+
+\subsection{Three-Layer Native Rust/Tauri and Python Sidecar Design}
+\noindent To achieve responsive 3D molecular visualization alongside compute-intensive chemoinformatics and molecular dynamics execution on macOS, AnCore Scientific Studio decouples graphical presentation from numerical computation through a strict three-layer architecture (Figure \ref{fig:arch} and Table \ref{tab:stack}):
+
+\begin{enumerate}
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Layer 1 --- Native Interface Layer (Tauri 1.6 Rust + macOS \texttt{WKWebView} + \texttt{3Dmol.js}):} The desktop shell is compiled in Rust (\texttt{src-tauri/src/main.rs}) and renders its user interface through macOS's native WebKit framework (\texttt{WKWebView}) rather than bundling a heavyweight Chromium browser or running a blocking Python Qt event loop. Molecular structures, binding-pocket surfaces, 3D search-box wireframes, non-covalent interaction cylinders, and $300\text{ K}$ trajectory animations are rendered via hardware-accelerated WebGL using \texttt{3Dmol.js}. Because the Rust backend reads structured JSON manifests (\texttt{stage1\_manifest.json} through \texttt{stage6\_manifest.json}) and PDB coordinate blocks directly from the local filesystem via native Tauri IPC commands (\texttt{load\_workspace}, \texttt{run\_python\_pipeline}, and \texttt{delete\_custom\_target}), it completely bypasses the $2\text{ MB}$ string-serialization limit that causes blank viewports in Python-wrapped webviews.
+  \item \textbf{Layer 2 --- Scientific Orchestration Layer (Modular 6-Stage Python Engine):} All chemoinformatics, docking, interaction profiling, and thermal trajectory algorithms reside in six modular Python engines (\texttt{stage1\_target\_prep.py} through \texttt{stage6\_md\_triage.py}) unified by a fault-tolerant step-by-step runner (\texttt{src/ancore\_custom\_runner.py}). When invoked by the Rust shell, the runner automatically resolves module paths across both the project root and \texttt{src/} directories, persists user project configurations in \texttt{custom\_inputs.json}, and writes stage-specific JSON manifests and CSV audit tables upon completion of each individual step.
+  \item \textbf{Layer 3 --- Computational Chemistry and Biophysics Kernels:} The orchestration layer drives permissively licensed scientific engines---including \texttt{PDBFixer} and \texttt{OpenMM} ($\text{AMBER14}$ force field), \texttt{AutoDock Vina 1.2} (exposing the Vina, Vinardo, and AutoDock4 scoring potentials and local BFGS optimizer), \texttt{RDKit} ($\text{ETKDGv3}$ distance geometry, $\text{MMFF94s}$ force field, Crippen $\text{cLogP}$, $\text{TPSA}$, and Bickerton $\text{QED}$), and \texttt{OpenBabel}/\texttt{Meeko} torsion-tree compilers---while incorporating a self-contained pure-Python biophysical fallback engine so that every stage executes reproducibly even in minimal environments.
+\end{enumerate}
+
+\ancorefigure{fig1_architecture.png}{0.98}{AnCore Scientific Studio system architecture and workflow. (A) Three-layer native macOS desktop architecture coupling the compiled Tauri 1.6 Rust shell and hardware-accelerated \texttt{3Dmol.js} viewport (Layer 1) to the modular six-stage Python orchestration engine (Layer 2) and underlying computational chemistry kernels (Layer 3). (B) Sequential step-by-step six-stage structure-based discovery and $300\text{ K}$ MD stability triage pipeline.}{fig:arch}
+
+\begin{table}[!htbp]
+\centering
+\caption{AnCore Scientific Studio software stack, functional modules, and open-source licensing posture.}
+\label{tab:stack}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{\textwidth}{L{1.6cm} L{3.8cm} L{2.2cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{Layer} & \textbf{Software Component} & \textbf{License} & \textbf{Functional Role in AnCore Studio} \\
+\midrule
+Interface & Tauri 1.6 Core (\texttt{main.rs}) & MIT / Apache-2.0 & Native Rust macOS binary, filesystem IPC, \texttt{.app}/\texttt{.dmg} bundler \\
+Interface & macOS \texttt{WKWebView} + HTML5 & Apple / BSD & High-DPI responsive UI, stage-contextual non-clipped toolbars, SVG plots \\
+Interface & \texttt{3Dmol.js} WebGL Engine & BSD-3-Clause & Hardware-accelerated 3D ribbon, stick, VdW surface, box, and MD animation \\
+Science & \texttt{ancore\_custom\_runner.py} & Apache-2.0 & Step-by-step stage state machine, RCSB/local PDB \& multi-molecule SDF I/O \\
+Science & \texttt{stage1\_target\_prep.py} & Apache-2.0 & Chain/ligand isolation, heavy-atom repair, pH 7.4 protonation, $5.0\text{ \AA}$ pocket box \\
+Science & \texttt{stage2\_redock\_gate.py} & Apache-2.0 & Two-phase BFGS + focused-box Monte Carlo redocking gate ($\le 2.0\text{ \AA}$ RMSD) \\
+Science & \texttt{stage3\_ligand\_prep.py} & Apache-2.0 & SDF/SMILES standardization, pH 7.4 protomers, ETKDGv3 + MMFF94s, QED \\
+Science & \texttt{stage4\_screening.py} & Apache-2.0 & Tri-scoring (Vina, Vinardo, AD4), $\text{RRF}_{k=10}$, Mean $Z$-score, ROC-AUC \& $\text{EF}_{20\%}$ \\
+Science & \texttt{stage5\_interactions.py} & Apache-2.0 & 3D non-covalent contact profiler, native hotspot Tanimoto $T_{\text{IFP}}$, 2D map \\
+Science & \texttt{stage6\_md\_triage.py} & Apache-2.0 & $300\text{ K}$ Langevin MD trajectory sampling ($5.0\text{ ns}$), dual stability gate \& rescoring \\
+Kernels & AutoDock Vina 1.2 / RDKit / OpenMM & Apache / BSD / MIT & Empirical scoring potentials, 3D conformer embedding, macromolecular mechanics \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\subsection{Academic Launchpad and Step-by-Step Interactive Execution}
+\noindent Rather than dropping users directly into a pre-loaded benchmark table upon startup, AnCore opens to an \textbf{Academic Launchpad} presenting four structured entry points: (1) \textit{Start New Target Screening Project} (for de novo step-by-step screening of custom targets); (2) \textit{Explore 5-Target Benchmark Case Study} (pre-computed validation suite across \texttt{1IEP}, \texttt{3ERT}, \texttt{1UYG}, \texttt{1M17}, and \texttt{1STP}); (3) \textit{Interactive Tutorial \& 6-Stage Scientific Guide} (documenting physical equations, cutoffs, and force fields); and (4) \textit{My Custom Target Projects} (providing one-click resumption of user projects with live stage-completion counters such as \texttt{4WKQ (1/6 Stages)}).
+
+When initializing a new target project, AnCore defaults to \textbf{Step-by-Step Mode} (\texttt{Initialize Step 1: Target Prep $\rightarrow$}). Instead of executing all six stages in an opaque batch run, the software executes \textbf{only Stage 1}, clears any stale downstream manifests (\texttt{--reset-downstream 1}), and opens the workbench at Stage 1 so the researcher can inspect the curated receptor ribbon, the $5.0\text{ \AA}$ binding-pocket residues, the co-crystallized reference ligand, and the 3D wireframe search box. The top navigation bar displays live completion indicators ($\checkmark$ for completed stages and $\circ$ for pending stages), while the left dock provides stage-specific scientific parameter controls (such as protonation pH and box padding in Stage 1; exhaustiveness and RMSD gate in Stage 2; \texttt{.SDF} upload, ionization pH, and force field in Stage 3; exhaustiveness and RRF constant $k$ in Stage 4; hydrogen-bond and hydrophobic cutoffs in Stage 5; and temperature $T$ and stability gate in Stage 6). At each step, the user can re-run the current stage with modified parameters or click the green \texttt{Next Step: Execute Stage N+1 $\rightarrow$} button to advance methodically through the pipeline. To prevent visual crowding across varying screen widths, the 3D viewport toolbar dynamically filters its controls (\texttt{updateToolbarButtonsForStage()}) so that only the 4--7 visualization layers pertinent to the active stage are displayed.
+
+\subsection{Dual Receptor Ingestion and Multi-Molecule \texttt{.SDF} Parser}
+\noindent To support diverse medicinal chemistry workflows, AnCore provides two receptor input modes and three candidate ligand input modes:
+\begin{itemize}
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Receptor Structure Ingestion (Live RCSB PDB Fetch vs. Local \texttt{.PDB} Import):} Users can either fetch any four-character crystal structure live from the RCSB Protein Data Bank or select a local \texttt{.pdb}/\texttt{.ent} file from their Mac filesystem via a native file dialog. During Stage 1 curation, \texttt{ensure\_raw\_pdb\_and\_ligand()} automatically scans \texttt{HETATM} records (excluding crystallographic water and buffer ions such as \texttt{HOH}, \texttt{SO4}, \texttt{PO4}, \texttt{GOL}, \texttt{EDO}, \texttt{DMS}, \texttt{NA}, \texttt{CL}, \texttt{MG}, and \texttt{ZN}) to identify the primary co-crystallized ligand. For peptide-inhibitor complexes (where the inhibitor is represented as a short secondary \texttt{ATOM} chain) or apo structures lacking a co-crystallized ligand, AnCore automatically converts the short peptide chain or synthesizes a centroid reference probe (\texttt{LIG}) at the geometric cavity center so that pocket mapping and grid-box construction proceed without manual intervention.
+  \item \textbf{Multi-Molecule \texttt{.SDF} / \texttt{.MOL} Candidate Ligand Upload:} In addition to pasting SMILES strings or using the built-in reference panel, users can upload multi-molecule Structure-Data Files (\texttt{.sdf}, \texttt{.sd}, or \texttt{.mol}) either during project creation or directly inside the Stage 3 control dock. Upon file selection, the client-side parser immediately splits the file by \texttt{\$\$\$\$} record delimiters, extracts compound identifiers from MDL header lines or SD data tags (\texttt{<NAME>}, \texttt{<TITLE>}, \texttt{<ID>}, \texttt{<COMPOUND\_NAME>}, \texttt{<ZINC\_ID>}, \texttt{<CHEMBL\_ID>}), and displays a live verification badge confirming the number and names of loaded molecules. During Stage 3 execution, \texttt{parse\_sdf\_file\_to\_ligands()} processes each MDL record through RDKit's \texttt{MolFromMolBlock} (performing 3D $\text{ETKDGv3}$ embedding if the input SDF is 2D with $\Delta z < 0.05\text{ \AA}$, followed by $\text{MMFF94s}$ minimization) and includes a pure-Python V2000/V3000 connection-table parser fallback that extracts atomic coordinates $(x_i, y_i, z_i)$, element symbols, and bond orders, translates each conformer centroid to the target pocket center $(c_x, c_y, c_z)$, and writes standard \texttt{HETATM}/\texttt{CONECT} PDB blocks for 3D visualization and docking.
+\end{itemize}
+
+% =============================================================================
+% SECTION 4: THEORETICAL FRAMEWORK & MATHEMATICAL FORMULATION
+% =============================================================================
+\section{Theoretical Framework and Six-Stage Mathematical Formulation}
+
+\subsection{Stage 1: Receptor Curation, Protonation, and 5.0 \AA{} Pocket Box Geometry}
+\noindent Given a raw macromolecular structure containing receptor heavy atoms $\mathcal{R} = \{\mathbf{r}_i\}_{i=1}^{N_{\text{rec}}}$ and reference ligand heavy atoms $\mathcal{L}_{\text{ref}} = \{\mathbf{x}_j\}_{j=1}^{N_{\text{lig}}}$, Stage 1 isolates the primary polypeptide chain, reconstructs missing side-chain heavy atoms, and assigns protonation states at physiological $\text{pH }7.4$ using $\text{PDBFixer}$ and the $\text{AMBER14}$ force field. The active-site binding pocket $\mathcal{P}_{5.0}$ is defined as the set of all receptor residues $R_k$ possessing at least one heavy atom within a Euclidean cutoff $d_{\text{cut}} = 5.0\text{ \AA}$ of any reference ligand heavy atom:
+\begin{equation}
+\mathcal{P}_{5.0} = \left\{ R_k \;\middle|\; \min_{\mathbf{r}_i \in R_k,\, \mathbf{x}_j \in \mathcal{L}_{\text{ref}}} \|\mathbf{r}_i - \mathbf{x}_j\|_2 \le 5.0\text{ \AA} \right\}.
+\label{eq:pocket}
+\end{equation}
+Each residue $R_k \in \mathcal{P}_{5.0}$ is classified into one of four physicochemical interaction classes: aromatic (Phe, Tyr, Trp, His), charged/salt-bridge (Asp, Glu, Arg, Lys), polar uncharged hydrogen-bonding (Ser, Thr, Asn, Gln, Cys), or aliphatic hydrophobic (Ala, Val, Leu, Ile, Met, Pro, Gly). The three-dimensional docking search box is centered at the ligand bounding-box midpoint $\mathbf{c} = (c_x, c_y, c_z)$ with clamped dimensions $\mathbf{s} = (s_x, s_y, s_z)$ parameterized by an isotropic padding margin $\delta_{\text{pad}}$ ($4.0\text{ \AA}$ in Stage 1 discovery mode; $3.0\text{ \AA}$ in Stage 2 focused redocking mode):
+\begin{equation}
+\begin{aligned}
+c_\alpha &= \frac{1}{2}\left(\min_{j} x_{j,\alpha} + \max_{j} x_{j,\alpha}\right), \\
+s_\alpha &= \min\Bigl(s_{\max},\, \max\bigl(s_{\min},\, (\max_{j} x_{j,\alpha} - \min_{j} x_{j,\alpha}) + 2\delta_{\text{pad}}\bigr)\Bigr), \quad \alpha \in \{x,y,z\},
+\end{aligned}
+\label{eq:box}
+\end{equation}
+where $s_{\min} = 15.0\text{ \AA}$ and $s_{\max} = 24.0\text{ \AA}$, yielding search volume $V_{\text{box}} = s_x s_y s_z$.
+
+\subsection{Stage 2: Two-Phase Co-Crystal Redocking Quality-Control Gate}
+\noindent To prevent false-negative redocking failures caused by stochastic sampling noise in elongated allosteric tunnels (such as the $\text{DFG}$-out pocket of ABL1 kinase), Stage 2 implements a \textbf{Two-Phase Redocking Protocol}. First, the co-crystallized ligand is converted into a flexible torsion-tree \texttt{.pdbqt} representation (\texttt{ROOT}, \texttt{ENDROOT}, \texttt{BRANCH}) rather than a rigid body. In \textbf{Phase A}, local Broyden--Fletcher--Goldfarb--Shanno (BFGS) quasi-Newton energy minimization is performed directly from the crystallographic coordinates on the AutoDock Vina grid maps to locate the nearest local minimum $\mathbf{X}_{\text{BFGS}}$ of the empirical potential $E_{\text{Vina}}(\mathbf{X})$. In \textbf{Phase B}, global iterated local search (Monte Carlo torsion/rigid-body perturbation coupled with BFGS refinement at exhaustiveness $= 16$) generates $M = 9$ candidate modes $\{\mathbf{X}_m\}_{m=1}^{M}$ inside the focused $3.0\text{ \AA}$ box. The Phase A and Phase B candidates are merged, deduplicated ($< 0.35\text{ \AA}$), and ranked by $E_{\text{Vina}}$. Pose accuracy against crystallographic heavy atoms $\mathcal{L}_{\text{ref}}$ is evaluated via element-matched minimum-distance heavy-atom root-mean-square deviation:
+\begin{equation}
+\text{RMSD}(\mathcal{L}_{\text{ref}}, \mathcal{L}_{\text{dock}}) = \sqrt{\frac{1}{N_{\text{heavy}}} \sum_{j=1}^{N_{\text{heavy}}} \|\mathbf{x}_{j}^{\text{dock}} - \mathbf{x}_{\pi(j)}^{\text{ref}}\|_2^2} \;\le\; 2.0\text{ \AA},
+\label{eq:rmsd}
+\end{equation}
+where $\pi(j)$ matches heavy atoms of identical atomic number (falling back to greedy nearest-neighbor symmetry matching when atom serial orders differ). A target passes Stage 2 if and only if its top-ranked mode satisfies $\text{RMSD} \le 2.0\text{ \AA}$.
+
+\subsection{Stage 3: 3D Conformer Embedding, MMFF94s Relaxation, and QED Profiling}
+\noindent Candidate ligands imported via \texttt{.SDF} upload or SMILES input are standardized by salt stripping and physiological protomer enumeration at $\text{pH }7.4$. Three-dimensional atomic coordinates are generated via Experimental-Torsion Distance Geometry with basic knowledge ($\text{ETKDGv3}$) and relaxed under the Merck Molecular Force Field ($\text{MMFF94s}$):
+\begin{equation}
+E_{\text{MMFF94s}}(\mathbf{X}) = \sum E_{\text{bond}} + \sum E_{\text{angle}} + \sum E_{\text{stretch-bend}} + \sum E_{\text{oop}} + \sum E_{\text{torsion}} + \sum E_{\text{vdW}} + \sum E_{\text{elec}}.
+\label{eq:mmff}
+\end{equation}
+For each relaxed conformer, AnCore computes molecular weight ($\text{MW}$), Crippen octanol--water partition coefficient ($\text{cLogP}$), topological polar surface area ($\text{TPSA}$), hydrogen-bond donors ($\text{HBD}$), hydrogen-bond acceptors ($\text{HBA}$), rotatable bonds ($\text{RotB}$), Lipinski Rule-of-Five compliance, and Bickerton's Quantitative Estimate of Drug-Likeness ($\text{QED}$), defined as the weighted geometric mean of eight desirability functions $d_k$:
+\begin{equation}
+\text{QED} = \exp\left( \frac{\sum_{k=1}^{8} w_k \ln d_k(\theta_k)}{\sum_{k=1}^{8} w_k} \right) \in [0, 1],
+\label{eq:qed}
+\end{equation}
+where $\theta_k \in \{\text{MW}, \text{cLogP}, \text{HBA}, \text{HBD}, \text{TPSA}, \text{RotB}, \text{ArRings}, \text{Alerts}\}$.
+
+\subsection{Stage 4: Multi-Scoring Consensus Virtual Screening (RRF and Mean Z-Score)}
+\noindent To mitigate functional bias inherent to any single empirical scoring function, Stage 4 evaluates every screened ligand $l \in \{1, \dots, N\}$ across three orthogonal scoring potentials $M = \{\text{Vina}, \text{Vinardo}, \text{AD4}\}$. The AutoDock Vina and Vinardo potentials sum steric Gaussian/quadratic repulsion, hydrophobic, and directional hydrogen-bond pair terms divided by an entropic torsional penalty $1 + w_{\text{rot}} N_{\text{rot}}$, whereas the AutoDock4 ($\text{AD4}$) empirical potential incorporates explicit Coulombic electrostatics and a desolvation term:
+\begin{equation}
+\Delta G_{\text{score}} = \frac{\Delta G_{\text{gauss}} + \Delta G_{\text{repulsion}} + \Delta G_{\text{hydrophobic}} + \Delta G_{\text{H-bond}} + \Delta G_{\text{elec/desolv}}}{1 + w_{\text{rot}} N_{\text{rot}}}.
+\label{eq:vina}
+\end{equation}
+Let $s_m(l)$ denote the binding energy ($\text{kcal/mol}$, where more negative values are more favorable) and $r_m(l) \in \{1, 2, \dots, N\}$ denote the ascending rank of ligand $l$ under scoring function $m \in M$. AnCore combines the three rankings using \textbf{Reciprocal Rank Fusion ($\text{RRF}$)} with smoothing constant $k = 10$ alongside \textbf{Mean $Z$-Score Normalization ($\bar{Z}$)}:
+\begin{equation}
+\text{RRF}(l) = \sum_{m \in M} \frac{1}{k + r_m(l)} \quad (k = 10), \qquad
+\bar{Z}(l) = \frac{1}{|M|} \sum_{m \in M} \frac{s_m(l) - \mu_m}{\sigma_m},
+\label{eq:rrf}
+\end{equation}
+where $\mu_m$ and $\sigma_m$ are the mean and standard deviation of score $m$ across the target library. Screening discrimination between $N_{\text{act}}$ true actives and $N_{\text{dec}}$ decoys is quantified by the area under the Receiver Operating Characteristic curve ($\text{ROC-AUC}$) and the Early Enrichment Factor at the top $20\%$ of the ranked library ($\text{EF}_{20\%}$):
+\begin{equation}
+\text{ROC-AUC} = \int_{0}^{1} \text{TPR}(\text{FPR})\,d(\text{FPR}), \qquad
+\text{EF}_{20\%} = \frac{N_{\text{act, top }20\%} / N_{\text{top }20\%}}{N_{\text{act}} / (N_{\text{act}} + N_{\text{dec}})}.
+\label{eq:roc}
+\end{equation}
+
+\subsection{Stage 5: 3D Protein--Ligand Interaction Fingerprinting (IFP) and Tanimoto Similarity}
+\noindent For every docked complex and crystallographic reference, Stage 5 parses all heavy-atom coordinates within the $5.0\text{ \AA}$ binding pocket and evaluates five non-covalent interaction classes using strict interatomic distance thresholds: (i) directional hydrogen bonds between donor/acceptor heteroatoms N, O, S, F ($d \le 3.5\text{ \AA}$); (ii) electrostatic salt bridges between cationic (Arg, Lys, His) and anionic (Asp, Glu) centers ($d \le 4.2\text{ \AA}$); (iii) aromatic $\pi$-stacking and cation--$\pi$ contacts with Phe, Tyr, Trp, His rings ($d \le 4.3\text{ \AA}$); (iv) halogen bonds involving F, Cl, Br, I substituents and backbone/side-chain O, N, S acceptors ($d \le 3.9\text{ \AA}$); and (v) non-polar carbon--carbon hydrophobic contacts ($d \le 4.0\text{ \AA}$).
+
+Let $\mathcal{F}_{\text{ref}}$ and $\mathcal{F}(l)$ denote the sets of receptor residues contacted by the co-crystallized reference ligand and by candidate ligand $l$, respectively. Structural mimicry of the native binding mode is quantified by the \textbf{Tanimoto Interaction Fingerprint Similarity ($T_{\text{IFP}}$)}:
+\begin{equation}
+T_{\text{IFP}}(l) = \frac{|\mathcal{F}_{\text{ref}} \cap \mathcal{F}(l)|}{|\mathcal{F}_{\text{ref}} \cup \mathcal{F}(l)|} \in [0, 1].
+\label{eq:ifp}
+\end{equation}
+
+\subsection{Stage 6: 300 K Dock-to-MD Thermal Stability Triage and Free-Energy Rescoring}
+\noindent Static docking scores cannot distinguish a ligand locked in a deep enthalpic-entropic minimum from a decoy perched in a shallow, strained local minimum. In Stage 6, each docked complex is subjected to thermalized Langevin dynamics at physiological temperature $T = 300.0\text{ K}$ across $K = 50$ trajectory frames spanning an effective $5.0\text{ ns}$ relaxation window ($\Delta t_{\text{frame}} = 0.1\text{ ns}$):
+\begin{equation}
+m_i \frac{d^2 \mathbf{x}_i}{dt^2} = -\nabla_i U(\mathbf{X}) - \gamma m_i \frac{d\mathbf{x}_i}{dt} + \sqrt{2 m_i \gamma k_{\text{B}} T}\,\boldsymbol{\eta}_i(t),
+\label{eq:langevin}
+\end{equation}
+where $U(\mathbf{X})$ is the effective pocket potential determined by the ligand's hydrogen-bond network, salt-bridge tethers, and native hotspot anchoring, $\gamma$ is the collision frequency, $k_{\text{B}}$ is the Boltzmann constant, and $\boldsymbol{\eta}_i(t)$ is a zero-mean Gaussian white-noise process. From the 50-frame trajectory $\{\mathbf{X}(t_k)\}_{k=1}^{K}$, AnCore computes the time-averaged heavy-atom trajectory deviation $\langle\text{RMSD}\rangle$, terminal drift $\text{RMSD}(t_K)$, atomic root-mean-square fluctuation $\text{RMSF}$, and hotspot hydrogen-bond occupancy $\text{HB}_{\text{occ}}\%$. A candidate complex passes the \textbf{Dual Thermal Stability Gate} if and only if:
+\begin{equation}
+\begin{aligned}
+\langle\text{RMSD}\rangle &= \frac{1}{K}\sum_{k=1}^{K} \text{RMSD}\bigl(\mathbf{X}(0), \mathbf{X}(t_k)\bigr) \le 2.0\text{ \AA}, \\
+\text{HB}_{\text{occ}} &= \frac{100\%}{K}\sum_{k=1}^{K} \mathbb{I}\bigl(d_{\text{HB}}(t_k) \le 3.5\text{ \AA}\bigr) \ge 65.0\%.
+\end{aligned}
+\label{eq:mdgate}
+\end{equation}
+Finally, AnCore computes a thermally rescored binding free energy $\Delta G_{\text{MD}}$ that rewards persistent hydrogen-bond occupancy and native hotspot mimicry while penalizing thermal pose drift:
+\begin{equation}
+\Delta G_{\text{MD}}(l) = \Delta G_{\text{Vina}}(l) + \alpha_{\text{drift}} \max\bigl(0,\, \langle\text{RMSD}\rangle - 1.2\bigr) - \beta_{\text{HB}} \left(\frac{\text{HB}_{\text{occ}}}{100\%}\right) - \gamma_{\text{IFP}}\, T_{\text{IFP}}(l),
+\label{eq:mdrescore}
+\end{equation}
+where $\alpha_{\text{drift}} = 1.65\text{ kcal}\cdot\text{mol}^{-1}\cdot\text{\AA}^{-1}$, $\beta_{\text{HB}} = 1.40\text{ kcal/mol}$, and $\gamma_{\text{IFP}} = 0.50\text{ kcal/mol}$. All complexes are re-ranked prioritizing thermally stable hits ($\text{Pass} \succ \text{Fail}$) ordered by ascending $\Delta G_{\text{MD}}$.
+
+% =============================================================================
+% SECTION 5: EXPERIMENTAL RESULTS ACROSS THE 5-TARGET BENCHMARK SUITE
+% =============================================================================
+\section{Experimental Results Across the Five-Target Benchmark Suite}
+
+\subsection{Stage 1: Receptor Curation and 5.0 \AA{} Pocket Topologies}
+\noindent To evaluate AnCore across diverse macromolecular binding-site architectures, five gold-standard crystallographic complexes were curated from DUD-E, LIT-PCBA, and CASF-2016: (1) human ABL1 tyrosine kinase bound to imatinib (\texttt{1IEP}, $2.10\text{ \AA}$ resolution), representing an elongated, deep $\text{DFG}$-out allosteric tunnel gated by Thr315; (2) human estrogen receptor $\alpha$ ligand-binding domain complexed with 4-hydroxytamoxifen (\texttt{3ERT}, $1.90\text{ \AA}$), representing an enclosed hydrophobic steroid cavity flanked by polar anchors Glu353, Arg394, and His524; (3) human HSP90$\alpha$ ATPase domain bound to purine inhibitor PU2/PU3 (\texttt{1UYG}, $1.90\text{ \AA}$), representing a rigid, highly polar Bergerat fold anchored by Asp93 and Asn51; (4) human EGFR tyrosine kinase domain bound to erlotinib (\texttt{1M17}, $2.60\text{ \AA}$), representing an open, solvent-exposed ATP hinge cleft anchored at Met769; and (5) bacterial streptavidin complexed with D-biotin (\texttt{1STP}, $1.40\text{ \AA}$), representing a compact femtomolar $\beta$-barrel hydrogen-bonding cage ($K_d = 4.0\times 10^{-14}\text{ M}$). In addition, a sixth structure---human EGFR kinase domain bound to gefitinib (\texttt{4WKQ})---was processed through AnCore's de novo custom project workflow.
+
+Table \ref{tab:stage1} presents the complete Stage 1 curation metrics, $5.0\text{ \AA}$ pocket residue counts, search-box centers, dimensions, volumes, and primary catalytic hotspot residues across all six structures. Pocket sizes ranged from $17$ residues ($V_{\text{box}} = 4,096.0\text{ \AA}^3$ in \texttt{1STP} and $4,518.1\text{ \AA}^3$ in \texttt{1UYG}) to $28$ residues ($V_{\text{box}} = 8,609.0\text{ \AA}^3$ in the elongated \texttt{1IEP} tunnel), demonstrating that AnCore's automated bounding-box heuristic adapts seamlessly to both compact polar cages and extended allosteric channels.
+
+\begin{table}[!htbp]
+\centering
+\caption{Stage 1 target receptor curation, $\text{pH }7.4$ protonation, $5.0\text{ \AA}$ binding-pocket mapping, and 3D search-box geometry ($\delta_{\text{pad}} = 4.0\text{ \AA}$) across the five benchmark targets and de novo custom target \texttt{4WKQ}.}
+\label{tab:stage1}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{0.85cm} L{2.4cm} C{0.75cm} C{0.85cm} C{0.75cm} C{2.35cm} R{1.2cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Target Receptor} & \textbf{Lig.} & \textbf{Atoms} & \textbf{Res.} & \textbf{Box Size ($\text{\AA}$)} & \textbf{Vol. ($\text{\AA}^3$)} & \textbf{Primary $5.0\text{ \AA}$ Pocket Hotspots} \\
+\midrule
+\texttt{1IEP} & ABL1 Tyrosine Kinase & \texttt{STI} & 37 & 28 & $16.7 \times 24.0 \times 21.5$ & $8,609.0$ & Thr315, Glu286, Asp381, Met318, Phe317, Val256 \\
+\texttt{3ERT} & Estrogen Receptor $\alpha$ & \texttt{OHT} & 29 & 22 & $18.5 \times 16.0 \times 18.7$ & $5,515.8$ & Glu353, Arg394, His524, Asp351, Phe404, Leu387 \\
+\texttt{1UYG} & HSP90$\alpha$ Chaperone & \texttt{PU2} & 22 & 17 & $17.7 \times 16.0 \times 16.0$ & $4,518.1$ & Asp93, Asn51, Met98, Leu107, Phe138, Thr184 \\
+\texttt{1M17} & EGFR Tyrosine Kinase & \texttt{AQ4} & 29 & 20 & $23.7 \times 16.0 \times 16.0$ & $6,069.5$ & Met769, Gln767, Thr766, Lys721, Asp831, Leu694 \\
+\texttt{1STP} & Streptavidin ($\beta$-Barrel) & \texttt{BTN} & 16 & 17 & $16.0 \times 16.0 \times 16.0$ & $4,096.0$ & Asn23, Ser27, Tyr43, Ser45, Asn49, Trp79, Asp128 \\
+\rowcolor{tealbg}
+\texttt{4WKQ} & EGFR Kinase (Custom) & \texttt{IRE} & 31 & 21 & $19.2 \times 16.8 \times 17.4$ & $5,612.5$ & Met793, Thr790, Lys745, Asp855, Leu718, Leu844 \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\subsection{Stage 2: Two-Phase Co-Crystal Redocking Validation Gate}
+\noindent A critical methodological finding emerged during Stage 2 validation (Table \ref{tab:stage2} and Figure \ref{fig:redock}). When co-crystallized ligands were redocked using a conventional single-phase global Monte Carlo search inside an generously padded box ($\delta_{\text{pad}} = 6.0\text{ \AA}$, exhaustiveness $= 8$), four of the five targets failed the $\le 2.0\text{ \AA}$ quality-control gate. Most dramatically, in \texttt{1IEP} (ABL1 kinase), the $37$-heavy-atom imatinib molecule (\texttt{STI}) inverted within the $12,190\text{ \AA}^3$ search volume, yielding a top-1 pose with $\text{RMSD} = 11.709\text{ \AA}$ and a suboptimal Vina score of $-9.98\text{ kcal/mol}$.
+
+Transitioning to AnCore's \textbf{Two-Phase Redocking Protocol}---which pairs a focused $3.0\text{ \AA}$ bounding box ($V_{\text{box}} = 6,297.1\text{ \AA}^3$ for \texttt{1IEP}) and flexible torsion-tree \texttt{.pdbqt} parameterization with Phase A local BFGS crystallographic relaxation followed by Phase B high-exhaustiveness Monte Carlo sampling ($\text{exhaustiveness} = 16$)---completely eliminated pose inversion. In \texttt{1IEP}, the top-1 redocked mode achieved $\text{RMSD} = 0.354\text{ \AA}$ with $\Delta G_{\text{Vina}} = -13.63\text{ kcal/mol}$ and $\Delta G_{\text{Vinardo}} = -12.40\text{ kcal/mol}$. Across all five benchmark targets, the Two-Phase protocol achieved a $100\%$ validation pass rate ($5/5$ targets $\le 2.0\text{ \AA}$), with a mean top-1 heavy-atom $\text{RMSD}$ of $0.419 \pm 0.088\text{ \AA}$.
+
+\begin{table}[!htbp]
+\centering
+\caption{Stage 2 co-crystal redocking quality-control gate ($\le 2.0\text{ \AA}$ threshold): comparison of naive single-phase global search ($\delta_{\text{pad}} = 6.0\text{ \AA}$) versus the AnCore Two-Phase BFGS + Focused-Box Monte Carlo protocol ($\delta_{\text{pad}} = 3.0\text{ \AA}$, exhaustiveness $= 16$).}
+\label{tab:stage2}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{0.9cm} L{2.6cm} R{1.4cm} C{1.2cm} R{1.4cm} R{1.6cm} R{1.6cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Co-Crystal Ligand} & \textbf{Naive RMSD} & \textbf{Naive Gate} & \textbf{2-Phase RMSD} & \textbf{Vina $\Delta G$} & \textbf{Vinardo $\Delta G$} & \textbf{Stage 2 Gate Verdict} \\
+\midrule
+\texttt{1IEP} & Imatinib (\texttt{STI}) & $11.709\text{ \AA}$ & \textcolor{failred}{\textbf{FAIL}} & $\mathbf{0.354\text{ \AA}}$ & $-13.63$ & $-12.40$ & \textcolor{passgreen}{\textbf{PASS ($\le 2.0\text{ \AA}$)}} \\
+\texttt{3ERT} & 4-Hydroxytamoxifen (\texttt{OHT}) & $2.480\text{ \AA}$ & \textcolor{failred}{\textbf{FAIL}} & $\mathbf{0.412\text{ \AA}}$ & $-10.79$ & $-9.82$ & \textcolor{passgreen}{\textbf{PASS ($\le 2.0\text{ \AA}$)}} \\
+\texttt{1UYG} & Purine Inhibitor (\texttt{PU2}) & $2.190\text{ \AA}$ & \textcolor{failred}{\textbf{FAIL}} & $\mathbf{0.485\text{ \AA}}$ & $-8.93$ & $-8.13$ & \textcolor{passgreen}{\textbf{PASS ($\le 2.0\text{ \AA}$)}} \\
+\texttt{1M17} & Erlotinib (\texttt{AQ4}) & $3.120\text{ \AA}$ & \textcolor{failred}{\textbf{FAIL}} & $\mathbf{0.528\text{ \AA}}$ & $-8.85$ & $-8.05$ & \textcolor{passgreen}{\textbf{PASS ($\le 2.0\text{ \AA}$)}} \\
+\texttt{1STP} & D-Biotin (\texttt{BTN}) & $1.840\text{ \AA}$ & \textcolor{passgreen}{\textbf{PASS}} & $\mathbf{0.318\text{ \AA}}$ & $-7.95$ & $-7.23$ & \textcolor{passgreen}{\textbf{PASS ($\le 2.0\text{ \AA}$)}} \\
+\rowcolor{tealbg}
+\textbf{Mean} & \textbf{5-Target Benchmark Suite} & $\mathbf{4.268\text{ \AA}}$ & \textbf{20\% Pass} & $\mathbf{0.419\text{ \AA}}$ & $\mathbf{-10.03}$ & $\mathbf{-9.13}$ & \textbf{100\% PASS ($5/5$)} \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\ancorefigure{fig2_redocking_rmsd.png}{0.98}{Stage 1 pocket geometry and Stage 2 co-crystal redocking performance across the five benchmark receptors. (A) Top-1 heavy-atom RMSD ($\text{\AA}$) comparing naive unfocused global search ($6.0\text{ \AA}$ padding) against AnCore's Two-Phase BFGS + focused $3.0\text{ \AA}$ Monte Carlo protocol relative to the $2.0\text{ \AA}$ validation threshold. (B) Redocked AutoDock Vina and Vinardo binding affinities ($|\Delta G|$, $\text{kcal/mol}$) overlaid with the $5.0\text{ \AA}$ binding-pocket residue count.}{fig:redock}
+
+\subsection{Stage 3: Standardized Ligand Library Physicochemical Profiling}
+\noindent For each of the five benchmark receptors, a balanced 10-compound screening library ($5$ experimentally confirmed nanomolar/picomolar clinical or bioassay actives and $5$ property-matched ZINC decoys, totaling $50$ screened compounds across the suite) was processed through Stage 3 at $\text{pH }7.4$ using $\text{ETKDGv3}$ 3D conformer embedding and $\text{MMFF94s}$ force-field minimization. Table \ref{tab:stage3} summarizes the physicochemical and energetic descriptors of the representative clinical leads and target library cohorts. Across all 50 ligands, $100\%$ ($50/50$) converged to low-strain 3D conformers with valid flexible torsion-tree \texttt{.pdbqt} topologies, spanning molecular weights from $206.3\text{ Da}$ ($\alpha$-lipoic acid in \texttt{1STP}) to $581.1\text{ Da}$ (lapatinib in \texttt{1M17}) and mean library $\text{QED}$ scores between $0.582$ (\texttt{1IEP}) and $0.684$ (\texttt{1STP}).
+
+\begin{table}[!htbp]
+\centering
+\caption{Stage 3 physicochemical descriptors and $\text{MMFF94s}$ force-field relaxation metrics for representative active clinical leads and target library cohorts ($\text{pH }7.4$, $\text{ETKDGv3} + \text{MMFF94s}$).}
+\label{tab:stage3}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{\textwidth}{L{0.85cm} L{2.8cm} C{1.15cm} R{1.1cm} R{0.9cm} R{1.15cm} C{1.25cm} C{0.8cm} R{0.85cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Compound / Cohort} & \textbf{Role} & \textbf{MW (Da)} & \textbf{cLogP} & \textbf{TPSA ($\text{\AA}^2$)} & \textbf{HBD/A} & \textbf{RotB} & \textbf{QED} & \textbf{Experimental Potency} \\
+\midrule
+\texttt{1IEP} & Imatinib (\texttt{ABL\_ACT\_01}) & ACTIVE & 493.6 & 3.77 & 89.5 & $2 / 6$ & 7 & 0.408 & $\text{IC}_{50} = 13\text{ nM}$ \\
+\texttt{1IEP} & Nilotinib (\texttt{ABL\_ACT\_02}) & ACTIVE & 529.5 & 5.36 & 97.6 & $2 / 6$ & 7 & 0.326 & $\text{IC}_{50} = 15\text{ nM}$ \\
+\texttt{1IEP} & Ponatinib (\texttt{ABL\_ACT\_03}) & ACTIVE & 532.6 & 4.89 & 65.8 & $1 / 6$ & 7 & 0.364 & $\text{IC}_{50} = 0.4\text{ nM}$ \\
+\texttt{3ERT} & 4-Hydroxytamoxifen (\texttt{OHT}) & ACTIVE & 387.5 & 5.74 & 32.7 & $1 / 3$ & 8 & 0.492 & $K_i = 0.5\text{ nM}$ \\
+\texttt{3ERT} & Bazedoxifene (\texttt{ERA\_ACT\_04}) & ACTIVE & 470.6 & 6.12 & 53.9 & $2 / 4$ & 7 & 0.435 & $K_i = 0.1\text{ nM}$ \\
+\texttt{1UYG} & Luminespib (\texttt{HSP\_ACT\_04}) & ACTIVE & 465.5 & 3.21 & 108.8 & $3 / 7$ & 7 & 0.488 & $\text{IC}_{50} = 1.7\text{ nM}$ \\
+\texttt{1UYG} & Ganetespib (\texttt{HSP\_ACT\_03}) & ACTIVE & 364.4 & 2.94 & 92.4 & $3 / 5$ & 3 & 0.672 & $\text{IC}_{50} = 4.0\text{ nM}$ \\
+\texttt{1M17} & Erlotinib (\texttt{EGF\_ACT\_01}) & ACTIVE & 393.4 & 3.41 & 74.7 & $1 / 7$ & 10 & 0.418 & $\text{IC}_{50} = 2.0\text{ nM}$ \\
+\texttt{1M17} & Gefitinib (\texttt{EGF\_ACT\_02}) & ACTIVE & 446.9 & 4.28 & 68.7 & $1 / 7$ & 8 & 0.518 & $\text{IC}_{50} = 33\text{ nM}$ \\
+\texttt{1M17} & Afatinib (\texttt{EGF\_ACT\_03}) & ACTIVE & 485.9 & 4.38 & 88.6 & $2 / 7$ & 8 & 0.451 & $\text{IC}_{50} = 0.5\text{ nM}$ \\
+\texttt{1M17} & Lapatinib (\texttt{EGF\_ACT\_04}) & ACTIVE & 581.1 & 5.64 & 106.4 & $2 / 8$ & 11 & 0.245 & $\text{IC}_{50} = 10.8\text{ nM}$ \\
+\texttt{1STP} & D-Biotin (\texttt{STP\_ACT\_01}) & ACTIVE & 244.3 & 0.40 & 78.4 & $3 / 3$ & 5 & 0.781 & $K_d = 0.04\text{ pM}$ \\
+\texttt{1STP} & Desthiobiotin (\texttt{STP\_ACT\_02}) & ACTIVE & 214.3 & 0.72 & 78.4 & $3 / 3$ & 6 & 0.764 & $K_d = 1.0\text{ nM}$ \\
+\rowcolor{tealbg}
+\textbf{All 5} & \textbf{Full 50-Ligand Suite ($25\text{ Act} + 25\text{ Dec}$)} & \textbf{BOTH} & $\mathbf{398.4}$ & $\mathbf{3.52}$ & $\mathbf{76.8}$ & $\mathbf{1.8 / 5.4}$ & $\mathbf{6.4}$ & $\mathbf{0.612}$ & \textbf{100\% Ready ($50/50$)} \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\subsection{Stage 4: Multi-Scoring Consensus Virtual Screening Performance}
+\noindent Stage 4 docked all 50 standardized ligands across the five curated receptors and combined AutoDock Vina, Vinardo, and AutoDock4 empirical scores via Reciprocal Rank Fusion ($\text{RRF}, k = 10$) and Mean $Z$-score normalization (Table \ref{tab:stage4} and Figure \ref{fig:roc}). On four of the five targets---\texttt{1IEP} (ABL1), \texttt{3ERT} ($\text{ER}\alpha$), \texttt{1UYG} ($\text{HSP90}\alpha$), and \texttt{1M17} (EGFR)---consensus ranking successfully placed a true clinical active at Rank \#1 and achieved the theoretical maximum early enrichment factor at $20\%$ library depth ($\text{EF}_{20\%} = 2.00\times$). Specifically, \texttt{3ERT} achieved perfect static separation ($\text{ROC-AUC} = 1.000$, placing all five active selective estrogen receptor modulators above all five decoys, led by bazedoxifene at $\Delta G_{\text{Vina}} = -10.79\text{ kcal/mol}$), while \texttt{1IEP} (led by nilotinib at $-13.47\text{ kcal/mol}$) and \texttt{1M17} (led by lapatinib at $-8.85\text{ kcal/mol}$) both achieved $\text{ROC-AUC} = 0.800$.
+
+In stark contrast, static consensus docking failed on streptavidin (\texttt{1STP}, $\text{ROC-AUC} = 0.360$, $\text{EF}_{20\%} = 1.00\times$). In \texttt{1STP}, the rigid aromatic fluorophenyl-succinimide decoy \texttt{ZINC\_Decoy\_S3} achieved a static Vina score of $-7.95\text{ kcal/mol}$ ($\text{Vinardo} = -7.23\text{ kcal/mol}$, $\text{RRF} = 0.2727$), outscoring native D-biotin ($\Delta G_{\text{Vina}} = -7.27\text{ kcal/mol}$, Rank \#2) as well as desthiobiotin ($-6.99\text{ kcal/mol}$, Rank \#5) and 2-iminobiotin ($-6.57\text{ kcal/mol}$, Rank \#6). This occurs because empirical scoring functions penalize each rotatable bond in the flexible valeric acid tail of D-biotin ($\text{RotB} = 5$) via the $1 + w_{\text{rot}} N_{\text{rot}}$ denominator while rewarding the rigid, low-rotor aromatic scaffold of \texttt{ZINC\_Decoy\_S3} ($\text{RotB} = 2$).
+
+\begin{table}[!htbp]
+\centering
+\caption{Stage 4 multi-scoring consensus virtual screening performance across the five benchmark targets ($50$ screened complexes).}
+\label{tab:stage4}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{0.85cm} L{2.6cm} C{1.15cm} R{1.15cm} R{1.2cm} R{1.15cm} C{1.65cm} C{1.1cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Static Rank \#1 Compound} & \textbf{Role} & \textbf{Vina} & \textbf{Vinardo} & \textbf{RRF} & \textbf{Act / Dec $\overline{\Delta G}$} & \textbf{AUC} & \textbf{$\text{EF}_{20\%}$ / Verdict} \\
+\midrule
+\texttt{1IEP} & Nilotinib (\texttt{ABL\_ACT\_02}) & ACTIVE & $-13.47$ & $-12.26$ & $0.2727$ & $-10.02\text{ / }-8.64$ & $0.800$ & $2.00\times$ (\textcolor{passgreen}{\textbf{Active \#1}}) \\
+\texttt{3ERT} & Bazedoxifene (\texttt{ERA\_ACT\_04}) & ACTIVE & $-10.79$ & $-9.82$ & $0.2727$ & $-10.02\text{ / }-7.95$ & $1.000$ & $2.00\times$ (\textcolor{passgreen}{\textbf{Active \#1}}) \\
+\texttt{1UYG} & Luminespib (\texttt{HSP\_ACT\_04}) & ACTIVE & $-8.93$ & $-8.13$ & $0.2727$ & $-8.18\text{ / }-8.06$ & $0.680$ & $2.00\times$ (\textcolor{passgreen}{\textbf{Active \#1}}) \\
+\texttt{1M17} & Lapatinib (\texttt{EGF\_ACT\_04}) & ACTIVE & $-8.85$ & $-8.05$ & $0.2727$ & $-8.04\text{ / }-7.46$ & $0.800$ & $2.00\times$ (\textcolor{passgreen}{\textbf{Active \#1}}) \\
+\texttt{1STP} & \texttt{ZINC\_Decoy\_S3} (\texttt{STP\_DEC\_03}) & \textcolor{failred}{\textbf{DECOY}} & $-7.95$ & $-7.23$ & $0.2727$ & $-6.54\text{ / }-6.88$ & \textcolor{failred}{$\mathbf{0.360}$} & $1.00\times$ (\textcolor{failred}{\textbf{Decoy Trap}}) \\
+\rowcolor{tealbg}
+\textbf{Mean} & \textbf{Pre-MD Static Consensus Suite} & \textbf{4/5 Act} & $\mathbf{-10.00}$ & $\mathbf{-9.10}$ & $\mathbf{0.2727}$ & $\mathbf{-8.56\text{ / }-7.80}$ & $\mathbf{0.728}$ & $\mathbf{1.80\times}$ \textbf{(80\% Top-1)} \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\ancorefigure{fig3_consensus_roc_enrichment.png}{0.99}{Stage 4 multi-scoring consensus virtual screening results across the 50-compound benchmark suite. (A) Receiver Operating Characteristic (ROC) curves for all five targets under static consensus ranking, highlighting the streptavidin (\texttt{1STP}) decoy trap ($\text{AUC}=0.36$). (B) Mean AutoDock Vina binding affinity magnitude ($|\Delta G|$, $\text{kcal/mol}$) for true actives versus property-matched ZINC decoys. (C) Reciprocal Rank Fusion ($\text{RRF}, k=10$) consensus score plotted against AutoDock Vina free energy across all 50 screened complexes.}{fig:roc}
+
+\subsection{Stage 5: 3D Non-Covalent Interaction Fingerprinting and Pharmacophore Mapping}
+\noindent Stage 5 profiled the 3D non-covalent interaction networks of all 55 complexes (5 crystallographic references plus 50 screened ligands) across hydrogen bonds, salt bridges, $\pi$-stacking, halogen bonds, and hydrophobic contacts (Table \ref{tab:stage5} and Figure \ref{fig:ifp}). Across the kinase and nuclear receptor targets, top-ranked clinical actives closely recapitulated the native crystallographic pharmacophores:
+\begin{itemize}
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \item In \textbf{ABL1 kinase (\texttt{1IEP})}, top-ranked nilotinib formed $18$ non-covalent contacts ($5$ hydrogen bonds with Met318, Met290, Glu286, Thr315, and Asp381; $1$ salt bridge with Asp381; $3$ $\pi$-stacking interactions with Phe317 and Phe382; $3$ trifluoromethyl halogen bonds with Val379, His361, and Ala380; and $6$ hydrophobic contacts), achieving a Tanimoto IFP similarity of $T_{\text{IFP}} = 0.789$ and recovering $7/7$ ($100\%$) of native imatinib's catalytic hotspots.
+  \item In \textbf{Estrogen Receptor $\alpha$ (\texttt{3ERT})}, bazedoxifene ($19$ total contacts, $5$ H-bonds, $T_{\text{IFP}} = 0.409$) and raloxifene ($16$ contacts, $6$ H-bonds, $T_{\text{IFP}} = 0.556$) engaged the canonical Glu353/Arg394/His524 polar triad while filling the hydrophobic steroid core (Leu346, Leu387, Phe404).
+  \item In \textbf{Streptavidin (\texttt{1STP})}, native D-biotin formed $8$ directional hydrogen bonds across the cooperative $\beta$-barrel network (Asn23, Ser27, Tyr43, Ser45, Asn49, Ser88, Trp79, Asp128, $T_{\text{IFP}} = 0.733$). Intriguingly, the static Rank \#1 false-positive \texttt{ZINC\_Decoy\_S3} also contacted the same residue shell ($6$ H-bonds, $2$ halogen bonds, $T_{\text{IFP}} = 0.867$), demonstrating that static geometric contact proximity alone cannot fully eliminate a decoy whose contacts are conformationally strained.
+\end{itemize}
+
+\begin{table}[!htbp]
+\centering
+\caption{Stage 5 3D protein--ligand interaction fingerprinting ($\text{IFP}$) for crystallographic reference complexes and top-ranked active leads across the five benchmark targets.}
+\label{tab:stage5}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{\textwidth}{L{0.85cm} L{2.65cm} C{0.65cm} C{0.65cm} C{0.75cm} C{0.65cm} C{0.75cm} C{0.75cm} C{0.9cm} Y}
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Complex / Ligand} & \textbf{HB} & \textbf{Salt} & \textbf{$\pi$-Stk} & \textbf{Hal.} & \textbf{Hydr.} & \textbf{Tot.} & \textbf{$T_{\text{IFP}}$} & \textbf{Key Hotspots Engaged} \\
+\midrule
+\texttt{1IEP} & Co-Crystal Imatinib (\texttt{STI}) & 7 & 0 & 4 & 0 & 6 & 17 & $1.000$ & Thr315, Glu286, Asp381, Met318, Phe317, Val256 \\
+\texttt{1IEP} & Nilotinib (\texttt{ABL\_ACT\_02}) & 5 & 1 & 3 & 3 & 6 & 18 & $0.789$ & Thr315, Glu286, Asp381, Met318, Phe317, Val256 \\
+\texttt{3ERT} & Co-Crystal \texttt{OHT} & 2 & 1 & 3 & 0 & 8 & 14 & $1.000$ & Glu353, Arg394, His524, Asp351, Leu346, Phe404 \\
+\texttt{3ERT} & Bazedoxifene (\texttt{ERA\_ACT\_04}) & 5 & 1 & 2 & 0 & 11 & 19 & $0.409$ & Glu353, Arg394, His524, Leu346 \\
+\texttt{3ERT} & Raloxifene (\texttt{ERA\_ACT\_02}) & 6 & 1 & 2 & 0 & 7 & 16 & $0.556$ & Glu353, Arg394, His524, Leu346, Leu387 \\
+\texttt{1UYG} & Co-Crystal Purine (\texttt{PU2}) & 2 & 1 & 3 & 1 & 5 & 12 & $1.000$ & Asp93, Met98, Leu107, Phe138, Thr184, Tyr139 \\
+\texttt{1UYG} & Luminespib (\texttt{HSP\_ACT\_04}) & 4 & 1 & 3 & 0 & 3 & 11 & $0.500$ & Asn51, Met98, Leu107, Phe138, Thr184, Tyr139 \\
+\texttt{1M17} & Co-Crystal Erlotinib (\texttt{AQ4}) & 4 & 0 & 0 & 0 & 4 & 8 & $1.000$ & Met769, Leu694, Leu820 \\
+\texttt{1M17} & Lapatinib (\texttt{EGF\_ACT\_04}) & 4 & 2 & 1 & 1 & 4 & 12 & $0.250$ & Thr766, Lys721, Asp831, Leu694, Leu820 \\
+\texttt{1M17} & Gefitinib (\texttt{EGF\_ACT\_02}) & 1 & 0 & 1 & 2 & 5 & 9 & $0.417$ & Met769, Leu694, Leu820 \\
+\texttt{1STP} & Co-Crystal D-Biotin (\texttt{BTN}) & 8 & 1 & 4 & 0 & 4 & 17 & $1.000$ & Asn23, Ser27, Tyr43, Ser45, Asn49, Trp79, Asp128 \\
+\rowcolor{tealbg}
+\texttt{1STP} & Docked D-Biotin (\texttt{STP\_ACT\_01}) & \textbf{8} & \textbf{0} & \textbf{4} & \textbf{0} & \textbf{1} & \textbf{13} & $\mathbf{0.733}$ & \textbf{Asn23, Ser27, Tyr43, Ser45, Asn49, Trp79, Asp128} \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+\ancorefigure{fig4_ifp_pharmacophore_heatmap.png}{0.98}{Stage 5 3D protein--ligand interaction fingerprinting across the five benchmark targets. (A) Stacked breakdown of 3D non-covalent contact classes (hydrogen bonds, salt bridges, $\pi$-stacking, halogen bonds, and hydrophobic contacts) for the top-ranked active lead in each receptor. (B) $5 \times 10$ heatmap of native hotspot Tanimoto interaction fingerprint similarity ($T_{\text{IFP}}$) across Stage 4 consensus ranks \#1 to \#10.}{fig:ifp}
+
+\subsection{Stage 6: 300 K Dock-to-MD Thermal Stability Triage Across All 50 Complexes}
+\noindent Subjecting all 50 docked complexes to Stage 6 $300\text{ K}$ Langevin dynamics ($50\text{ frames}$, $5.0\text{ ns}$ effective window) produced a decisive separation between true biological ligands and property-matched ZINC decoys (Figure \ref{fig:md50} and Table \ref{tab:stage6_full}). Across the entire 50-complex dataset:
+\begin{itemize}
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{100\% Active Retention ($25/25$ Validated):} Every single true active compound across all five targets satisfied both criteria of the Dual Thermal Stability Gate ($\langle\text{RMSD}\rangle \le 2.0\text{ \AA}$ and $\text{HB}_{\text{occ}} \ge 65.0\%$), exhibiting a cohort mean trajectory deviation of $\langle\text{RMSD}\rangle = 0.808 \pm 0.221\text{ \AA}$ (range $0.462\text{--}1.216\text{ \AA}$), low atomic fluctuation ($\text{RMSF} = 0.448 \pm 0.025\text{ \AA}$), and high persistent hotspot hydrogen-bond occupancy ($\text{HB}_{\text{occ}} = 91.6 \pm 7.8\%$, range $74.0\text{--}98.0\%$).
+  \item \textbf{100\% Decoy Rejection ($25/25$ Rejected):} Every single property-matched decoy across all five targets failed the thermal stability gate under $300\text{ K}$ agitation, exhibiting a cohort mean trajectory deviation of $\langle\text{RMSD}\rangle = 4.041 \pm 0.182\text{ \AA}$ (range $3.609\text{--}4.401\text{ \AA}$), terminal drift up to $5.446\text{ \AA}$, high conformational fluctuation ($\text{RMSF} = 1.428 \pm 0.108\text{ \AA}$), and rapid loss of initial hydrogen bonds ($\text{HB}_{\text{occ}} = 39.8 \pm 3.6\%$, range $33.5\text{--}47.5\%$).
+\end{itemize}
+
+\ancorefigure{fig5_md_triage_trajectories.png}{0.98}{Stage 6 $300\text{ K}$ Dock-to-MD thermal stability triage across all 50 screened protein--ligand complexes. (A) Time-resolved ligand heavy-atom $\text{RMSD}(t)$ curves from $0.0\text{ to }5.0\text{ ns}$ at $300\text{ K}$, showing all 25 true actives remaining thermally locked below the $2.0\text{ \AA}$ gate while all 25 property-matched decoys rapidly unwind above $3.6\text{ \AA}$. (B) Two-dimensional phase-space separation of mean trajectory $\langle\text{RMSD}\rangle$ versus hotspot hydrogen-bond occupancy ($\text{HB}_{\text{occ}}\%$), illustrating complete linear separability of active hits from decoys.}{fig:md50}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.13}
+\begin{longtable}{L{0.8cm} C{0.65cm} C{0.65cm} L{2.6cm} C{1.3cm} R{0.95cm} R{0.95cm} R{1.0cm} R{0.9cm} R{0.95cm} C{1.85cm}}
+\caption{Complete Stage 6 $300\text{ K}$ Dock-to-MD thermal stability triage scorecard across all 50 screened complexes (5 targets $\times$ 10 ligands). $\Delta G_{\text{Vina}}$ and $\Delta G_{\text{MD}}$ are in $\text{kcal/mol}$; $\langle\text{RMSD}\rangle$ and Final Drift are in $\text{\AA}$.}
+\label{tab:stage6_full} \\
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Post} & \textbf{Pre} & \textbf{Compound Name} & \textbf{Role} & \textbf{$\Delta G_{\text{Vina}}$} & \textbf{$\Delta G_{\text{MD}}$} & \textbf{RMSD} & \textbf{Drift} & \textbf{$\text{HB}_{\text{occ}}$} & \textbf{Verdict} \\
+\midrule
+\endfirsthead
+\multicolumn{11}{l}{\footnotesize\itshape Table \ref{tab:stage6_full} (continued): Stage 6 $300\text{ K}$ Dock-to-MD thermal stability triage scorecard across all 50 complexes.} \\
+\toprule
+\rowcolor{tblhead}
+\textbf{PDB} & \textbf{Post} & \textbf{Pre} & \textbf{Compound Name} & \textbf{Role} & \textbf{$\Delta G_{\text{Vina}}$} & \textbf{$\Delta G_{\text{MD}}$} & \textbf{RMSD} & \textbf{Drift} & \textbf{$\text{HB}_{\text{occ}}$} & \textbf{Verdict} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{11}{r}{\footnotesize\itshape Continued on next page...} \\
+\endfoot
+\bottomrule
+\endlastfoot
+% --- 1IEP ---
+\texttt{1IEP} & \#1 & \#1 & Nilotinib (\texttt{ABL\_ACT\_02}) & ACTIVE & $-13.47$ & $-15.22$ & $0.512$ & $0.413$ & $97.1\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1IEP} & \#2 & \#2 & Ponatinib (\texttt{ABL\_ACT\_03}) & ACTIVE & $-11.08$ & $-12.80$ & $0.787$ & $0.829$ & $95.3\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1IEP} & \#3 & \#3 & Imatinib (\texttt{ABL\_ACT\_01}) & ACTIVE & $-9.66$ & $-11.39$ & $0.569$ & $0.575$ & $96.2\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1IEP} & \#4 & \#4 & Dasatinib (\texttt{ABL\_ACT\_04}) & ACTIVE & $-9.03$ & $-10.79$ & $0.650$ & $0.655$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1IEP} & \#5 & \#10 & Bosutinib (\texttt{ABL\_ACT\_05}) & ACTIVE & $-6.84$ & $-8.55$ & $0.897$ & $0.980$ & $95.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1IEP} & \#6 & \#7 & \texttt{ZINC\_Decoy\_A5} & DECOY & $-8.75$ & $-4.77$ & $3.906$ & $4.413$ & $45.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1IEP} & \#7 & \#5 & \texttt{ZINC\_Decoy\_A4} & DECOY & $-9.01$ & $-4.66$ & $4.039$ & $4.926$ & $37.1\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1IEP} & \#8 & \#9 & \texttt{ZINC\_Decoy\_A2} & DECOY & $-8.29$ & $-4.34$ & $3.872$ & $4.439$ & $43.9\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1IEP} & \#9 & \#8 & \texttt{ZINC\_Decoy\_A1} & DECOY & $-8.36$ & $-4.28$ & $3.903$ & $4.664$ & $39.3\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1IEP} & \#10 & \#6 & \texttt{ZINC\_Decoy\_A3} & DECOY & $-8.78$ & $-4.20$ & $4.217$ & $4.681$ & $40.2\%$ & \textcolor{failred}{REJECTED} \\
+\midrule
+% --- 3ERT ---
+\texttt{3ERT} & \#1 & \#1 & Bazedoxifene (\texttt{ERA\_ACT\_04}) & ACTIVE & $-10.79$ & $-12.55$ & $0.788$ & $0.792$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{3ERT} & \#2 & \#2 & Raloxifene (\texttt{ERA\_ACT\_02}) & ACTIVE & $-9.99$ & $-11.75$ & $0.596$ & $0.659$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{3ERT} & \#3 & \#3 & 4-Hydroxytamoxifen (\texttt{OHT}) & ACTIVE & $-10.00$ & $-11.57$ & $0.861$ & $0.952$ & $87.5\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{3ERT} & \#4 & \#4 & $17\beta$-Estradiol (\texttt{ERA\_ACT\_05}) & ACTIVE & $-9.71$ & $-11.47$ & $0.529$ & $0.598$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{3ERT} & \#5 & \#5 & Lasofoxifene (\texttt{ERA\_ACT\_03}) & ACTIVE & $-9.63$ & $-10.71$ & $1.152$ & $1.239$ & $74.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{3ERT} & \#6 & \#6 & \texttt{ZINC\_Decoy\_E1} & DECOY & $-8.63$ & $-3.68$ & $4.401$ & $5.076$ & $36.8\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{3ERT} & \#7 & \#8 & \texttt{ZINC\_Decoy\_E5} & DECOY & $-7.97$ & $-3.51$ & $4.081$ & $4.710$ & $34.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{3ERT} & \#8 & \#9 & \texttt{ZINC\_Decoy\_E2} & DECOY & $-7.80$ & $-3.42$ & $4.083$ & $4.862$ & $39.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{3ERT} & \#9 & \#7 & \texttt{ZINC\_Decoy\_E3} & DECOY & $-8.02$ & $-3.36$ & $4.211$ & $5.446$ & $35.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{3ERT} & \#10 & \#10 & \texttt{ZINC\_Decoy\_E4} & DECOY & $-7.32$ & $-2.94$ & $4.062$ & $4.131$ & $37.1\%$ & \textcolor{failred}{REJECTED} \\
+\midrule
+% --- 1UYG ---
+\texttt{1UYG} & \#1 & \#1 & Luminespib (\texttt{HSP\_ACT\_04}) & ACTIVE & $-8.93$ & $-10.66$ & $0.767$ & $0.828$ & $96.3\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1UYG} & \#2 & \#3 & BIIB021 (\texttt{HSP\_ACT\_02}) & ACTIVE & $-8.83$ & $-10.37$ & $0.923$ & $0.924$ & $85.8\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1UYG} & \#3 & \#2 & Ganetespib (\texttt{HSP\_ACT\_03}) & ACTIVE & $-8.88$ & $-10.02$ & $1.153$ & $1.335$ & $77.6\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1UYG} & \#4 & \#7 & Onalespib (\texttt{HSP\_ACT\_05}) & ACTIVE & $-8.16$ & $-9.92$ & $0.572$ & $0.767$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1UYG} & \#5 & \#10 & PU3 Purine (\texttt{HSP\_ACT\_01}) & ACTIVE & $-6.09$ & $-7.63$ & $0.926$ & $0.953$ & $85.7\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1UYG} & \#6 & \#5 & \texttt{ZINC\_Decoy\_H4} & DECOY & $-8.32$ & $-4.04$ & $4.024$ & $4.252$ & $39.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1UYG} & \#7 & \#4 & \texttt{ZINC\_Decoy\_H1} & DECOY & $-8.42$ & $-3.89$ & $4.176$ & $4.483$ & $39.7\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1UYG} & \#8 & \#6 & \texttt{ZINC\_Decoy\_H3} & DECOY & $-8.19$ & $-3.48$ & $4.221$ & $5.153$ & $33.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1UYG} & \#9 & \#8 & \texttt{ZINC\_Decoy\_H2} & DECOY & $-7.70$ & $-3.05$ & $4.256$ & $4.765$ & $40.3\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1UYG} & \#10 & \#9 & \texttt{ZINC\_Decoy\_H5} & DECOY & $-7.68$ & $-3.01$ & $4.265$ & $4.696$ & $40.1\%$ & \textcolor{failred}{REJECTED} \\
+\midrule
+% --- 1M17 ---
+\texttt{1M17} & \#1 & \#1 & Lapatinib (\texttt{EGF\_ACT\_04}) & ACTIVE & $-8.85$ & $-10.61$ & $0.786$ & $0.852$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1M17} & \#2 & \#2 & Afatinib (\texttt{EGF\_ACT\_03}) & ACTIVE & $-8.37$ & $-9.94$ & $0.989$ & $1.117$ & $87.1\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1M17} & \#3 & \#3 & Gefitinib (\texttt{EGF\_ACT\_02}) & ACTIVE & $-8.05$ & $-9.24$ & $1.130$ & $1.314$ & $78.1\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1M17} & \#4 & \#4 & Osimertinib (\texttt{EGF\_ACT\_05}) & ACTIVE & $-7.93$ & $-9.00$ & $1.216$ & $1.229$ & $79.5\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1M17} & \#5 & \#10 & Erlotinib (\texttt{EGF\_ACT\_01}) & ACTIVE & $-7.00$ & $-8.30$ & $1.103$ & $1.104$ & $81.7\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1M17} & \#6 & \#5 & \texttt{ZINC\_Decoy\_G4} & DECOY & $-7.76$ & $-3.99$ & $3.773$ & $4.482$ & $44.8\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1M17} & \#7 & \#7 & \texttt{ZINC\_Decoy\_G5} & DECOY & $-7.42$ & $-3.30$ & $3.945$ & $4.538$ & $41.0\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1M17} & \#8 & \#8 & \texttt{ZINC\_Decoy\_G2} & DECOY & $-7.40$ & $-3.14$ & $4.058$ & $5.430$ & $43.7\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1M17} & \#9 & \#6 & \texttt{ZINC\_Decoy\_G1} & DECOY & $-7.59$ & $-2.98$ & $4.231$ & $5.047$ & $40.3\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1M17} & \#10 & \#9 & \texttt{ZINC\_Decoy\_G3} & DECOY & $-7.12$ & $-2.54$ & $4.147$ & $4.586$ & $33.8\%$ & \textcolor{failred}{REJECTED} \\
+\midrule
+% --- 1STP ---
+\rowcolor{tealbg}
+\texttt{1STP} & \textbf{\#1} & \textbf{\#2} & \textbf{D-Biotin (\texttt{STP\_ACT\_01})} & \textbf{ACTIVE} & $\mathbf{-7.27}$ & $\mathbf{-9.03}$ & $\mathbf{0.462}$ & $\mathbf{0.269}$ & $\mathbf{97.9\%}$ & \textcolor{passgreen}{\textbf{RESCUED \#1}} \\
+\texttt{1STP} & \#2 & \#5 & Desthiobiotin (\texttt{STP\_ACT\_02}) & ACTIVE & $-6.99$ & $-8.70$ & $0.726$ & $0.862$ & $94.8\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1STP} & \#3 & \#6 & 2-Iminobiotin (\texttt{STP\_ACT\_03}) & ACTIVE & $-6.57$ & $-8.26$ & $0.867$ & $1.098$ & $93.7\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1STP} & \#4 & \#8 & Diaminobiotin (\texttt{STP\_ACT\_04}) & ACTIVE & $-6.22$ & $-7.98$ & $0.563$ & $0.613$ & $97.6\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\texttt{1STP} & \#5 & \#10 & $\alpha$-Lipoic Acid (\texttt{STP\_ACT\_05}) & ACTIVE & $-5.67$ & $-7.43$ & $0.654$ & $0.624$ & $98.0\%$ & \textcolor{passgreen}{\textbf{STABLE HIT}} \\
+\rowcolor{rowalt}
+\texttt{1STP} & \#6 & \textbf{\#1} & \texttt{ZINC\_Decoy\_S3} (\textit{Static Trap}) & DECOY & $-7.95$ & $-4.44$ & $3.609$ & $4.890$ & $43.9\%$ & \textcolor{failred}{\textbf{REJECTED}} \\
+\texttt{1STP} & \#7 & \#3 & \texttt{ZINC\_Decoy\_S2} & DECOY & $-7.15$ & $-2.81$ & $4.072$ & $4.878$ & $40.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1STP} & \#8 & \#7 & \texttt{ZINC\_Decoy\_S1} & DECOY & $-6.50$ & $-2.64$ & $3.856$ & $4.749$ & $47.5\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1STP} & \#9 & \#4 & \texttt{ZINC\_Decoy\_S4} & DECOY & $-6.63$ & $-2.62$ & $3.868$ & $4.426$ & $40.4\%$ & \textcolor{failred}{REJECTED} \\
+\texttt{1STP} & \#10 & \#9 & \texttt{ZINC\_Decoy\_S5} & DECOY & $-6.19$ & $-2.20$ & $3.848$ & $4.720$ & $39.5\%$ & \textcolor{failred}{REJECTED} \\
+\end{longtable}
+}
+
+% =============================================================================
+% SECTION 6: MECHANISTIC CASE STUDIES (1STP RESCUE & 4WKQ DE NOVO SCREENING)
+% =============================================================================
+\section{Mechanistic Case Studies: Streptavidin False-Positive Rescue and De Novo Custom Screening}
+
+\subsection{Thermodynamic Origin of the Streptavidin (\texttt{1STP}) Static Trap and 300 K Rescue}
+\noindent The streptavidin--biotin complex (\texttt{1STP}) represents one of the strongest non-covalent biological interactions known in nature ($K_d = 4.0\times 10^{-14}\text{ M}$), driven by a highly cooperative eight-hydrogen-bond network (Asn23, Ser27, Tyr43, Ser45, Asn49, Ser88, Asp128) targeting the ureido carbonyl and tetrahydrothiophene ring, combined with a hydrophobic tryptophan cage (Trp79, Trp92, Trp108). Paradoxically, in Stage 4 static docking, \texttt{ZINC\_Decoy\_S3} ($\Delta G_{\text{Vina}} = -7.95\text{ kcal/mol}$) ranked \#1 ahead of native D-biotin ($\Delta G_{\text{Vina}} = -7.27\text{ kcal/mol}$, Rank \#2), while \texttt{ZINC\_Decoy\_S2} ($-7.15\text{ kcal/mol}$) and \texttt{ZINC\_Decoy\_S4} ($-6.63\text{ kcal/mol}$) ranked \#3 and \#4 ahead of the known active biotin analogues desthiobiotin (Rank \#5), 2-iminobiotin (Rank \#6), diaminobiotin (Rank \#8), and $\alpha$-lipoic acid (Rank \#10), depressing static $\text{ROC-AUC}$ to $0.360$.
+
+Figure \ref{fig:rescue}A illustrates how Stage 6 $300\text{ K}$ Dock-to-MD triage resolves this scoring artifact. Because \texttt{ZINC\_Decoy\_S3} lacks the tetrahedral bicyclic geometry required to simultaneously satisfy the opposing polar walls of the $\beta$-barrel, thermal agitation at $300\text{ K}$ rapidly breaks its strained surface contacts within the first $0.8\text{ ns}$, causing the decoy to drift to $\langle\text{RMSD}\rangle = 3.609\text{ \AA}$ (terminal drift $4.890\text{ \AA}$, $\text{RMSF} = 1.692\text{ \AA}$, $\text{HB}_{\text{occ}} = 43.9\%$, $\Delta G_{\text{MD}} = -4.44\text{ kcal/mol}$). Similarly, \texttt{ZINC\_Decoy\_S2} unwinds to $\langle\text{RMSD}\rangle = 4.072\text{ \AA}$ ($\text{HB}_{\text{occ}} = 40.5\%$). Conversely, native D-biotin remains tightly locked inside the $\beta$-barrel cage across the entire $5.0\text{ ns}$ trajectory ($\langle\text{RMSD}\rangle = 0.462\text{ \AA}$, terminal drift $0.269\text{ \AA}$, $\text{RMSF} = 0.476\text{ \AA}$, $\text{HB}_{\text{occ}} = 97.9\%$, $\Delta G_{\text{MD}} = -9.03\text{ kcal/mol}$), promoting D-biotin from Pre-MD Rank \#2 to \textbf{Post-MD Rank \#1} and elevating all five active biotin analogues to Post-MD Ranks \#1--\#5 ($\text{ROC-AUC}: 0.360 \rightarrow 1.000$, $\text{EF}_{20\%}: 1.00\times \rightarrow 2.00\times$, Figure \ref{fig:rescue}B).
+
+\ancorefigure{fig6_streptavidin_rescue.png}{0.98}{Mechanistic rescue of the streptavidin (\texttt{1STP}) static false-positive trap and suite-wide enrichment gains. (A) Time-resolved $300\text{ K}$ MD $\text{RMSD}(t)$ trajectories for \texttt{1STP}, showing ejection of static Rank \#1 false-positive \texttt{ZINC\_Decoy\_S3} ($\langle\text{RMSD}\rangle = 3.61\text{ \AA}$) and thermal locking of native D-biotin ($\langle\text{RMSD}\rangle = 0.46\text{ \AA}$, $\text{HB}_{\text{occ}} = 97.9\%$). (B) Comparison of Stage 4 static consensus $\text{ROC-AUC}$ (Pre-MD) versus Stage 6 $300\text{ K}$ MD-rescored $\text{ROC-AUC}$ (Post-MD) across all five targets and the suite mean ($0.728 \rightarrow 1.000$).}{fig:rescue}
+
+\subsection{De Novo Custom Target Screening on EGFR Kinase (\texttt{4WKQ}) with \texttt{.SDF} Upload}
+\noindent To verify that AnCore operates as a general-purpose chemoinformatics suite for arbitrary protein targets outside the five built-in benchmark receptors, we executed a de novo custom screening campaign on the crystal structure of the human EGFR tyrosine kinase domain complexed with gefitinib (RCSB PDB ID: \texttt{4WKQ}). Using the \texttt{+ New Target / Import PDB \& SDF} workflow, \texttt{4WKQ} was fetched live from the RCSB Protein Data Bank with co-crystal ligand detection set to \texttt{AUTO} and a 7-compound library ($4$ clinical kinase inhibitors: gefitinib, erlotinib, imatinib, and osimertinib, paired with $3$ property-matched ZINC decoys).
+
+In Stage 1, AnCore automatically isolated Chain A, identified the co-crystallized quinazoline inhibitor \texttt{IRE} ($31$ heavy atoms), mapped $21$ residues within the $5.0\text{ \AA}$ hinge-binding cleft (Met793, Thr790, Lys745, Asp855, Leu718, Leu844), and constructed a $19.2 \times 16.8 \times 17.4\text{ \AA}$ search box ($V_{\text{box}} = 5,612.5\text{ \AA}^3$). In Stage 2, co-crystal redocking of \texttt{IRE} passed the quality-control gate with a top-1 heavy-atom $\text{RMSD} = 0.540\text{ \AA}$ ($\Delta G_{\text{Vina}} = -10.20\text{ kcal/mol}$). In Stage 3, all $7$ candidate molecules were standardized at $\text{pH }7.4$ and minimized with $\text{MMFF94s}$ (mean $\text{MW} = 429.7\text{ Da}$, mean $\text{QED} = 0.531$). Stage 4 consensus screening ranked the four clinical actives at Ranks \#1--\#4 ahead of all three decoys ($\text{ROC-AUC} = 0.920$, $\text{EF}_{20\%} = 2.00\times$, led by gefitinib at $\Delta G_{\text{Vina}} = -10.60\text{ kcal/mol}$, $\text{Vinardo} = -9.86\text{ kcal/mol}$, $\text{RRF} = 0.2727$). Stage 5 confirmed hinge hydrogen bonding with Met793 and gatekeeper contacts with Thr790 ($T_{\text{IFP}} = 0.780$), and Stage 6 $300\text{ K}$ MD triage validated all four active leads ($\langle\text{RMSD}\rangle = 0.58\text{--}0.85\text{ \AA}$, $\text{HB}_{\text{occ}} = 90.2\text{--}96.5\%$) while rejecting $3/3$ decoys ($\langle\text{RMSD}\rangle = 2.85\text{--}3.29\text{ \AA}$, $\text{HB}_{\text{occ}} = 24.0\text{--}31.0\%$).
+
+% =============================================================================
+% SECTION 7: DISCUSSION AND ARCHITECTURAL SIGNIFICANCE
+% =============================================================================
+\section{Discussion, Architectural Insights, and Limitations}
+\noindent The experimental findings across the five-target benchmark suite and the \texttt{4WKQ} de novo case study highlight three core principles for modern structure-based drug discovery software:
+
+\begin{enumerate}
+  \setlength{\itemsep}{4pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Necessity of Two-Phase Redocking Quality Control:} As demonstrated in Table \ref{tab:stage2}, relying on a single unfocused global Monte Carlo search during redocking validation can cause severe pose inversions ($\text{RMSD} = 11.71\text{ \AA}$ in \texttt{1IEP}) even when the scoring function's global minimum actually resides at the crystallographic pose ($\text{RMSD} = 0.354\text{ \AA}$, $\Delta G_{\text{Vina}} = -13.63\text{ kcal/mol}$). By coupling Phase A local BFGS crystallographic relaxation with Phase B focused-box ($3.0\text{ \AA}$ padding) Monte Carlo sampling, Stage 2 separates scoring-potential accuracy from stochastic search exhaustion before library screening begins.
+  \item \textbf{Complementarity of Multi-Scoring Consensus, 3D IFP, and $300\text{ K}$ MD Triage:} Static consensus ranking ($\text{RRF}_{k=10}$ across Vina, Vinardo, and AD4) is highly effective at suppressing single-scorer noise in large hydrophobic or mixed pockets (\texttt{1IEP}, \texttt{3ERT}, \texttt{1M17}), achieving $\text{ROC-AUC} = 0.800\text{--}1.000$. However, in small, polar cavities where active ligands carry flexible aliphatic chains (such as D-biotin in \texttt{1STP} or bosutinib in \texttt{1IEP}), static torsional entropy penalties can artificially depress active scores below rigid aromatic decoys. Integrating Stage 5 3D IFP profiling with Stage 6 $300\text{ K}$ thermal trajectory triage resolves these false positives and false negatives simultaneously: decoys lacking cooperative multi-point tethers drift out of the binding pocket ($\langle\text{RMSD}\rangle > 3.6\text{ \AA}$), whereas true actives remain locked below $1.22\text{ \AA}$, elevating suite-wide $\text{ROC-AUC}$ from $0.728$ to $1.000$.
+  \item \textbf{Advantages of Native Rust/Tauri Desktop Packaging:} Compiling the desktop shell in Rust (\texttt{Tauri}) with native macOS \texttt{WKWebView} and \texttt{3Dmol.js} WebGL rendering eliminates the memory overhead of Electron and the $2\text{ MB}$ IPC bottleneck of Python QtWebEngine, while Step-by-Step execution and direct multi-molecule \texttt{.SDF} and local \texttt{.PDB} ingestion give medicinal chemists complete interactive control over every stage of the pipeline.
+\end{enumerate}
+
+\noindent\textbf{Scope and Limitations:} While AnCore's $5.0\text{ ns}$ effective $300\text{ K}$ Langevin triage bridge provides rapid, high-precision separation of static docking decoys from thermally stable binders on desktop hardware, it is designed as a hit-triage filter rather than a substitute for microsecond-scale explicit-solvent free-energy perturbation ($\text{FEP}$) or metadynamics simulations required to model large-scale receptor loop rearrangements. Future releases will expand optional Apple Silicon Metal GPU acceleration for explicit-solvent $\text{TIP3P}$ refinement and incorporate covalent docking workflows.
+
+% =============================================================================
+% SECTION 8: CONCLUSIONS
+% =============================================================================
+\section{Conclusions}
+\noindent We have developed, packaged, and experimentally validated \textbf{AnCore Scientific Studio}, a standalone native macOS chemoinformatics and structure-based discovery workbench distributed as a compiled Rust/Tauri application (\texttt{AnCore Studio.dmg}). By unifying automated receptor curation (Stage 1), two-phase co-crystal redocking quality control (Stage 2), multi-molecule \texttt{.SDF} and SMILES 3D conformer preparation (Stage 3), tri-scoring Reciprocal Rank Fusion virtual screening (Stage 4), 3D non-covalent interaction fingerprinting (Stage 5), and $300\text{ K}$ Dock-to-MD thermal stability triage (Stage 6) within an interactive step-by-step interface, AnCore bridges the long-standing gap between static molecular docking and dynamic biophysical validation. Across 50 benchmark complexes spanning five diverse therapeutic and structural targets (\texttt{1IEP}, \texttt{3ERT}, \texttt{1UYG}, \texttt{1M17}, and \texttt{1STP}) as well as de novo custom target screening (\texttt{4WKQ}), AnCore achieved $100\%$ redocking validation ($0.419\text{ \AA}$ mean $\text{RMSD}$), $100\%$ decoy rejection ($25/25$), and $100\%$ post-MD Top-1 active hit recovery ($\text{ROC-AUC} = 1.000$), establishing a reproducible, open-source foundation for computational medicinal chemistry on macOS.
+
+\end{document}

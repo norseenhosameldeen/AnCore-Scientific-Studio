@@ -1,0 +1,18 @@
+[package]
+name = "ancore-studio"
+version = "1.0.0"
+description = "AnCore Scientific Studio — Molecular Docking & 300 K MD Stability Triage Workbench"
+authors = ["Norseen Hossam El-Deen", "Ahmed M. Senary"]
+license = "Apache-2.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.6", features = [ "shell-open", "dialog-all", "fs-all" ] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]

@@ -1,0 +1,3765 @@
+{
+  "stage": 5,
+  "stage_name": "Protein-Ligand Interaction Fingerprinting & 2D/3D Pharmacophore Map",
+  "status": "COMPLETED",
+  "elapsed_seconds": 0.12,
+  "project_dir": "",
+  "target_dir": "benchmarks/3ERT",
+  "pdb_id": "3ERT",
+  "target_name": "Estrogen Receptor alpha",
+  "benchmark_source": "DUD-E & LIT-PCBA",
+  "ligand_id": "OHT",
+  "key_hotspots": [
+    "LEU387",
+    "HIS524",
+    "GLU353",
+    "ASP351",
+    "ARG394",
+    "LEU346",
+    "PHE404"
+  ],
+  "pocket_residue_ids": [
+    343,
+    346,
+    347,
+    349,
+    350,
+    351,
+    353,
+    383,
+    384,
+    387,
+    388,
+    391,
+    394,
+    404,
+    419,
+    420,
+    421,
+    424,
+    428,
+    521,
+    524,
+    525
+  ],
+  "top_hit_name": "Bazedoxifene",
+  "top_hit_hbonds": 5,
+  "top_hit_total_contacts": 19,
+  "top_hit_ifp_similarity": 0.409,
+  "top_hit_hotspots": [
+    "ARG394",
+    "GLU353",
+    "HIS524",
+    "LEU346"
+  ],
+  "csv_summary_path": "benchmarks/3ERT/interactions_summary.csv",
+  "complexes": [
+    {
+      "complex_index": 0,
+      "consensus_rank": 0,
+      "id": "CRYSTAL_OHT",
+      "name": "Co-Crystal Reference (OHT)",
+      "role": "CRYSTAL_REF",
+      "score_vina": -10.79,
+      "counts": {
+        "H-BOND": 2,
+        "SALT-BRIDGE": 1,
+        "PI-STACKING": 3,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 8,
+        "TOTAL": 14
+      },
+      "contacted_residues": [
+        "ALA350",
+        "ARG394",
+        "ASP351",
+        "GLU353",
+        "HIS524",
+        "LEU346",
+        "LEU384",
+        "LEU387",
+        "LEU428",
+        "LEU525",
+        "MET343",
+        "MET421",
+        "PHE404",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ARG394",
+        "ASP351",
+        "GLU353",
+        "HIS524",
+        "LEU346",
+        "LEU387",
+        "PHE404"
+      ],
+      "ifp_similarity": 1.0,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE2",
+          "lig_atom": "O4",
+          "distance_A": 2.42,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.553,
+            -3.524,
+            25.312
+          ],
+          "lig_xyz": [
+            25.058,
+            -1.622,
+            26.722
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ARG394",
+          "res_name": "ARG",
+          "res_num": 394,
+          "chain": "A",
+          "rec_atom": "NH2",
+          "lig_atom": "O4",
+          "distance_A": 3.03,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            23.098,
+            -1.782,
+            29.021
+          ],
+          "lig_xyz": [
+            25.058,
+            -1.622,
+            26.722
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "ASP351",
+          "res_name": "ASP",
+          "res_num": 351,
+          "chain": "A",
+          "rec_atom": "OD1",
+          "lig_atom": "N24",
+          "distance_A": 3.82,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            30.794,
+            -6.749,
+            19.772
+          ],
+          "lig_xyz": [
+            34.109,
+            -4.887,
+            20.118
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C23",
+          "distance_A": 3.71,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.9,
+            -3.183,
+            21.423
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CE1",
+          "lig_atom": "C9",
+          "distance_A": 3.75,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            28.864,
+            -1.204,
+            32.423
+          ],
+          "lig_xyz": [
+            30.702,
+            -0.023,
+            29.372
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "C14",
+          "distance_A": 4.04,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.451,
+            0.98,
+            27.799
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C21",
+          "distance_A": 3.29,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.601,
+            -2.135,
+            23.579
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C10",
+          "distance_A": 3.53,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            32.002,
+            1.699,
+            32.766
+          ],
+          "lig_xyz": [
+            30.574,
+            1.465,
+            29.55
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C5",
+          "distance_A": 3.68,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            26.992,
+            -0.235,
+            27.156
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU428",
+          "res_name": "LEU",
+          "res_num": 428,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C10",
+          "distance_A": 3.72,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            29.677,
+            4.304,
+            31.782
+          ],
+          "lig_xyz": [
+            30.574,
+            1.465,
+            29.55
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C13",
+          "distance_A": 3.77,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.126,
+            -3.335,
+            28.987
+          ],
+          "lig_xyz": [
+            35.027,
+            0.27,
+            28.897
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C19",
+          "distance_A": 3.78,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.342,
+            -1.24,
+            24.238
+          ],
+          "lig_xyz": [
+            33.182,
+            -3.114,
+            25.117
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C18",
+          "distance_A": 3.85,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            32.529,
+            -2.496,
+            26.146
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C22",
+          "distance_A": 3.97,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            30.966,
+            -1.528,
+            24.626
+          ]
+        }
+      ],
+      "pose_pdb_block": "HETATM 1964  C10 OHT A 600      30.574   1.465  29.550  1.00 26.22           C  \nHETATM 1965  C9  OHT A 600      30.702  -0.023  29.372  1.00 23.31           C  \nHETATM 1966  C8  OHT A 600      31.363  -0.388  28.059  1.00 25.22           C  \nHETATM 1967  C11 OHT A 600      32.788   0.053  27.962  1.00 27.85           C  \nHETATM 1968  C16 OHT A 600      33.241   0.782  26.842  1.00 28.59           C  \nHETATM 1969  C15 OHT A 600      34.559   1.235  26.776  1.00 30.60           C  \nHETATM 1970  C14 OHT A 600      35.451   0.980  27.799  1.00 30.44           C  \nHETATM 1971  C13 OHT A 600      35.027   0.270  28.897  1.00 31.30           C  \nHETATM 1972  C12 OHT A 600      33.707  -0.188  28.976  1.00 28.04           C  \nHETATM 1973  C7  OHT A 600      30.708  -1.057  27.065  1.00 24.63           C  \nHETATM 1974  C1  OHT A 600      29.210  -1.233  27.016  1.00 24.14           C  \nHETATM 1975  C2  OHT A 600      28.609  -2.490  26.695  1.00 26.17           C  \nHETATM 1976  C3  OHT A 600      27.215  -2.613  26.605  1.00 26.36           C  \nHETATM 1977  C4  OHT A 600      26.409  -1.482  26.835  1.00 29.58           C  \nHETATM 1978  O4  OHT A 600      25.058  -1.622  26.722  1.00 28.95           O  \nHETATM 1979  C5  OHT A 600      26.992  -0.235  27.156  1.00 27.04           C  \nHETATM 1980  C6  OHT A 600      28.375  -0.134  27.239  1.00 25.11           C  \nHETATM 1981  C17 OHT A 600      31.411  -1.690  25.945  1.00 26.54           C  \nHETATM 1982  C18 OHT A 600      32.529  -2.496  26.146  1.00 26.76           C  \nHETATM 1983  C19 OHT A 600      33.182  -3.114  25.117  1.00 28.12           C  \nHETATM 1984  C20 OHT A 600      32.725  -2.944  23.820  1.00 28.11           C  \nHETATM 1985  O20 OHT A 600      33.296  -3.554  22.740  1.00 31.97           O  \nHETATM 1986  C23 OHT A 600      32.900  -3.183  21.423  1.00 40.10           C  \nHETATM 1987  C24 OHT A 600      34.059  -3.508  20.520  1.00 45.21           C  \nHETATM 1988  N24 OHT A 600      34.109  -4.887  20.118  1.00 50.11           N  \nHETATM 1989  C25 OHT A 600      33.390  -5.111  18.863  1.00 52.05           C  \nHETATM 1990  C26 OHT A 600      35.506  -5.291  19.922  1.00 52.76           C  \nHETATM 1991  C21 OHT A 600      31.601  -2.135  23.579  1.00 26.98           C  \nHETATM 1992  C22 OHT A 600      30.966  -1.528  24.626  1.00 27.89           C  \nEND\n"
+    },
+    {
+      "complex_index": 1,
+      "consensus_rank": 1,
+      "id": "ERA_ACT_04",
+      "name": "Bazedoxifene",
+      "role": "ACTIVE",
+      "score_vina": -10.79,
+      "score_vinardo": -9.82,
+      "rrf_score": 0.2727,
+      "counts": {
+        "H-BOND": 5,
+        "SALT-BRIDGE": 1,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 11,
+        "TOTAL": 19
+      },
+      "contacted_residues": [
+        "ALA350",
+        "ARG394",
+        "GLU353",
+        "GLY420",
+        "GLY521",
+        "HIS524",
+        "ILE424",
+        "LEU346",
+        "LEU349",
+        "LEU391",
+        "LEU525",
+        "LEU536",
+        "MET343",
+        "MET388",
+        "MET421",
+        "MET522",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ARG394",
+        "GLU353",
+        "HIS524",
+        "LEU346"
+      ],
+      "ifp_similarity": 0.409,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ARG394",
+          "res_name": "ARG",
+          "res_num": 394,
+          "chain": "A",
+          "rec_atom": "NH2",
+          "lig_atom": "O",
+          "distance_A": 2.78,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            23.098,
+            -1.782,
+            29.021
+          ],
+          "lig_xyz": [
+            25.473,
+            -1.482,
+            27.617
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY420",
+          "res_name": "GLY",
+          "res_num": 420,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.2,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            37.417,
+            2.705,
+            30.619
+          ],
+          "lig_xyz": [
+            36.614,
+            1.44,
+            27.791
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "O",
+          "distance_A": 3.2,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            36.614,
+            1.44,
+            27.791
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE2",
+          "lig_atom": "O",
+          "distance_A": 3.21,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.553,
+            -3.524,
+            25.312
+          ],
+          "lig_xyz": [
+            25.473,
+            -1.482,
+            27.617
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY521",
+          "res_name": "GLY",
+          "res_num": 521,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.47,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            36.923,
+            3.128,
+            24.774
+          ],
+          "lig_xyz": [
+            36.614,
+            1.44,
+            27.791
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE1",
+          "lig_atom": "O",
+          "distance_A": 4.12,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            22.5,
+            -2.776,
+            25.072
+          ],
+          "lig_xyz": [
+            25.473,
+            -1.482,
+            27.617
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.35,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            31.885,
+            -1.901,
+            23.109
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "C",
+          "distance_A": 4.11,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.395,
+            1.07,
+            27.745
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.12,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            31.92,
+            -2.645,
+            26.864
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET388",
+          "res_name": "MET",
+          "res_num": 388,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.58,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.134,
+            5.045,
+            27.078
+          ],
+          "lig_xyz": [
+            30.006,
+            1.829,
+            28.16
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.58,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.589,
+            0.636,
+            32.395
+          ],
+          "lig_xyz": [
+            34.754,
+            0.439,
+            28.827
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.64,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.885,
+            -1.901,
+            23.109
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.65,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            32.874,
+            -2.763,
+            22.638
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU349",
+          "res_name": "LEU",
+          "res_num": 349,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.8,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            25.397,
+            -5.753,
+            28.438
+          ],
+          "lig_xyz": [
+            27.396,
+            -2.774,
+            27.188
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU536",
+          "res_name": "LEU",
+          "res_num": 536,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.8,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            32.267,
+            -0.911,
+            14.273
+          ],
+          "lig_xyz": [
+            34.295,
+            -1.492,
+            17.438
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ILE424",
+          "res_name": "ILE",
+          "res_num": 424,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.81,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            33.857,
+            3.955,
+            29.978
+          ],
+          "lig_xyz": [
+            34.754,
+            0.439,
+            28.827
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.84,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.231,
+            -3.551,
+            24.906
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET522",
+          "res_name": "MET",
+          "res_num": 522,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.85,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.584,
+            3.586,
+            20.02
+          ],
+          "lig_xyz": [
+            35.798,
+            0.179,
+            18.698
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.93,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            27.627,
+            -0.423,
+            27.732
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      30.006   1.829  28.160  1.00  0.00           C\nATOM      2  C   UNL     1      30.108   0.391  27.787  1.00  0.00           C\nATOM      3  C   UNL     1      31.289  -0.298  27.553  1.00  0.00           C\nATOM      4  N   UNL     1      30.958  -1.597  27.205  1.00  0.00           N\nATOM      5  C   UNL     1      29.584  -1.772  27.277  1.00  0.00           C\nATOM      6  C   UNL     1      28.781  -2.907  27.065  1.00  0.00           C\nATOM      7  C   UNL     1      27.396  -2.774  27.188  1.00  0.00           C\nATOM      8  C   UNL     1      26.834  -1.550  27.514  1.00  0.00           C\nATOM      9  C   UNL     1      27.627  -0.423  27.732  1.00  0.00           C\nATOM     10  C   UNL     1      29.031  -0.534  27.616  1.00  0.00           C\nATOM     11  C   UNL     1      32.665   0.193  27.628  1.00  0.00           C\nATOM     12  C   UNL     1      33.248   0.840  26.543  1.00  0.00           C\nATOM     13  C   UNL     1      34.584   1.260  26.611  1.00  0.00           C\nATOM     14  C   UNL     1      35.395   1.070  27.745  1.00  0.00           C\nATOM     15  O   UNL     1      36.614   1.440  27.791  1.00  0.00           O\nATOM     16  C   UNL     1      34.754   0.439  28.827  1.00  0.00           C\nATOM     17  C   UNL     1      33.420   0.009  28.783  1.00  0.00           C\nATOM     18  O   UNL     1      25.473  -1.482  27.617  1.00  0.00           O\nATOM     20  C   UNL     1      31.920  -2.645  26.864  1.00  0.00           C\nATOM     21  C   UNL     1      32.247  -2.679  25.390  1.00  0.00           C\nATOM     22  C   UNL     1      31.576  -1.858  24.473  1.00  0.00           C\nATOM     23  C   UNL     1      31.885  -1.901  23.109  1.00  0.00           C\nATOM     24  C   UNL     1      32.874  -2.763  22.638  1.00  0.00           C\nATOM     25  C   UNL     1      33.537  -3.591  23.544  1.00  0.00           C\nATOM     26  C   UNL     1      33.231  -3.551  24.906  1.00  0.00           C\nATOM     27  O   UNL     1      33.266  -2.909  21.337  1.00  0.00           O\nATOM     28  C   UNL     1      33.840  -4.151  20.932  1.00  0.00           C\nATOM     29  C   UNL     1      35.077  -3.974  20.024  1.00  0.00           C\nATOM     30  N   UNL     1      35.293  -2.674  19.354  1.00  0.00           N\nATOM     31  C   UNL     1      36.559  -2.051  19.740  1.00  0.00           C\nATOM     32  C   UNL     1      36.955  -0.763  19.009  1.00  0.00           C\nATOM     33  C   UNL     1      35.798   0.179  18.698  1.00  0.00           C\nATOM     34  C   UNL     1      35.091  -0.192  17.396  1.00  0.00           C\nATOM     35  C   UNL     1      34.295  -1.492  17.438  1.00  0.00           C\nATOM     36  C   UNL     1      35.057  -2.735  17.910  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 2,
+      "consensus_rank": 2,
+      "id": "ERA_ACT_02",
+      "name": "Raloxifene",
+      "role": "ACTIVE",
+      "score_vina": -9.99,
+      "score_vinardo": -9.09,
+      "rrf_score": 0.2372,
+      "counts": {
+        "H-BOND": 6,
+        "SALT-BRIDGE": 1,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 7,
+        "TOTAL": 16
+      },
+      "contacted_residues": [
+        "ALA350",
+        "ARG394",
+        "GLU353",
+        "GLY420",
+        "GLY521",
+        "HIS524",
+        "ILE424",
+        "LEU346",
+        "LEU387",
+        "LEU525",
+        "MET343",
+        "MET421",
+        "MET522",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ARG394",
+        "GLU353",
+        "HIS524",
+        "LEU346",
+        "LEU387"
+      ],
+      "ifp_similarity": 0.556,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY420",
+          "res_name": "GLY",
+          "res_num": 420,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.07,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            37.417,
+            2.705,
+            30.619
+          ],
+          "lig_xyz": [
+            36.626,
+            1.67,
+            27.844
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.12,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.287,
+            2.206,
+            26.385
+          ],
+          "lig_xyz": [
+            25.225,
+            -0.754,
+            26.732
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE2",
+          "lig_atom": "O",
+          "distance_A": 3.18,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.553,
+            -3.524,
+            25.312
+          ],
+          "lig_xyz": [
+            25.225,
+            -0.754,
+            26.732
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ARG394",
+          "res_name": "ARG",
+          "res_num": 394,
+          "chain": "A",
+          "rec_atom": "NH2",
+          "lig_atom": "O",
+          "distance_A": 3.29,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            23.098,
+            -1.782,
+            29.021
+          ],
+          "lig_xyz": [
+            25.225,
+            -0.754,
+            26.732
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "O",
+          "distance_A": 3.33,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            36.626,
+            1.67,
+            27.844
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY521",
+          "res_name": "GLY",
+          "res_num": 521,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.41,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            36.923,
+            3.128,
+            24.774
+          ],
+          "lig_xyz": [
+            36.626,
+            1.67,
+            27.844
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE1",
+          "lig_atom": "O",
+          "distance_A": 3.78,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            22.5,
+            -2.776,
+            25.072
+          ],
+          "lig_xyz": [
+            25.225,
+            -0.754,
+            26.732
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.14,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            31.968,
+            -2.053,
+            22.681
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "C",
+          "distance_A": 4.2,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.401,
+            1.337,
+            27.721
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ILE424",
+          "res_name": "ILE",
+          "res_num": 424,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.43,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            33.857,
+            3.955,
+            29.978
+          ],
+          "lig_xyz": [
+            34.643,
+            0.83,
+            28.79
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.54,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.563,
+            -1.806,
+            23.994
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.55,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            37.417,
+            0.241,
+            22.514
+          ],
+          "lig_xyz": [
+            37.071,
+            0.869,
+            19.035
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.56,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            31.684,
+            -2.366,
+            26.441
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.61,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.589,
+            0.636,
+            32.395
+          ],
+          "lig_xyz": [
+            34.643,
+            0.83,
+            28.79
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET522",
+          "res_name": "MET",
+          "res_num": 522,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.81,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.584,
+            3.586,
+            20.02
+          ],
+          "lig_xyz": [
+            37.071,
+            0.869,
+            19.035
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.94,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.235,
+            -3.378,
+            24.797
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      30.829  -1.228  26.815  1.00  0.00           C\nATOM      2  C   UNL     1      31.288   0.011  27.254  1.00  0.00           C\nATOM      3  S   UNL     1      30.000   1.083  27.599  1.00  0.00           S\nATOM      4  C   UNL     1      28.804  -0.053  27.138  1.00  0.00           C\nATOM      5  C   UNL     1      27.407   0.149  27.152  1.00  0.00           C\nATOM      6  C   UNL     1      26.582  -0.894  26.739  1.00  0.00           C\nATOM      7  C   UNL     1      27.107  -2.102  26.324  1.00  0.00           C\nATOM      8  C   UNL     1      28.493  -2.292  26.314  1.00  0.00           C\nATOM      9  C   UNL     1      29.377  -1.258  26.725  1.00  0.00           C\nATOM     10  C   UNL     1      32.658   0.513  27.427  1.00  0.00           C\nATOM     11  C   UNL     1      33.363   1.047  26.349  1.00  0.00           C\nATOM     12  C   UNL     1      34.702   1.441  26.506  1.00  0.00           C\nATOM     13  C   UNL     1      35.401   1.337  27.721  1.00  0.00           C\nATOM     14  O   UNL     1      36.626   1.670  27.844  1.00  0.00           O\nATOM     15  C   UNL     1      34.643   0.830  28.790  1.00  0.00           C\nATOM     16  C   UNL     1      33.307   0.425  28.661  1.00  0.00           C\nATOM     17  O   UNL     1      25.225  -0.754  26.732  1.00  0.00           O\nATOM     19  O   UNL     1      32.041  -3.212  27.260  1.00  0.00           O\nATOM     20  C   UNL     1      31.684  -2.366  26.441  1.00  0.00           C\nATOM     21  C   UNL     1      32.168  -2.506  25.047  1.00  0.00           C\nATOM     22  C   UNL     1      31.563  -1.806  23.994  1.00  0.00           C\nATOM     23  C   UNL     1      31.968  -2.053  22.681  1.00  0.00           C\nATOM     24  C   UNL     1      32.966  -2.994  22.437  1.00  0.00           C\nATOM     25  C   UNL     1      33.634  -3.624  23.484  1.00  0.00           C\nATOM     26  C   UNL     1      33.235  -3.378  24.797  1.00  0.00           C\nATOM     27  O   UNL     1      33.284  -3.299  21.139  1.00  0.00           O\nATOM     28  C   UNL     1      34.656  -2.911  20.899  1.00  0.00           C\nATOM     29  C   UNL     1      34.740  -2.058  19.617  1.00  0.00           C\nATOM     30  N   UNL     1      35.990  -1.303  19.368  1.00  0.00           N\nATOM     31  C   UNL     1      36.874  -2.024  18.435  1.00  0.00           C\nATOM     32  C   UNL     1      37.867  -1.113  17.700  1.00  0.00           C\nATOM     33  C   UNL     1      38.287   0.067  18.564  1.00  0.00           C\nATOM     34  C   UNL     1      37.071   0.869  19.035  1.00  0.00           C\nATOM     35  C   UNL     1      35.759   0.079  18.960  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 3,
+      "consensus_rank": 3,
+      "id": "ERA_ACT_01",
+      "name": "4-Hydroxytamoxifen (OHT)",
+      "role": "ACTIVE",
+      "score_vina": -10.0,
+      "score_vinardo": -9.1,
+      "rrf_score": 0.2333,
+      "counts": {
+        "H-BOND": 3,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 3,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 11,
+        "TOTAL": 17
+      },
+      "contacted_residues": [
+        "ALA350",
+        "ASP351",
+        "GLY521",
+        "HIS524",
+        "LEU346",
+        "LEU349",
+        "LEU384",
+        "LEU387",
+        "LEU391",
+        "LEU428",
+        "LEU525",
+        "MET343",
+        "MET388",
+        "MET421",
+        "PHE404",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ASP351",
+        "HIS524",
+        "LEU346",
+        "LEU387",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.667,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ASP351",
+          "res_name": "ASP",
+          "res_num": 351,
+          "chain": "A",
+          "rec_atom": "OD1",
+          "lig_atom": "N",
+          "distance_A": 2.95,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            30.794,
+            -6.749,
+            19.772
+          ],
+          "lig_xyz": [
+            32.61,
+            -4.428,
+            19.81
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "O",
+          "distance_A": 3.06,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            36.523,
+            1.048,
+            27.35
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY521",
+          "res_name": "GLY",
+          "res_num": 521,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.33,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            36.923,
+            3.128,
+            24.774
+          ],
+          "lig_xyz": [
+            36.523,
+            1.048,
+            27.35
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.52,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            27.848,
+            -2.078,
+            32.029
+          ],
+          "lig_xyz": [
+            27.139,
+            -2.494,
+            28.604
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CZ3",
+          "lig_atom": "C",
+          "distance_A": 3.69,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            30.306,
+            0.037,
+            20.745
+          ],
+          "lig_xyz": [
+            31.609,
+            -1.509,
+            23.831
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "C",
+          "distance_A": 4.1,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.293,
+            0.755,
+            27.512
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.41,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            31.823,
+            -2.69,
+            26.355
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.49,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.126,
+            -3.335,
+            28.987
+          ],
+          "lig_xyz": [
+            34.842,
+            -0.128,
+            28.513
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.52,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            30.868,
+            -1.006,
+            24.899
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU428",
+          "res_name": "LEU",
+          "res_num": 428,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.57,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            29.677,
+            4.304,
+            31.782
+          ],
+          "lig_xyz": [
+            30.091,
+            2.06,
+            29.031
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU349",
+          "res_name": "LEU",
+          "res_num": 349,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.7,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            25.397,
+            -5.753,
+            28.438
+          ],
+          "lig_xyz": [
+            27.139,
+            -2.494,
+            28.604
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET388",
+          "res_name": "MET",
+          "res_num": 388,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.72,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.134,
+            5.045,
+            27.078
+          ],
+          "lig_xyz": [
+            30.091,
+            2.06,
+            29.031
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.74,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.609,
+            -1.509,
+            23.831
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.86,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            32.002,
+            1.699,
+            32.766
+          ],
+          "lig_xyz": [
+            30.515,
+            0.636,
+            29.366
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.9,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            31.609,
+            -1.509,
+            23.831
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.91,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            26.589,
+            -0.48,
+            27.39
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.92,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            30.091,
+            2.06,
+            29.031
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      31.066  -0.119  28.167  1.00  0.00           C\nATOM      2  C   UNL     1      30.344  -0.928  27.343  1.00  0.00           C\nATOM      3  C   UNL     1      32.506   0.149  27.921  1.00  0.00           C\nATOM      4  C   UNL     1      32.909   1.004  26.897  1.00  0.00           C\nATOM      5  C   UNL     1      34.271   1.287  26.705  1.00  0.00           C\nATOM      6  C   UNL     1      35.293   0.755  27.512  1.00  0.00           C\nATOM      7  O   UNL     1      36.523   1.048  27.350  1.00  0.00           O\nATOM      8  C   UNL     1      34.842  -0.128  28.513  1.00  0.00           C\nATOM      9  C   UNL     1      33.487  -0.428  28.725  1.00  0.00           C\nATOM     10  C   UNL     1      28.906  -1.163  27.611  1.00  0.00           C\nATOM     11  C   UNL     1      27.945  -0.263  27.135  1.00  0.00           C\nATOM     12  C   UNL     1      26.589  -0.480  27.390  1.00  0.00           C\nATOM     13  C   UNL     1      26.187  -1.595  28.123  1.00  0.00           C\nATOM     14  C   UNL     1      27.139  -2.494  28.604  1.00  0.00           C\nATOM     15  C   UNL     1      28.494  -2.280  28.350  1.00  0.00           C\nATOM     16  C   UNL     1      31.004  -1.568  26.177  1.00  0.00           C\nATOM     17  C   UNL     1      30.868  -1.006  24.899  1.00  0.00           C\nATOM     18  C   UNL     1      31.609  -1.509  23.831  1.00  0.00           C\nATOM     19  C   UNL     1      32.507  -2.553  24.051  1.00  0.00           C\nATOM     20  C   UNL     1      32.574  -3.186  25.290  1.00  0.00           C\nATOM     21  C   UNL     1      31.823  -2.690  26.355  1.00  0.00           C\nATOM     22  O   UNL     1      33.344  -2.893  23.021  1.00  0.00           O\nATOM     23  C   UNL     1      32.857  -4.045  22.308  1.00  0.00           C\nATOM     24  C   UNL     1      32.115  -3.660  21.016  1.00  0.00           C\nATOM     25  N   UNL     1      32.610  -4.428  19.810  1.00  0.00           N\nATOM     26  C   UNL     1      34.036  -4.897  19.990  1.00  0.00           C\nATOM     27  C   UNL     1      32.490  -3.560  18.577  1.00  0.00           C\nATOM     29  C   UNL     1      30.091   2.060  29.031  1.00  0.00           C\nATOM     30  C   UNL     1      30.515   0.636  29.366  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 4,
+      "consensus_rank": 4,
+      "id": "ERA_ACT_05",
+      "name": "17beta-Estradiol",
+      "role": "ACTIVE",
+      "score_vina": -9.71,
+      "score_vinardo": -8.83,
+      "rrf_score": 0.2198,
+      "counts": {
+        "H-BOND": 4,
+        "SALT-BRIDGE": 3,
+        "PI-STACKING": 1,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 7,
+        "TOTAL": 15
+      },
+      "contacted_residues": [
+        "ARG394",
+        "GLU353",
+        "GLY420",
+        "HIS524",
+        "ILE424",
+        "LEU346",
+        "LEU387",
+        "LEU391",
+        "LEU525",
+        "MET343",
+        "MET388",
+        "MET421"
+      ],
+      "hotspots_hit": [
+        "ARG394",
+        "GLU353",
+        "HIS524",
+        "LEU346",
+        "LEU387"
+      ],
+      "ifp_similarity": 0.444,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ARG394",
+          "res_name": "ARG",
+          "res_num": 394,
+          "chain": "A",
+          "rec_atom": "NH2",
+          "lig_atom": "O",
+          "distance_A": 3.06,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            23.098,
+            -1.782,
+            29.021
+          ],
+          "lig_xyz": [
+            25.137,
+            -0.899,
+            26.912
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE2",
+          "lig_atom": "O",
+          "distance_A": 3.13,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.553,
+            -3.524,
+            25.312
+          ],
+          "lig_xyz": [
+            25.137,
+            -0.899,
+            26.912
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "GLY420",
+          "res_name": "GLY",
+          "res_num": 420,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.21,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            37.417,
+            2.705,
+            30.619
+          ],
+          "lig_xyz": [
+            35.71,
+            0.802,
+            28.682
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "O",
+          "lig_atom": "O",
+          "distance_A": 3.26,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            24.287,
+            2.206,
+            26.385
+          ],
+          "lig_xyz": [
+            25.137,
+            -0.899,
+            26.912
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "GLU353",
+          "res_name": "GLU",
+          "res_num": 353,
+          "chain": "A",
+          "rec_atom": "OE1",
+          "lig_atom": "O",
+          "distance_A": 3.72,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            22.5,
+            -2.776,
+            25.072
+          ],
+          "lig_xyz": [
+            25.137,
+            -0.899,
+            26.912
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "O",
+          "distance_A": 3.93,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.71,
+            0.802,
+            28.682
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "ARG394",
+          "res_name": "ARG",
+          "res_num": 394,
+          "chain": "A",
+          "rec_atom": "NH1",
+          "lig_atom": "O",
+          "distance_A": 4.17,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            21.207,
+            -0.716,
+            28.28
+          ],
+          "lig_xyz": [
+            25.137,
+            -0.899,
+            26.912
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "HIS524",
+          "res_name": "HIS",
+          "res_num": 524,
+          "chain": "A",
+          "rec_atom": "ND1",
+          "lig_atom": "C",
+          "distance_A": 4.25,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            39.246,
+            -0.337,
+            27.412
+          ],
+          "lig_xyz": [
+            35.033,
+            0.166,
+            27.599
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET388",
+          "res_name": "MET",
+          "res_num": 388,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.27,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.134,
+            5.045,
+            27.078
+          ],
+          "lig_xyz": [
+            30.472,
+            1.972,
+            27.963
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.36,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.805,
+            -3.481,
+            30.688
+          ],
+          "lig_xyz": [
+            33.688,
+            -0.991,
+            29.439
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.41,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.126,
+            -3.335,
+            28.987
+          ],
+          "lig_xyz": [
+            33.688,
+            -0.991,
+            29.439
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.49,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.589,
+            0.636,
+            32.395
+          ],
+          "lig_xyz": [
+            33.688,
+            -0.991,
+            29.439
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.53,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            29.008,
+            1.691,
+            28.285
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.55,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.268,
+            0.108,
+            23.526
+          ],
+          "lig_xyz": [
+            34.737,
+            1.217,
+            26.527
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ILE424",
+          "res_name": "ILE",
+          "res_num": 424,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.75,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            33.857,
+            3.955,
+            29.978
+          ],
+          "lig_xyz": [
+            32.802,
+            0.934,
+            28.021
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      33.688  -0.991  29.439  1.00  0.00           C\nATOM      2  C   UNL     1      33.646  -0.359  28.037  1.00  0.00           C\nATOM      3  C   UNL     1      33.112  -1.390  27.015  1.00  0.00           C\nATOM      4  C   UNL     1      31.604  -1.632  27.110  1.00  0.00           C\nATOM      5  C   UNL     1      30.807  -0.319  26.974  1.00  0.00           C\nATOM      6  C   UNL     1      29.294  -0.490  26.992  1.00  0.00           C\nATOM      7  C   UNL     1      28.673  -1.565  26.348  1.00  0.00           C\nATOM      8  C   UNL     1      27.273  -1.694  26.330  1.00  0.00           C\nATOM      9  C   UNL     1      26.406  -0.771  26.930  1.00  0.00           C\nATOM     10  O   UNL     1      25.137  -0.899  26.912  1.00  0.00           O\nATOM     11  C   UNL     1      27.058   0.311  27.547  1.00  0.00           C\nATOM     12  C   UNL     1      28.462   0.479  27.574  1.00  0.00           C\nATOM     13  C   UNL     1      29.008   1.691  28.285  1.00  0.00           C\nATOM     14  C   UNL     1      30.472   1.972  27.963  1.00  0.00           C\nATOM     15  C   UNL     1      31.284   0.676  28.061  1.00  0.00           C\nATOM     16  C   UNL     1      32.802   0.934  28.021  1.00  0.00           C\nATOM     17  C   UNL     1      33.312   1.714  26.797  1.00  0.00           C\nATOM     18  C   UNL     1      34.737   1.217  26.527  1.00  0.00           C\nATOM     19  C   UNL     1      35.033   0.166  27.599  1.00  0.00           C\nATOM     20  O   UNL     1      35.710   0.802  28.682  1.00  0.00           O\nEND\n"
+    },
+    {
+      "complex_index": 5,
+      "consensus_rank": 5,
+      "id": "ERA_ACT_03",
+      "name": "Lasofoxifene",
+      "role": "ACTIVE",
+      "score_vina": -9.63,
+      "score_vinardo": -8.77,
+      "rrf_score": 0.2048,
+      "counts": {
+        "H-BOND": 0,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 8,
+        "TOTAL": 10
+      },
+      "contacted_residues": [
+        "ALA350",
+        "LEU346",
+        "LEU384",
+        "LEU387",
+        "LEU391",
+        "LEU525",
+        "MET343",
+        "MET528",
+        "PHE404",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "LEU346",
+        "LEU387",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.5,
+      "interactions": [
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.32,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.124,
+            -2.024,
+            22.929
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.69,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            27.848,
+            -2.078,
+            32.029
+          ],
+          "lig_xyz": [
+            27.652,
+            -2.244,
+            28.346
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET528",
+          "res_name": "MET",
+          "res_num": 528,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.51,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            39.231,
+            -4.413,
+            23.554
+          ],
+          "lig_xyz": [
+            36.632,
+            -5.813,
+            21.65
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.56,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.195,
+            -3.645,
+            20.445
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.62,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            32.124,
+            -2.024,
+            22.929
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.71,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            29.763,
+            -2.058,
+            27.156
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.8,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            26.456,
+            -1.34,
+            28.591
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.81,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            27.874,
+            -0.522,
+            26.802
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.9,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.001,
+            -2.8,
+            25.458
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.9,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            31.756,
+            -1.292,
+            24.062
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  O   UNL     1      30.468  -2.191  17.191  1.00  0.00           O\nATOM      2  C   UNL     1      31.112  -2.588  18.217  1.00  0.00           C\nATOM      3  C   UNL     1      30.493  -3.205  19.314  1.00  0.00           C\nATOM      4  C   UNL     1      31.195  -3.645  20.445  1.00  0.00           C\nATOM      5  C   UNL     1      32.583  -3.481  20.538  1.00  0.00           C\nATOM      6  C   UNL     1      33.247  -2.866  19.468  1.00  0.00           C\nATOM      7  C   UNL     1      32.507  -2.447  18.342  1.00  0.00           C\nATOM      8  C   UNL     1      34.741  -2.697  19.443  1.00  0.00           C\nATOM      9  C   UNL     1      35.385  -2.801  20.822  1.00  0.00           C\nATOM     10  C   UNL     1      34.867  -4.001  21.630  1.00  0.00           C\nATOM     11  C   UNL     1      33.314  -3.955  21.786  1.00  0.00           C\nATOM     12  C   UNL     1      35.436  -5.320  21.100  1.00  0.00           C\nATOM     13  C   UNL     1      34.831  -6.054  20.069  1.00  0.00           C\nATOM     14  C   UNL     1      35.397  -7.246  19.611  1.00  0.00           C\nATOM     15  C   UNL     1      36.577  -7.725  20.174  1.00  0.00           C\nATOM     16  C   UNL     1      37.196  -7.007  21.193  1.00  0.00           C\nATOM     17  C   UNL     1      36.632  -5.813  21.650  1.00  0.00           C\nATOM     18  C   UNL     1      32.942  -3.158  23.046  1.00  0.00           C\nATOM     19  C   UNL     1      33.366  -3.539  24.328  1.00  0.00           C\nATOM     20  C   UNL     1      33.001  -2.800  25.458  1.00  0.00           C\nATOM     21  C   UNL     1      32.197  -1.668  25.331  1.00  0.00           C\nATOM     22  C   UNL     1      31.756  -1.292  24.062  1.00  0.00           C\nATOM     23  C   UNL     1      32.124  -2.024  22.929  1.00  0.00           C\nATOM     24  O   UNL     1      31.769  -0.858  26.346  1.00  0.00           O\nATOM     25  C   UNL     1      31.144  -1.457  27.483  1.00  0.00           C\nATOM     26  C   UNL     1      29.763  -2.058  27.156  1.00  0.00           C\nATOM     27  N   UNL     1      28.631  -1.332  27.754  1.00  0.00           N\nATOM     28  C   UNL     1      27.874  -0.522  26.802  1.00  0.00           C\nATOM     29  C   UNL     1      26.560  -0.254  27.525  1.00  0.00           C\nATOM     30  C   UNL     1      26.456  -1.340  28.591  1.00  0.00           C\nATOM     31  C   UNL     1      27.652  -2.244  28.346  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 6,
+      "consensus_rank": 6,
+      "id": "ERA_DEC_01",
+      "name": "ZINC_Decoy_E1",
+      "role": "DECOY",
+      "score_vina": -8.63,
+      "score_vinardo": -7.85,
+      "rrf_score": 0.1875,
+      "counts": {
+        "H-BOND": 1,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 1,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 8,
+        "TOTAL": 10
+      },
+      "contacted_residues": [
+        "ALA350",
+        "LEU346",
+        "LEU384",
+        "LEU387",
+        "LEU391",
+        "LEU525",
+        "MET388",
+        "MET528",
+        "THR347",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "LEU346",
+        "LEU387"
+      ],
+      "ifp_similarity": 0.333,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "THR347",
+          "res_name": "THR",
+          "res_num": 347,
+          "chain": "A",
+          "rec_atom": "OG1",
+          "lig_atom": "O",
+          "distance_A": 2.88,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            34.492,
+            -6.594,
+            24.983
+          ],
+          "lig_xyz": [
+            35.56,
+            -4.682,
+            23.118
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.58,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.127,
+            -2.116,
+            23.202
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.55,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            34.576,
+            -2.406,
+            20.472
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET528",
+          "res_name": "MET",
+          "res_num": 528,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 3.67,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            39.231,
+            -4.413,
+            23.554
+          ],
+          "lig_xyz": [
+            36.746,
+            -3.204,
+            21.144
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.69,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            27.741,
+            1.135,
+            27.45
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.71,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            32.127,
+            -2.116,
+            23.202
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.71,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            27.347,
+            -1.046,
+            26.592
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET388",
+          "res_name": "MET",
+          "res_num": 388,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.72,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.439,
+            4.718,
+            26.748
+          ],
+          "lig_xyz": [
+            27.741,
+            1.135,
+            27.45
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.8,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            32.378,
+            -2.811,
+            25.889
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.84,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            31.554,
+            -1.299,
+            24.173
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      32.847  -3.274  23.542  1.00  0.00           C\nATOM      2  C   UNL     1      32.949  -3.605  24.904  1.00  0.00           C\nATOM      3  C   UNL     1      32.378  -2.811  25.889  1.00  0.00           C\nATOM      4  C   UNL     1      31.718  -1.643  25.511  1.00  0.00           C\nATOM      5  C   UNL     1      31.554  -1.299  24.173  1.00  0.00           C\nATOM      6  C   UNL     1      32.127  -2.116  23.202  1.00  0.00           C\nATOM      7  S   UNL     1      31.300  -0.490  26.762  1.00  0.00           S\nATOM      8  O   UNL     1      31.871   0.796  26.443  1.00  0.00           O\nATOM      9  O   UNL     1      31.406  -1.089  28.072  1.00  0.00           O\nATOM     10  N   UNL     1      29.646  -0.168  26.607  1.00  0.00           N\nATOM     11  C   UNL     1      29.238   0.859  27.615  1.00  0.00           C\nATOM     12  C   UNL     1      27.741   1.135  27.450  1.00  0.00           C\nATOM     13  O   UNL     1      26.984  -0.074  27.582  1.00  0.00           O\nATOM     14  C   UNL     1      27.347  -1.046  26.592  1.00  0.00           C\nATOM     15  C   UNL     1      28.830  -1.421  26.701  1.00  0.00           C\nATOM     17  N   UNL     1      33.433  -3.959  22.536  1.00  0.00           N\nATOM     18  C   UNL     1      34.769  -4.024  22.440  1.00  0.00           C\nATOM     19  O   UNL     1      35.560  -4.682  23.118  1.00  0.00           O\nATOM     20  C   UNL     1      36.560  -1.667  19.281  1.00  0.00           C\nATOM     21  C   UNL     1      37.346  -2.447  20.129  1.00  0.00           C\nATOM     22  C   UNL     1      36.746  -3.204  21.144  1.00  0.00           C\nATOM     23  C   UNL     1      35.356  -3.193  21.329  1.00  0.00           C\nATOM     24  C   UNL     1      34.576  -2.406  20.472  1.00  0.00           C\nATOM     25  C   UNL     1      35.175  -1.650  19.460  1.00  0.00           C\nATOM     26  C   UNL     1      37.934   0.145  18.599  1.00  0.00           C\nATOM     27  O   UNL     1      37.016  -0.883  18.255  1.00  0.00           O\nEND\n"
+    },
+    {
+      "complex_index": 7,
+      "consensus_rank": 7,
+      "id": "ERA_DEC_03",
+      "name": "ZINC_Decoy_E3",
+      "role": "DECOY",
+      "score_vina": -8.02,
+      "score_vinardo": -7.3,
+      "rrf_score": 0.1765,
+      "counts": {
+        "H-BOND": 0,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 8,
+        "TOTAL": 10
+      },
+      "contacted_residues": [
+        "ALA350",
+        "LEU346",
+        "LEU349",
+        "LEU387",
+        "LEU391",
+        "LEU525",
+        "MET343",
+        "MET388",
+        "PHE404",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "LEU346",
+        "LEU387",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.412,
+      "interactions": [
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.51,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.102,
+            -1.824,
+            23.336
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.65,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            27.848,
+            -2.078,
+            32.029
+          ],
+          "lig_xyz": [
+            28.319,
+            -2.069,
+            28.407
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.39,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.805,
+            -3.481,
+            30.688
+          ],
+          "lig_xyz": [
+            31.023,
+            -0.591,
+            29.101
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.53,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            27.73,
+            0.217,
+            27.886
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.55,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            32.102,
+            -1.824,
+            23.336
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU349",
+          "res_name": "LEU",
+          "res_num": 349,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.71,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            25.397,
+            -5.753,
+            28.438
+          ],
+          "lig_xyz": [
+            27.026,
+            -2.44,
+            28.024
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.76,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            32.902,
+            -3.151,
+            25.659
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.86,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            32.102,
+            -1.824,
+            23.336
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.87,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            26.45,
+            -0.125,
+            27.504
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET388",
+          "res_name": "MET",
+          "res_num": 388,
+          "chain": "A",
+          "rec_atom": "CG",
+          "lig_atom": "C",
+          "distance_A": 3.94,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.439,
+            4.718,
+            26.748
+          ],
+          "lig_xyz": [
+            29.568,
+            1.285,
+            28.309
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  O   UNL     1      33.102  -0.394  27.919  1.00  0.00           O\nATOM      2  C   UNL     1      31.972  -0.875  27.935  1.00  0.00           C\nATOM      3  N   UNL     1      31.397  -1.672  26.956  1.00  0.00           N\nATOM      5  C   UNL     1      31.974  -2.111  25.750  1.00  0.00           C\nATOM      6  C   UNL     1      32.902  -3.151  25.659  1.00  0.00           C\nATOM      7  C   UNL     1      33.428  -3.527  24.417  1.00  0.00           C\nATOM      8  C   UNL     1      33.025  -2.861  23.263  1.00  0.00           C\nATOM      9 BR   UNL     1      33.737  -3.370  21.588  1.00  0.00           B\nATOM     10  C   UNL     1      32.102  -1.824  23.336  1.00  0.00           C\nATOM     11  C   UNL     1      31.579  -1.451  24.579  1.00  0.00           C\nATOM     12  C   UNL     1      31.023  -0.591  29.101  1.00  0.00           C\nATOM     13  N   UNL     1      29.783  -0.039  28.619  1.00  0.00           N\nATOM     14  C   UNL     1      29.568   1.285  28.309  1.00  0.00           C\nATOM     15  O   UNL     1      30.422   2.162  28.371  1.00  0.00           O\nATOM     16  O   UNL     1      28.260   1.499  27.866  1.00  0.00           O\nATOM     17  C   UNL     1      27.730   0.217  27.886  1.00  0.00           C\nATOM     18  C   UNL     1      26.450  -0.125  27.504  1.00  0.00           C\nATOM     19  C   UNL     1      26.099  -1.476  27.578  1.00  0.00           C\nATOM     20  C   UNL     1      27.026  -2.440  28.024  1.00  0.00           C\nATOM     21  C   UNL     1      28.319  -2.069  28.407  1.00  0.00           C\nATOM     22  C   UNL     1      28.633  -0.730  28.328  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 8,
+      "consensus_rank": 8,
+      "id": "ERA_DEC_05",
+      "name": "ZINC_Decoy_E5",
+      "role": "DECOY",
+      "score_vina": -7.97,
+      "score_vinardo": -7.25,
+      "rrf_score": 0.1637,
+      "counts": {
+        "H-BOND": 1,
+        "SALT-BRIDGE": 1,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 6,
+        "TOTAL": 10
+      },
+      "contacted_residues": [
+        "ASP351",
+        "LEU346",
+        "LEU384",
+        "LEU387",
+        "LEU391",
+        "LEU525",
+        "MET343",
+        "PHE404",
+        "THR347",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ASP351",
+        "LEU346",
+        "LEU387",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.5,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "THR347",
+          "res_name": "THR",
+          "res_num": 347,
+          "chain": "A",
+          "rec_atom": "OG1",
+          "lig_atom": "O",
+          "distance_A": 2.98,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            34.492,
+            -6.594,
+            24.983
+          ],
+          "lig_xyz": [
+            34.519,
+            -4.408,
+            22.958
+          ]
+        },
+        {
+          "interaction_type": "SALT-BRIDGE",
+          "priority": 2,
+          "res_label": "ASP351",
+          "res_name": "ASP",
+          "res_num": 351,
+          "chain": "A",
+          "rec_atom": "OD1",
+          "lig_atom": "O",
+          "distance_A": 3.5,
+          "is_hotspot": true,
+          "role_desc": "Electrostatic ionic / salt-bridge anchor",
+          "rec_xyz": [
+            30.794,
+            -6.749,
+            19.772
+          ],
+          "lig_xyz": [
+            32.088,
+            -4.714,
+            22.309
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.61,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.608,
+            -3.29,
+            20.217
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.96,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            27.848,
+            -2.078,
+            32.029
+          ],
+          "lig_xyz": [
+            27.973,
+            -1.625,
+            28.098
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.5,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            34.936,
+            0.246,
+            22.811
+          ],
+          "lig_xyz": [
+            32.134,
+            -1.611,
+            23.793
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.6,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            31.962,
+            -0.711,
+            24.843
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.75,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.083,
+            -3.228,
+            25.352
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.86,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            29.601,
+            -4.631,
+            30.613
+          ],
+          "lig_xyz": [
+            29.358,
+            -1.548,
+            28.295
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.87,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            24.476,
+            1.936,
+            29.898
+          ],
+          "lig_xyz": [
+            25.799,
+            -0.627,
+            27.321
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU387",
+          "res_name": "LEU",
+          "res_num": 387,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.89,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.093,
+            1.13,
+            23.864
+          ],
+          "lig_xyz": [
+            25.799,
+            -0.627,
+            27.321
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  C   UNL     1      32.377  -1.046  26.141  1.00  0.00           C\nATOM      2  C   UNL     1      32.901  -2.322  26.394  1.00  0.00           C\nATOM      3  C   UNL     1      33.083  -3.228  25.352  1.00  0.00           C\nATOM      4  C   UNL     1      32.734  -2.845  24.053  1.00  0.00           C\nATOM      5  C   UNL     1      32.134  -1.611  23.793  1.00  0.00           C\nATOM      6  C   UNL     1      31.962  -0.711  24.843  1.00  0.00           C\nATOM      7  S   UNL     1      33.198  -3.883  22.710  1.00  0.00           S\nATOM      8  O   UNL     1      34.519  -4.408  22.958  1.00  0.00           O\nATOM      9  O   UNL     1      32.088  -4.714  22.309  1.00  0.00           O\nATOM     10  N   UNL     1      33.478  -2.905  21.350  1.00  0.00           N\nATOM     11  C   UNL     1      34.926  -2.920  21.032  1.00  0.00           C\nATOM     12  C   UNL     1      32.608  -3.290  20.217  1.00  0.00           C\nATOM     14  C   UNL     1      32.313  -0.070  27.270  1.00  0.00           C\nATOM     15  O   UNL     1      33.006   0.942  27.158  1.00  0.00           O\nATOM     16  N   UNL     1      31.429  -0.409  28.215  1.00  0.00           N\nATOM     17  C   UNL     1      25.799  -0.627  27.321  1.00  0.00           C\nATOM     18  C   UNL     1      27.272  -0.540  27.571  1.00  0.00           C\nATOM     19  C   UNL     1      27.987   0.608  27.227  1.00  0.00           C\nATOM     20  C   UNL     1      29.373   0.674  27.428  1.00  0.00           C\nATOM     21  C   UNL     1      30.100  -0.404  27.957  1.00  0.00           C\nATOM     22  C   UNL     1      29.358  -1.548  28.295  1.00  0.00           C\nATOM     23  C   UNL     1      27.973  -1.625  28.098  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 9,
+      "consensus_rank": 9,
+      "id": "ERA_DEC_02",
+      "name": "ZINC_Decoy_E2",
+      "role": "DECOY",
+      "score_vina": -7.8,
+      "score_vinardo": -7.1,
+      "rrf_score": 0.1608,
+      "counts": {
+        "H-BOND": 2,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 5,
+        "TOTAL": 9
+      },
+      "contacted_residues": [
+        "ALA350",
+        "ASP351",
+        "LEU346",
+        "LEU384",
+        "LEU525",
+        "MET343",
+        "PHE404",
+        "THR347",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "ASP351",
+        "LEU346",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.533,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "THR347",
+          "res_name": "THR",
+          "res_num": 347,
+          "chain": "A",
+          "rec_atom": "OG1",
+          "lig_atom": "O",
+          "distance_A": 3.19,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            34.492,
+            -6.594,
+            24.983
+          ],
+          "lig_xyz": [
+            34.792,
+            -4.54,
+            22.563
+          ]
+        },
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "ASP351",
+          "res_name": "ASP",
+          "res_num": 351,
+          "chain": "A",
+          "rec_atom": "OD1",
+          "lig_atom": "O",
+          "distance_A": 3.48,
+          "is_hotspot": true,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            30.794,
+            -6.749,
+            19.772
+          ],
+          "lig_xyz": [
+            32.284,
+            -4.704,
+            22.159
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.5,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.734,
+            -3.056,
+            19.728
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CE1",
+          "lig_atom": "C",
+          "distance_A": 3.8,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            28.864,
+            -1.204,
+            32.423
+          ],
+          "lig_xyz": [
+            29.664,
+            -0.128,
+            28.87
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.36,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.809,
+            -2.28,
+            23.186
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.54,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            37.417,
+            0.241,
+            22.514
+          ],
+          "lig_xyz": [
+            36.239,
+            -2.566,
+            20.716
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.61,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            30.11,
+            -1.936,
+            27.323
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "CL",
+          "distance_A": 3.7,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            32.602,
+            1.11,
+            26.472
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.84,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.387,
+            -3.397,
+            24.783
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  N   UNL     1      33.199  -2.834  23.405  1.00  0.00           N\nATOM      2  C   UNL     1      33.387  -3.397  24.783  1.00  0.00           C\nATOM      3  C   UNL     1      33.094  -2.306  25.833  1.00  0.00           C\nATOM      4  N   UNL     1      31.781  -1.706  25.571  1.00  0.00           N\nATOM      5  C   UNL     1      31.514  -1.184  24.231  1.00  0.00           C\nATOM      6  C   UNL     1      31.809  -2.280  23.186  1.00  0.00           C\nATOM      8  C   UNL     1      31.094  -1.180  26.665  1.00  0.00           C\nATOM      9  C   UNL     1      30.110  -1.936  27.323  1.00  0.00           C\nATOM     10  C   UNL     1      29.401  -1.416  28.410  1.00  0.00           C\nATOM     11  C   UNL     1      29.664  -0.128  28.870  1.00  0.00           C\nATOM     12  C   UNL     1      30.641   0.642  28.245  1.00  0.00           C\nATOM     13  C   UNL     1      31.350   0.122  27.156  1.00  0.00           C\nATOM     14 CL   UNL     1      32.602   1.110  26.472  1.00  0.00           C\nATOM     15  S   UNL     1      33.520  -3.968  22.212  1.00  0.00           S\nATOM     16  O   UNL     1      32.284  -4.704  22.159  1.00  0.00           O\nATOM     17  O   UNL     1      34.792  -4.540  22.563  1.00  0.00           O\nATOM     18  C   UNL     1      36.239  -2.566  20.716  1.00  0.00           C\nATOM     19  C   UNL     1      34.881  -2.705  20.134  1.00  0.00           C\nATOM     20  N   UNL     1      34.660  -2.290  18.883  1.00  0.00           N\nATOM     21  O   UNL     1      33.318  -2.492  18.637  1.00  0.00           O\nATOM     22  C   UNL     1      32.734  -3.056  19.728  1.00  0.00           C\nATOM     23  C   UNL     1      31.285  -3.324  19.619  1.00  0.00           C\nATOM     24  C   UNL     1      33.697  -3.240  20.691  1.00  0.00           C\nEND\n"
+    },
+    {
+      "complex_index": 10,
+      "consensus_rank": 10,
+      "id": "ERA_DEC_04",
+      "name": "ZINC_Decoy_E4",
+      "role": "DECOY",
+      "score_vina": -7.32,
+      "score_vinardo": -6.66,
+      "rrf_score": 0.15,
+      "counts": {
+        "H-BOND": 1,
+        "SALT-BRIDGE": 0,
+        "PI-STACKING": 2,
+        "HALOGEN-BOND": 0,
+        "HYDROPHOBIC": 8,
+        "TOTAL": 11
+      },
+      "contacted_residues": [
+        "ALA350",
+        "LEU346",
+        "LEU349",
+        "LEU384",
+        "LEU391",
+        "LEU525",
+        "MET343",
+        "MET421",
+        "PHE404",
+        "THR347",
+        "TRP383"
+      ],
+      "hotspots_hit": [
+        "LEU346",
+        "PHE404"
+      ],
+      "ifp_similarity": 0.471,
+      "interactions": [
+        {
+          "interaction_type": "H-BOND",
+          "priority": 1,
+          "res_label": "THR347",
+          "res_name": "THR",
+          "res_num": 347,
+          "chain": "A",
+          "rec_atom": "OG1",
+          "lig_atom": "O",
+          "distance_A": 2.84,
+          "is_hotspot": false,
+          "role_desc": "Directional polar hydrogen bond",
+          "rec_xyz": [
+            34.492,
+            -6.594,
+            24.983
+          ],
+          "lig_xyz": [
+            34.28,
+            -3.99,
+            23.882
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "PHE404",
+          "res_name": "PHE",
+          "res_num": 404,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.48,
+          "is_hotspot": true,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            27.848,
+            -2.078,
+            32.029
+          ],
+          "lig_xyz": [
+            27.375,
+            -1.758,
+            28.597
+          ]
+        },
+        {
+          "interaction_type": "PI-STACKING",
+          "priority": 3,
+          "res_label": "TRP383",
+          "res_name": "TRP",
+          "res_num": 383,
+          "chain": "A",
+          "rec_atom": "CH2",
+          "lig_atom": "C",
+          "distance_A": 3.67,
+          "is_hotspot": false,
+          "role_desc": "Aromatic pi-pi / T-shaped ring stacking",
+          "rec_xyz": [
+            31.676,
+            0.19,
+            20.496
+          ],
+          "lig_xyz": [
+            32.296,
+            -3.363,
+            19.81
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU346",
+          "res_name": "LEU",
+          "res_num": 346,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.35,
+          "is_hotspot": true,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            31.293,
+            -5.008,
+            28.796
+          ],
+          "lig_xyz": [
+            31.978,
+            -2.468,
+            26.72
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU384",
+          "res_name": "LEU",
+          "res_num": 384,
+          "chain": "A",
+          "rec_atom": "CD1",
+          "lig_atom": "C",
+          "distance_A": 3.53,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            30.272,
+            2.305,
+            23.853
+          ],
+          "lig_xyz": [
+            30.912,
+            -0.976,
+            24.995
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "ALA350",
+          "res_name": "ALA",
+          "res_num": 350,
+          "chain": "A",
+          "rec_atom": "CB",
+          "lig_atom": "C",
+          "distance_A": 3.63,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            28.995,
+            -4.109,
+            23.211
+          ],
+          "lig_xyz": [
+            31.953,
+            -3.65,
+            21.157
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU391",
+          "res_name": "LEU",
+          "res_num": 391,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.67,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            26.708,
+            1.62,
+            30.958
+          ],
+          "lig_xyz": [
+            28.334,
+            -0.747,
+            28.674
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU349",
+          "res_name": "LEU",
+          "res_num": 349,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.71,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            25.397,
+            -5.753,
+            28.438
+          ],
+          "lig_xyz": [
+            27.545,
+            -2.812,
+            27.709
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET343",
+          "res_name": "MET",
+          "res_num": 343,
+          "chain": "A",
+          "rec_atom": "SD",
+          "lig_atom": "C",
+          "distance_A": 3.78,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.028,
+            -4.251,
+            27.439
+          ],
+          "lig_xyz": [
+            33.121,
+            -2.591,
+            25.686
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "LEU525",
+          "res_name": "LEU",
+          "res_num": 525,
+          "chain": "A",
+          "rec_atom": "CD2",
+          "lig_atom": "C",
+          "distance_A": 3.78,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            36.342,
+            -1.24,
+            24.238
+          ],
+          "lig_xyz": [
+            33.121,
+            -2.591,
+            25.686
+          ]
+        },
+        {
+          "interaction_type": "HYDROPHOBIC",
+          "priority": 4,
+          "res_label": "MET421",
+          "res_name": "MET",
+          "res_num": 421,
+          "chain": "A",
+          "rec_atom": "CE",
+          "lig_atom": "C",
+          "distance_A": 4.0,
+          "is_hotspot": false,
+          "role_desc": "Lipophilic van der Waals burial",
+          "rec_xyz": [
+            32.002,
+            1.699,
+            32.766
+          ],
+          "lig_xyz": [
+            31.232,
+            0.241,
+            29.123
+          ]
+        }
+      ],
+      "pose_pdb_block": "ATOM      1  N   UNL     1      30.751  -1.962  26.074  1.00  0.00           N\nATOM      2  C   UNL     1      30.912  -0.976  24.995  1.00  0.00           C\nATOM      3  C   UNL     1      31.710  -1.602  23.829  1.00  0.00           C\nATOM      4  N   UNL     1      32.523  -2.763  24.325  1.00  0.00           N\nATOM      5  C   UNL     1      33.121  -2.591  25.686  1.00  0.00           C\nATOM      6  C   UNL     1      31.978  -2.468  26.720  1.00  0.00           C\nATOM      8  C   UNL     1      29.474  -0.780  27.860  1.00  0.00           C\nATOM      9  C   UNL     1      28.334  -0.747  28.674  1.00  0.00           C\nATOM     10  C   UNL     1      27.375  -1.758  28.597  1.00  0.00           C\nATOM     11  C   UNL     1      27.545  -2.812  27.709  1.00  0.00           C\nATOM     12  C   UNL     1      28.674  -2.853  26.891  1.00  0.00           C\nATOM     13  C   UNL     1      29.651  -1.841  26.937  1.00  0.00           C\nATOM     14  C   UNL     1      31.232   0.241  29.123  1.00  0.00           C\nATOM     15  O   UNL     1      30.479   0.159  27.917  1.00  0.00           O\nATOM     16  C   UNL     1      33.352  -3.418  23.338  1.00  0.00           C\nATOM     17  O   UNL     1      34.280  -3.990  23.882  1.00  0.00           O\nATOM     18  C   UNL     1      33.065  -3.349  21.926  1.00  0.00           C\nATOM     19  C   UNL     1      31.953  -3.650  21.157  1.00  0.00           C\nATOM     20  C   UNL     1      32.296  -3.363  19.810  1.00  0.00           C\nATOM     21  C   UNL     1      33.590  -2.905  19.834  1.00  0.00           C\nATOM     22  O   UNL     1      34.061  -2.893  21.105  1.00  0.00           O\nEND\n"
+    }
+  ],
+  "files": {
+    "receptor_clean_pdb": "benchmarks/3ERT/receptor_clean.pdb",
+    "crystal_ligand_pdb": "benchmarks/3ERT/crystal_ligand.pdb"
+  }
+}

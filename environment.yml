@@ -1,0 +1,17 @@
+name: ancore
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - rdkit>=2023.09
+  - openmm>=8.1
+  - pdbfixer>=1.9
+  - autodock-vina>=1.2
+  - openbabel>=3.1
+  - numpy>=1.26
+  - scipy>=1.11
+  - matplotlib>=3.8
+  - pip
+  - pip:
+      - meeko>=0.5.0
