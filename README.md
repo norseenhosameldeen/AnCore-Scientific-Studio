@@ -32,14 +32,14 @@
 
 ## Five-Target Benchmark Summary (50 Screened Complexes)
 
-| PDB ID | Target Receptor | Co-Crystal Ligand | Stage 2 Redock RMSD | Stage 4 Static AUC ($\text{EF}_{20\%}$) | Stage 5 Top Lead $T_{\text{IFP}}$ | Stage 6 Decoys Rejected | Post-Relaxation ROC-AUC ($\text{EF}_{20\%}$) |
+| PDB ID | Target Receptor | Co-Crystal Ligand | Stage 2 Redock RMSD | Stage 4 Static AUC (EF<sub>20%</sub>) | Stage 5 Top Lead T<sub>IFP</sub> | Stage 6 Decoys Rejected | Post-Relaxation ROC-AUC (EF<sub>20%</sub>) |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **1IEP** | ABL1 Tyrosine Kinase | Imatinib (`STI`) | $0.354\text{ \AA}$ | $0.800$ ($2.00\times$) | $0.789$ (Nilotinib) | $5/5$ ($100\%$) | **$1.000$ ($2.00\times$)** |
-| **3ERT** | Estrogen Receptor $\alpha$ | 4-Hydroxytamoxifen (`OHT`) | $0.412\text{ \AA}$ | $1.000$ ($2.00\times$) | $0.409$ (Bazedoxifene) | $5/5$ ($100\%$) | **$1.000$ ($2.00\times$)** |
-| **1UYG** | HSP90$\alpha$ Chaperone | Purine Inhibitor (`PU2`) | $0.485\text{ \AA}$ | $0.680$ ($2.00\times$) | $0.500$ (Luminespib) | $5/5$ ($100\%$) | **$1.000$ ($2.00\times$)** |
-| **1M17** | EGFR Tyrosine Kinase | Erlotinib (`AQ4`) | $0.528\text{ \AA}$ | $0.800$ ($2.00\times$) | $0.250$ (Lapatinib) | $5/5$ ($100\%$) | **$1.000$ ($2.00\times$)** |
-| **1STP** | Streptavidin ($\beta$-Barrel) | D-Biotin (`BTN`) | $0.318\text{ \AA}$ | $0.360$ ($1.00\times$) | $0.733$ (D-Biotin) | $5/5$ ($100\%$) | **$1.000$ ($2.00\times$, Rescued #1)** |
-| **Suite** | **5-Target Mean (50 Complexes)** | **5 Crystal References** | **$0.419\text{ \AA}$ (100% Pass)** | **$0.728$ ($1.80\times$)** | **$0.536$** | **$25/25$ ($100\%$)** | **$1.000$ ($2.00\times$, 100% Top-1)** |
+| *1IEP* | ABL1 Tyrosine Kinase | Imatinib (STI) | 0.354 Å | 0.800 (2.00×) | 0.789 (Nilotinib) | 5/5 (100%) | *1.000 (2.00×)* |
+| *3ERT* | Estrogen Receptor α | 4-Hydroxytamoxifen (OHT) | 0.412 Å | 1.000 (2.00×) | 0.409 (Bazedoxifene) | 5/5 (100%) | *1.000 (2.00×)* |
+| *1UYG* | HSP90α Chaperone | Purine Inhibitor (PU2) | 0.485 Å | 0.680 (2.00×) | 0.500 (Luminespib) | 5/5 (100%) | *1.000 (2.00×)* |
+| *1M17* | EGFR Tyrosine Kinase | Erlotinib (AQ4) | 0.528 Å | 0.800 (2.00×) | 0.250 (Lapatinib) | 5/5 (100%) | *1.000 (2.00×)* |
+| *1STP* | Streptavidin (β-Barrel) | D-Biotin (BTN) | 0.318 Å | 0.360 (1.00×) | 0.733 (D-Biotin) | 5/5 (100%) | *1.000 (2.00×, Rescued #1)* |
+| *Suite* | *5-Target Mean (50 Complexes)* | *5 Crystal References* | *0.419 Å (100% Pass)* | *0.728 (1.80×)* | *0.536* | *25/25 (100%)* | *1.000 (2.00×, 100% Top-1)* |
 
 ![Stage 6 300 K Langevin Relaxation Trajectories](docs/figures/fig5_md_triage_trajectories.png)
 
