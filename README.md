@@ -1,136 +1,108 @@
-# AnCore Scientific Studio
+# AnCore Scientific Studio (v1.2.0)
 
-[![Platform](https://img.shields.io/badge/Platform-macOS%20(Apple%20Silicon%20%26%20Intel)-0D7377?style=flat-square&logo=apple)](https://github.com/)
-[![Architecture](https://img.shields.io/badge/Architecture-Tauri%201.6%20(Rust)%20%2B%20Python%203.11-1B3A5C?style=flat-square&logo=rust)](https://tauri.app/)
-[![Pipeline](https://img.shields.io/badge/Pipeline-6--Stage%20SBVS%20%2B%20300%20K%20Langevin%20Relaxation-059669?style=flat-square)]()
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)](LICENSE)
+**A Six-Stage Structure-Based Virtual Screening Workbench Integrating Two-Phase Redocking, Reciprocal Rank Fusion Consensus Scoring, and Three-Zone 300 K Langevin Dynamics Relaxation**
 
-**AnCore Scientific Studio** is a standalone native macOS chemoinformatics and structure-based virtual screening (SBVS) workbench distributed as a compiled Rust/Tauri application (`AnCore Studio.dmg`). It couples a hardware-accelerated `WKWebView` + `3Dmol.js` WebGL viewport to a modular six-stage Python scientific engine supporting both **Step-by-Step Interactive Mode** and **One-Shot Batch Execution**, live RCSB PDB fetching, local `.pdb` import, and multi-molecule `.sdf`/`.mol` ligand library ingestion.
+**Authors:** Norseen H. Abdelhakim and Ahmed M. Senary  
+**Affiliation:** Department of Medicinal Chemistry, Faculty of Pharmacy, Galala University, New Galala 43713, Egypt  
+**Repository:** [github.com/norseenhosameldeen/AnCore-Scientific-Studio](https://github.com/norseenhosameldeen/AnCore-Scientific-Studio)  
+**Preprint DOI:** [10.26434/chemrxiv.15012010/v1](https://www.google.com/search?q=https://doi.org/10.26434/chemrxiv.15012010/v1)  
+**License:** MIT License
 
-![AnCore Architecture and 6-Stage Pipeline](docs/figures/fig1_architecture.png)
+## Overview
 
----
+**AnCore Scientific Studio (v1.2.0)** is a native macOS desktop workbench and command-line chemoinformatics pipeline for reproducible, multi-ligand structure-based virtual screening (SBVS) and physics-based post-docking pose validation.
 
-## Key Scientific & Architectural Features
+Desktop virtual screening tools frequently encounter two practical bottlenecks:
+1. **Graphical IPC Serialization Bottleneck:** Python-wrapped webview shells (`pywebview` / Electron bridges) serialize molecular coordinates as JSON strings over inter-process pipes, failing above a ~2 MB payload ceiling when rendering full protein receptors alongside multi-pose ligand ensembles or molecular dynamics (MD) trajectories.
+2. **Static Docking False Positives:** Stopping a virtual screen at a single static docking score ignores thermal motion at 300 K, desolvation penalties, and conformational entropy, allowing rigid decoys with opportunistic surface contacts to outrank genuine bioactive inhibitors.
 
-1. **Three-Layer Native macOS Architecture (Tauri Rust + `WKWebView` + Python Sidecar)**
-   - Eliminates Python GUI event-loop freezes and the 2 MB IPC string-serialization ceiling of legacy webviews by reading stage manifests (`stage1_manifest.json`–`stage6_manifest.json`) and 3D coordinate blocks directly via native Rust filesystem IPC (`src-tauri/src/main.rs`).
-2. **Stage 1 — Automated Receptor Curation & 5.0 Å Cavity Mapping (`stage1_target_prep.py`)**
-   - Isolates the primary polypeptide chain, reconstructs missing heavy atoms, assigns physiological protonation states at pH 7.4 (`PDBFixer` / `OpenMM` AMBER14), and computes the 5.0 Å Euclidean active-site bounding box.
-3. **Stage 2 — Two-Phase Co-Crystal Redocking Quality-Control Gate (`stage2_redock_gate.py`)**
-   - Combines **Phase A** local Broyden–Fletcher–Goldfarb–Shanno (BFGS) crystallographic basin relaxation with **Phase B** focused-box (3.0 Å padding, exhaustiveness = 16) Monte Carlo sampling, enforcing heavy-atom $\text{RMSD} \le 2.0\text{ \AA}$ prior to virtual screening.
-4. **Stage 3 — Multi-Molecule `.SDF` & SMILES Conformer Standardization (`stage3_ligand_prep.py`)**
-   - Parses multi-record `.sdf`/`.mol` files and SMILES strings, enumerates pH 7.4 protomers, embeds 3D conformers via RDKit `ETKDGv3`, relaxes structures with `MMFF94s`, and computes Lipinski and Bickerton `QED` descriptors.
-5. **Stage 4 — Multi-Scoring Consensus Virtual Screening (`stage4_screening.py`)**
-   - Evaluates candidate ligands across three orthogonal empirical scoring potentials (**AutoDock Vina**, **Vinardo**, and **AutoDock4**) and aggregates rankings via **Reciprocal Rank Fusion ($\text{RRF}, k = 10$)** and mean $Z$-score normalization.
-6. **Stage 5 — 3D Non-Covalent Interaction Fingerprinting (`stage5_interactions.py`)**
-   - Detects 3D hydrogen bonds ($\le 3.5\text{ \AA}$), salt bridges ($\le 4.2\text{ \AA}$), aromatic $\pi$-stacking ($\le 4.3\text{ \AA}$), halogen bonds ($\le 3.9\text{ \AA}$), and hydrophobic contacts ($\le 4.0\text{ \AA}$), computing native hotspot Jaccard/Tanimoto similarity ($T_{\text{IFP}}$).
-7. **Stage 6 — 300 K Langevin Dynamics Relaxation Triage (`stage6_md_triage.py`)**
-   - Subjects docked complexes to a 50-frame ($5.0\text{ ns}$ effective window) $300\text{ K}$ Langevin relaxation trajectory under a dual biophysical stability gate ($\langle\text{RMSD}\rangle \le 2.0\text{ \AA}$ and hotspot hydrogen-bond occupancy $\text{HB}_{\text{occ}} \ge 65.0\%$), rejecting thermally unstable decoys and rescuing true biological hits.
+AnCore v1.2.0 resolves both bottlenecks by decoupling a compiled [Rust](https://www.rust-lang.org/) and [Tauri](https://tauri.app/) desktop backend (`ancore-tauri/src-tauri/`) with a hardware-accelerated native macOS `WKWebView` / [3Dmol.js](https://3dmol.csb.pitt.edu/) WebGL viewport (`ancore-tauri/ui/index.html`) from a six-stage Python biophysical engine (`src/`) powered by [PDBFixer](https://github.com/openmm/pdbfixer), [OpenMM](https://openmm.org/), [RDKit](https://www.rdkit.org/), [OpenBabel](https://openbabel.org/), [AutoDock Vina](https://vina.scripps.edu/), and a turnkey Mode C 100-ns explicit-solvent [GROMACS](https://www.gromacs.org/) / OpenMM package exporter.
 
----
+## Key Features in v1.2.0
 
-## Five-Target Benchmark Summary (50 Screened Complexes)
+* **Zero-Limit Native Rust/Tauri & WebGL Architecture:** Streams receptor structures, multi-pose docking ensembles, and MD trajectory frames directly over an asynchronous localhost HTTP loopback server with zero string-serialization freezes.
+* **Stage 1 — Receptor Curation, AMBER14/GBn2 Minimization & Steric Clash Gate:** Automates hetero-atom stripping, [PDBFixer](https://github.com/openmm/pdbfixer) heavy-atom reconstruction, physiological pH 7.4 protonation, 200-step L-BFGS relaxation in [OpenMM](https://openmm.org/) (`amber14-all.xml` + `implicit/gbn2.xml`), non-bonded steric clash gating ($\min d_{ij} \ge 2.10\text{ \AA}$), and 5.0 Å co-crystal pocket bounding-box mapping.
+* **Stage 2 — Two-Phase Co-Crystal Redocking Gate ($\text{RMSD} \le 2.00\text{ \AA}$):** Combines Phase A local BFGS energy refinement (`--local_only`) with Phase B focused-box ($\delta_{\text{pad}} = 3.0\text{ \AA}$, `exhaustiveness = 16`) global Monte Carlo search, rescuing high-rotatable-bond kinase ligands from unfocused search failures before permitting library screening.
+* **Stage 3 — 3D Ligand Library Embedding & Physicochemical Profiling:** Performs pH 7.4 protomer normalization, [RDKit](https://www.rdkit.org/) ETKDGv3 3D distance-geometry embedding, 500-iteration MMFF94s force-field relaxation, Gasteiger-Marsili partial charge assignment, and Lipinski/QED profiling.
+* **Stage 4 — Tri-Scoring Consensus Virtual Screening (RRF + Mean Z-Score):** Evaluates every ligand across three distinct scoring potentials—[AutoDock Vina](https://vina.scripps.edu/) (`Vina`), `Vinardo` (local BFGS rescoring), and `AutoDock4` (`AD4`)—and fuses rankings via Reciprocal Rank Fusion ($\text{RRF}_{k=10}$) and standardized mean Z-score ($\bar{Z}$).
+* **Stage 5 — 3D Protein-Ligand Interaction Fingerprinting (IFP) & 2D Pharmacophore Maps:** Computes 3D geometric contacts across hydrogen bonds ($\le 3.5\text{ \AA}$), salt bridges ($\le 4.2\text{ \AA}$), $\pi$-stacking ($\le 4.3\text{ \AA}$), halogen bonds ($\le 3.9\text{ \AA}$), and hydrophobic contacts ($\le 4.0\text{ \AA}$), alongside reference Tanimoto similarity ($T_{\text{IFP}}$) and 300-DPI 2D interaction diagrams.
+* **Stage 6 — Three-Zone 300 K OpenMM Langevin Relaxation & Mode C 100-ns Exporter:** Subjects top consensus complexes to intact-topology three-zone 300 K Langevin dynamics ($\gamma = 18.0\text{ ps}^{-1}$, $\Delta t = 2.0\text{ fs}$, 5.0 ns benchmark window) to eject thermally unstable false-positive decoys, and exports ready-to-run 100-ns ($50,000,000$-step) explicit-solvent OpenMM XML and [GROMACS](https://www.gromacs.org/) 2024 simulation bundles (`Mode C`).
 
-| PDB ID | Target Receptor | Co-Crystal Ligand | Stage 2 Redock RMSD | Stage 4 Static AUC (EF<sub>20%</sub>) | Stage 5 Top Lead T<sub>IFP</sub> | Stage 6 Decoys Rejected | Post-Relaxation ROC-AUC (EF<sub>20%</sub>) |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| *1IEP* | ABL1 Tyrosine Kinase | Imatinib (STI) | 0.354 Å | 0.800 (2.00×) | 0.789 (Nilotinib) | 5/5 (100%) | *1.000 (2.00×)* |
-| *3ERT* | Estrogen Receptor α | 4-Hydroxytamoxifen (OHT) | 0.412 Å | 1.000 (2.00×) | 0.409 (Bazedoxifene) | 5/5 (100%) | *1.000 (2.00×)* |
-| *1UYG* | HSP90α Chaperone | Purine Inhibitor (PU2) | 0.485 Å | 0.680 (2.00×) | 0.500 (Luminespib) | 5/5 (100%) | *1.000 (2.00×)* |
-| *1M17* | EGFR Tyrosine Kinase | Erlotinib (AQ4) | 0.528 Å | 0.800 (2.00×) | 0.250 (Lapatinib) | 5/5 (100%) | *1.000 (2.00×)* |
-| *1STP* | Streptavidin (β-Barrel) | D-Biotin (BTN) | 0.318 Å | 0.360 (1.00×) | 0.733 (D-Biotin) | 5/5 (100%) | *1.000 (2.00×, Rescued #1)* |
-| *Suite* | *5-Target Mean (50 Complexes)* | *5 Crystal References* | *0.419 Å (100% Pass)* | *0.728 (1.80×)* | *0.536* | *25/25 (100%)* | *1.000 (2.00×, 100% Top-1)* |
+## Six-Stage Pipeline Architecture
 
-![Stage 6 300 K Langevin Relaxation Trajectories](docs/figures/fig5_md_triage_trajectories.png)
+| Stage | Module Script | Core Scientific Engines | Physical Quality Gate / Output Metrics |
+| :--- | :--- | :--- | :--- |
+| **Stage 1** | `src/stage1_target_prep.py` | [PDBFixer](https://github.com/openmm/pdbfixer), [OpenMM](https://openmm.org/) (`amber14-all` + `gbn2`), [OpenBabel](https://openbabel.org/) | pH 7.4 protonation; 200-step L-BFGS minimization; steric clash gate $\min d_{ij} \ge 2.10\text{ \AA}$; 5.0 Å pocket box |
+| **Stage 2** | `src/stage2_redock_gate.py` | [AutoDock Vina](https://vina.scripps.edu/) 1.2, SciPy Hungarian Kabsch RMSD | Phase A local BFGS + Phase B focused MC ($\delta_{\text{pad}} = 3.0\text{ \AA}$, `exhaustiveness = 16`); gate $\text{RMSD} \le 2.00\text{ \AA}$ |
+| **Stage 3** | `src/stage3_ligand_prep.py` | [RDKit](https://www.rdkit.org/) (`ETKDGv3`, `MMFF94s`), [OpenBabel](https://openbabel.org/) | `.SDF`/`.MOL`/SMILES import; 500-iter MMFF94s relaxation; MW, cLogP, TPSA, HBD, HBA, $N_{\text{rot}}$, QED |
+| **Stage 4** | `src/stage4_screening.py` | [AutoDock Vina](https://vina.scripps.edu/) (`Vina`, `Vinardo`, `AD4`) | Discovery box ($\delta_{\text{pad}} = 4.0\text{ \AA}$); $\text{RRF}_{k=10}$ consensus score; mean Z-score $\bar{Z}$; $\text{ROC-AUC}$ & $\text{EF}_{20\%}$ |
+| **Stage 5** | `src/stage5_interactions.py` | AnCore 3D Contact Engine, Matplotlib (300 DPI) | 3D contacts (HB, SB, $\pi$, Hal, Hyd); co-crystal Tanimoto $T_{\text{IFP}}$; 2D pharmacophore maps |
+| **Stage 6** | `src/stage6_md_triage.py` | [OpenMM](https://openmm.org/) 8 (`LangevinMiddleIntegrator`), [GROMACS](https://www.gromacs.org/) 2024 | Three-zone 300 K Langevin MD ($\gamma = 18.0\text{ ps}^{-1}$); `STABLE` / `MODERATE` / `UNSTABLE` triage; Mode C 100-ns export |
 
----
+## Multi-Target Benchmark Performance (v1.2.0)
+
+AnCore v1.2.0 is validated across five diverse crystallographic benchmark targets from the [RCSB Protein Data Bank](https://www.rcsb.org/) spanning 50 benchmark ligands (25 known high-affinity actives and 25 property-matched ZINC decoys) plus 5 co-crystal reference complexes (`workspaces/`):
+
+| PDB Target | Target Class & Co-Crystal Ligand | Stage 1 Clash Gate ($\min d_{ij}$) | Stage 2 Redocking $\text{RMSD}_{\text{gate}}$ | Stage 4 Static Consensus $\text{ROC-AUC}$ | Stage 6 Post-MD $\text{ROC-AUC}$ | Stage 6 Post-MD Rank #1 Compound |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **[1IEP](https://www.rcsb.org/structure/1IEP)** | BCR-ABL1 Tyrosine Kinase (`STI`, Imatinib) | $2.608\text{ \AA}$ (PASS) | $0.712\text{ \AA}$ (PASS) | $0.680$ | **$0.800$** ($+0.120$) | Imatinib ($\langle\text{RMSD}\rangle = 1.622\text{ \AA}$, `STABLE`) |
+| **[3ERT](https://www.rcsb.org/structure/3ERT)** | Estrogen Receptor $\alpha$ (`OHT`, 4-OHT) | $2.267\text{ \AA}$ (PASS) | $1.373\text{ \AA}$ (PASS) | $1.000$ | **$1.000$** ($0.000$) | Raloxifene ($\langle\text{RMSD}\rangle = 1.482\text{ \AA}$, `STABLE`) |
+| **[1UYG](https://www.rcsb.org/structure/1UYG)** | HSP90$\alpha$ Chaperone (`PU2`, Purine) | $2.715\text{ \AA}$ (PASS) | $0.761\text{ \AA}$ (PASS) | $0.460$ | **$0.840$** ($+0.380$) | Geldanamycin ($\langle\text{RMSD}\rangle = 1.716\text{ \AA}$, `STABLE`) |
+| **[1M17](https://www.rcsb.org/structure/1M17)** | EGFR Tyrosine Kinase (`AQ4`, Erlotinib) | $2.730\text{ \AA}$ (PASS) | $1.234\text{ \AA}$ (PASS) | $0.760$ | **$0.960$** ($+0.200$) | Lapatinib ($\langle\text{RMSD}\rangle = 1.417\text{ \AA}$, `STABLE`) |
+| **[1STP](https://www.rcsb.org/structure/1STP)** | Streptavidin (`BTN`, D-Biotin) | $2.445\text{ \AA}$ (PASS) | $0.449\text{ \AA}$ (PASS) | $0.320$ | **$1.000$** ($+0.680$) | D-Biotin ($\langle\text{RMSD}\rangle = 1.448\text{ \AA}$, `STABLE`) |
+| **Suite Mean** | **5 Target Classes (50 Ligands)** | **$2.553 \pm 0.194\text{ \AA}$** | **$0.906 \pm 0.388\text{ \AA}$** | **$0.644 \pm 0.264$** | **$0.920 \pm 0.094$** | **100% True Active at Rank #1 (5/5)** |
 
 ## Repository Structure
 
-```text
-AnCore-Scientific-Studio/
-├── README.md                          # Project documentation, benchmark summary & setup guide
-├── LICENSE                            # Permissive Apache-2.0 Open-Source License
-├── .gitignore                         # Excludes Rust target/, node_modules/, __pycache__/
-├── environment.yml                    # Conda environment (rdkit, openmm, pdbfixer, autodock-vina)
-├── requirements.txt                   # Python package dependencies
-├── src/                               # Modular 6-Stage Python Scientific Engine
-│   ├── ancore_custom_runner.py        # Step-by-Step & One-Shot 6-Stage Runner + Multi-Molecule .SDF Parser
-│   ├── stage1_target_prep.py          # Stage 1: Receptor Curation, pH 7.4 Protonation & 5.0 Å Pocket Box
-│   ├── stage2_redock_gate.py          # Stage 2: Two-Phase BFGS + Focused-Box Redocking Gate (<= 2.0 Å)
-│   ├── stage3_ligand_prep.py          # Stage 3: Multi-Molecule .SDF / SMILES Prep, ETKDGv3 & MMFF94s
-│   ├── stage4_screening.py            # Stage 4: Tri-Scoring Consensus (Vina, Vinardo, AD4) & RRF (k=10)
-│   ├── stage5_interactions.py         # Stage 5: 3D Non-Covalent Interaction Fingerprinting & T_IFP
-│   └── stage6_md_triage.py            # Stage 6: 300 K Langevin Dynamics Relaxation Triage & Rescoring
-├── ancore-tauri/                      # Native macOS Rust/Tauri Desktop Application
-│   ├── build_tauri_dmg.sh             # One-command macOS .app / .dmg compiler script
-│   ├── ui/
-│   │   └── index.html                 # Native WKWebView UI + 3Dmol.js WebGL Viewport
-│   └── src-tauri/
-│       ├── Cargo.toml                 # Rust crate manifest
-│       ├── build.rs                   # Tauri build hook
-│       ├── tauri.conf.json            # macOS window & bundle configuration
-│       ├── icons/                     # macOS application iconset
-│       └── src/
-│           └── main.rs                # Native Rust IPC backend
-├── benchmarks/                        # Pre-computed 5-Target Validation Suite (1IEP, 3ERT, 1UYG, 1M17, 1STP)
-├── scripts/                           # Reproducibility & Verification Scripts
-│   ├── audit_benchmark_data.py        # Independent 4-part mathematical & coordinate audit script
-│   └── organize_for_github.py         # Repository organizer & path sanitizer
-└── docs/                              # Manuscript & 600-DPI Publication Figures
-    ├── figures/                       # fig1_architecture.png .. fig6_streptavidin_rescue.png
-    └── paper/                         # LaTeX, PDF, and Word Compendium
-```
+* `src/` — Six-stage Python biophysical pipeline and verification suite
+  * `src/stage1_target_prep.py` — Receptor curation, PDBFixer repair, OpenMM AMBER14/GBn2 minimization, steric clash gate, and 5.0 Å pocket geometry
+  * `src/stage2_redock_gate.py` — Two-phase co-crystal redocking gate (Phase A local BFGS + Phase B focused Monte Carlo) and symmetry-corrected Kabsch RMSD
+  * `src/stage3_ligand_prep.py` — Multi-format ligand ingestion (`.SDF`/`.MOL`/SMILES), RDKit ETKDGv3 3D embedding, MMFF94s relaxation, and ADMET descriptors
+  * `src/stage4_screening.py` — Tri-scoring virtual screening (`Vina`, `Vinardo`, `AD4`), Reciprocal Rank Fusion ($\text{RRF}_{k=10}$), and Z-score standardization
+  * `src/stage5_interactions.py` — 3D protein-ligand interaction fingerprinting ($T_{\text{IFP}}$) and 300-DPI 2D pharmacophore diagrams
+  * `src/stage6_md_triage.py` — Three-zone 300 K OpenMM Langevin relaxation and Mode C 100-ns explicit-solvent OpenMM/GROMACS package builder
+  * `src/ancore_custom_runner.py` — Unified CLI/GUI execution runner for custom PDB targets and custom `.SDF` libraries
+  * `src/verify_q1_compliance.py` — Automated mathematical and physical gate compliance auditor
+* `ancore-tauri/` (and `src-tauri/`, `ui/`) — Native macOS desktop application shell
+  * `ancore-tauri/src-tauri/` — Rust backend (`main.rs`, `Cargo.toml`, `tauri.conf.json`) managing asynchronous HTTP asset streaming and subprocess orchestration
+  * `ancore-tauri/ui/index.html` — Hardware-accelerated `WKWebView` + [3Dmol.js](https://3dmol.csb.pitt.edu/) 3D molecular viewport and six-stage interactive control panel
+  * `ancore-tauri/build_tauri_dmg.sh` — Native macOS `.app` and `.dmg` bundle build script for Apple Silicon (`aarch64-apple-darwin`)
+* `workspaces/` — Complete machine-readable benchmark artifacts across `1IEP`, `3ERT`, `1UYG`, `1M17`, and `1STP`
+  * Includes per-target minimized receptors, redocked poses, 50-ligand consensus scorecards, 3D IFP contact tables, 300 K Langevin trajectory logs, Mode C 100-ns OpenMM/GROMACS simulation packages, `stage1_suite_summary.json`–`stage6_suite_summary.json`, and `q1_compliance_audit.json`
 
----
+## Installation & Quick Start
 
-## Quick Start & Installation
-
-### 1. Create the Scientific Python Environment (Conda)
+### 1. Conda Environment Setup (macOS Apple Silicon / Linux)
 
 ```bash
+git clone https://github.com/norseenhosameldeen/AnCore-Scientific-Studio.git
+cd AnCore-Scientific-Studio
+
+# Create and activate the Conda environment
 conda env create -f environment.yml
 conda activate ancore
 ```
 
-### 2. Verify All Benchmark Results & Equations (One Command)
-
-To independently audit all 5 benchmark targets (`1IEP`, `3ERT`, `1UYG`, `1M17`, `1STP`), 3D `.pdb` pocket geometries, redocking RMSDs, $\text{RRF}$ consensus $\text{ROC-AUC}$ scores, $T_{\text{IFP}}$ similarities, and 50-frame $300\text{ K}$ Langevin relaxation trajectories:
+### 2. Running the Six-Stage Pipeline via CLI
 
 ```bash
-python3 scripts/audit_benchmark_data.py
+# Run custom target + custom SDF library through all 6 stages
+python3 src/ancore_custom_runner.py --pdb 1IEP --workspace workspaces/1IEP
+
+# Verify mathematical and physical gate compliance across all 5 benchmark targets
+python3 src/verify_q1_compliance.py
 ```
 
-### 3. Run the 6-Stage Pipeline Step-by-Step via CLI
-
-```bash
-# Execute Step 1 (Target Curation & 5.0 Å Box) on a custom RCSB structure (e.g., 4WKQ)
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --target-name "EGFR Kinase" --ligand-code IRE --stage 1 --reset-downstream 1
-
-# Advance through Stages 2 -> 6 step-by-step
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --stage 2
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --stage 3
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --stage 4
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --stage 5
-python3 src/ancore_custom_runner.py --project-dir . --pdb-id 4WKQ --stage 6
-```
-
-### 4. Build the Native macOS Application (`AnCore Studio.dmg`)
-
-Prerequisite: Install [Rust (`rustup`)](https://rustup.rs/) and the Tauri CLI (`cargo install tauri-cli`).
+### 3. Building & Launching the Native macOS Tauri Studio GUI
 
 ```bash
 cd ancore-tauri
+chmod +x build_tauri_dmg.sh
 ./build_tauri_dmg.sh
 ```
 
----
+## Citation
 
-## Authors & Affiliation
+If you use **AnCore Scientific Studio** in your research, please cite:
 
-* **Norseen H. Abdelhakim** and **Ahmed M. Senary**
-* Faculty of Pharmacy, Galala University, New Galala City, Suez, Egypt
-
-## License
-
-Distributed under the permissive **Apache License 2.0**. See [`LICENSE`](LICENSE) for full details.
+> Abdelhakim, N. H., & Senary, A. M. (2026). *AnCore: A Six-Stage Structure-Based Virtual Screening Pipeline Integrating Two-Phase Redocking, Reciprocal Rank Fusion Consensus Scoring, and Three-Zone 300 K Langevin Dynamics Relaxation*. ChemRxiv. https://www.google.com/search?q=https://doi.org/10.26434/chemrxiv.15012010/v1
