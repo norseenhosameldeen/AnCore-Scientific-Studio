@@ -1,0 +1,72 @@
+REMARK VINA RESULT:    -6.947      4.558      6.901
+REMARK INTER + INTRA:         -11.686
+REMARK INTER:                 -10.837
+REMARK INTRA:                  -0.849
+REMARK UNBOUND:                -0.677
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  10 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C2_2  and  C3_3
+REMARK    2  A    between atoms: C5_5  and  N1_6
+REMARK    3  A    between atoms: C9_10  and  O1_11
+REMARK    4  A    between atoms: O1_11  and  C10_12
+REMARK    5  A    between atoms: C10_12  and  C11_13
+REMARK    6  A    between atoms: C11_13  and  O2_14
+REMARK    7  A    between atoms: C13_16  and  O3_17
+REMARK    8  A    between atoms: O3_17  and  C14_18
+REMARK    9  A    between atoms: C14_18  and  C15_19
+REMARK   10  A    between atoms: C15_19  and  O4_20
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  N1  AQ4 L   1      24.570   0.696  53.036  0.00  0.00    +0.000 NA
+ATOM      2  C6  AQ4 L   1      23.513  -0.080  53.665  0.00  0.00    +0.000 A 
+ATOM      3  C7  AQ4 L   1      22.178  -0.004  53.199  0.00  0.00    +0.000 A 
+ATOM      4  C8  AQ4 L   1      21.851   0.803  52.104  0.00  0.00    +0.000 A 
+ATOM      5  C9  AQ4 L   1      20.528   0.870  51.648  0.00  0.00    +0.000 A 
+ATOM      6  C13 AQ4 L   1      19.509   0.107  52.292  0.00  0.00    +0.000 A 
+ATOM      7  C17 AQ4 L   1      19.844  -0.699  53.380  0.00  0.00    +0.000 A 
+ATOM      8  C18 AQ4 L   1      21.163  -0.769  53.831  0.00  0.00    +0.000 A 
+ATOM      9  N2  AQ4 L   1      21.495  -1.608  54.956  0.00  0.00    +0.000 NA
+ATOM     10  C19 AQ4 L   1      22.830  -1.672  55.409  0.00  0.00    +0.000 A 
+ATOM     11  N3  AQ4 L   1      23.834  -0.907  54.766  0.00  0.00    +0.000 NA
+ENDROOT
+BRANCH   1  14
+ATOM     12  C3  AQ4 L   1      28.154  -0.390  53.302  0.00  0.00    +0.000 A 
+ATOM     13  C4  AQ4 L   1      26.764  -0.421  53.137  0.00  0.00    +0.000 A 
+ATOM     14  C5  AQ4 L   1      26.018   0.766  53.212  0.00  0.00    +0.000 A 
+ATOM     15  C20 AQ4 L   1      26.670   1.998  53.454  0.00  0.00    +0.000 A 
+ATOM     16  C21 AQ4 L   1      28.069   2.031  53.620  0.00  0.00    +0.000 A 
+ATOM     17  C22 AQ4 L   1      28.816   0.837  53.544  0.00  0.00    +0.000 A 
+BRANCH  12  19
+ATOM     18  C1  AQ4 L   1      29.460  -2.642  53.149  0.00  0.00    +0.000 C 
+ATOM     19  C2  AQ4 L   1      28.869  -1.598  53.222  0.00  0.00    +0.000 C 
+ENDBRANCH  12  19
+ENDBRANCH   1  14
+BRANCH   5  20
+ATOM     20  O1  AQ4 L   1      20.198   1.735  50.478  0.00  0.00    +0.000 OA
+BRANCH  20  21
+ATOM     21  C10 AQ4 L   1      20.594   3.110  50.722  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 AQ4 L   1      19.334   3.979  50.821  0.00  0.00    +0.000 C 
+BRANCH  22  23
+ATOM     23  O2  AQ4 L   1      18.490   3.492  51.890  0.00  0.00    +0.000 OA
+ATOM     24  C12 AQ4 L   1      16.976   3.726  51.693  0.00  0.00    +0.000 C 
+ENDBRANCH  22  23
+ENDBRANCH  21  22
+ENDBRANCH  20  21
+ENDBRANCH   5  20
+BRANCH   6  25
+ATOM     25  O3  AQ4 L   1      18.067   0.146  51.827  0.00  0.00    +0.000 OA
+BRANCH  25  26
+ATOM     26  C14 AQ4 L   1      17.193  -0.641  52.700  0.00  0.00    +0.000 C 
+BRANCH  26  27
+ATOM     27  C15 AQ4 L   1      15.716  -0.500  52.306  0.00  0.00    +0.000 C 
+BRANCH  27  28
+ATOM     28  O4  AQ4 L   1      14.992   0.155  53.363  0.00  0.00    +0.000 OA
+ATOM     29  C16 AQ4 L   1      14.234   1.410  52.907  0.00  0.00    +0.000 C 
+ENDBRANCH  27  28
+ENDBRANCH  26  27
+ENDBRANCH  25  26
+ENDBRANCH   6  25
+TORSDOF 10

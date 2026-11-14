@@ -1,0 +1,11 @@
+ligand_id,name,role,mw,clogp,tpsa_A2,hbd_hba,rot_bonds,qed,mmff94s_energy_kcal_mol,lipinski_pass,experimental_potency
+ABL_ACT_01,Imatinib (ABL_ACT_01),ACTIVE,493.6,4.59,86.3,2/7,7,0.389,78.56,True,IC50 = 13 nM
+ABL_ACT_02,Nilotinib (ABL_ACT_02),ACTIVE,529.5,6.36,97.6,2/6,6,0.266,32.7,False,IC50 = 15 nM
+ABL_ACT_03,Ponatinib (ABL_ACT_03),ACTIVE,532.6,4.46,65.8,1/5,4,0.394,154.99,True,IC50 = 0.4 nM
+ABL_ACT_04,Dasatinib (ABL_ACT_04),ACTIVE,488.0,3.31,106.5,3/9,7,0.466,34.02,True,IC50 = 0.8 nM
+ABL_ACT_05,Bosutinib (ABL_ACT_05),ACTIVE,530.5,5.19,82.9,1/8,9,0.379,206.98,False,IC50 = 1.2 nM
+ABL_DEC_01,ZINC_Decoy_A1,DECOY,410.5,3.0,66.9,0/4,4,0.663,62.62,True,Decoy (>10 uM)
+ABL_DEC_02,ZINC_Decoy_A2,DECOY,376.5,4.02,62.6,1/3,4,0.748,30.55,True,Decoy (>10 uM)
+ABL_DEC_03,ZINC_Decoy_A3,DECOY,383.5,3.28,54.9,0/6,4,0.692,89.53,True,Decoy (>10 uM)
+ABL_DEC_04,ZINC_Decoy_A4,DECOY,422.5,1.85,101.5,1/7,6,0.56,-1.88,True,Decoy (>10 uM)
+ABL_DEC_05,ZINC_Decoy_A5,DECOY,370.4,2.08,59.1,0/4,3,0.83,91.44,True,Decoy (>10 uM)

@@ -1,0 +1,352 @@
+MODEL 1
+REMARK VINA RESULT:    -9.277      0.000      0.000
+REMARK INTER + INTRA:         -16.703
+REMARK INTER:                 -14.158
+REMARK INTRA:                  -2.545
+REMARK UNBOUND:                -2.545
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  9 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_2  and  C8_3
+REMARK    2  A    between atoms: C8_3  and  C11_4
+REMARK    3  A    between atoms: C8_3  and  C7_10
+REMARK    4  A    between atoms: C7_10  and  C1_11
+REMARK    5  A    between atoms: C7_10  and  C17_18
+REMARK    6  A    between atoms: C20_21  and  O20_22
+REMARK    7  A    between atoms: O20_22  and  C23_23
+REMARK    8  A    between atoms: C23_23  and  C24_24
+REMARK    9  A    between atoms: C24_24  and  N24_25
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C7  OHT L   1      30.845  -0.697  26.639  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C1  OHT L   1      29.461  -1.191  26.983  0.00  0.00    +0.000 A 
+ATOM      3  C2  OHT L   1      28.410  -1.224  26.014  0.00  0.00    +0.000 A 
+ATOM      4  C3  OHT L   1      27.120  -1.638  26.374  0.00  0.00    +0.000 A 
+ATOM      5  C4  OHT L   1      26.867  -2.024  27.704  0.00  0.00    +0.000 A 
+ATOM      6  O4  OHT L   1      25.600  -2.404  28.033  0.00  0.00    +0.000 OA
+ATOM      7  C5  OHT L   1      27.899  -1.998  28.669  0.00  0.00    +0.000 A 
+ATOM      8  C6  OHT L   1      29.170  -1.584  28.293  0.00  0.00    +0.000 A 
+ENDBRANCH   1   2
+BRANCH   1   9
+ATOM      9  C17 OHT L   1      31.559  -1.560  25.693  0.00  0.00    +0.000 A 
+ATOM     10  C18 OHT L   1      31.558  -1.301  24.325  0.00  0.00    +0.000 A 
+ATOM     11  C19 OHT L   1      32.238  -2.079  23.431  0.00  0.00    +0.000 A 
+ATOM     12  C20 OHT L   1      32.961  -3.169  23.888  0.00  0.00    +0.000 A 
+ATOM     13  C21 OHT L   1      32.982  -3.463  25.263  0.00  0.00    +0.000 A 
+ATOM     14  C22 OHT L   1      32.293  -2.668  26.136  0.00  0.00    +0.000 A 
+BRANCH  12  15
+ATOM     15  O20 OHT L   1      33.697  -3.976  23.068  0.00  0.00    +0.000 OA
+BRANCH  15  16
+ATOM     16  C23 OHT L   1      33.330  -4.122  21.700  0.00  0.00    +0.000 C 
+BRANCH  16  17
+ATOM     17  C24 OHT L   1      34.609  -4.099  20.908  0.00  0.00    +0.000 C 
+BRANCH  17  18
+ATOM     18  N24 OHT L   1      35.343  -2.869  21.032  0.00  0.00    +0.000 NA
+ATOM     19  C25 OHT L   1      36.787  -3.090  20.944  0.00  0.00    +0.000 C 
+ATOM     20  C26 OHT L   1      34.954  -1.954  19.953  0.00  0.00    +0.000 C 
+ENDBRANCH  17  18
+ENDBRANCH  16  17
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH   1   9
+BRANCH   1  21
+ATOM     21  C8  OHT L   1      31.400   0.435  27.163  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 OHT L   1      32.859   0.588  27.448  0.00  0.00    +0.000 A 
+ATOM     23  C16 OHT L   1      33.417   0.076  28.639  0.00  0.00    +0.000 A 
+ATOM     24  C15 OHT L   1      34.788   0.176  28.880  0.00  0.00    +0.000 A 
+ATOM     25  C14 OHT L   1      35.629   0.778  27.966  0.00  0.00    +0.000 A 
+ATOM     26  C13 OHT L   1      35.102   1.284  26.801  0.00  0.00    +0.000 A 
+ATOM     27  C12 OHT L   1      33.730   1.188  26.547  0.00  0.00    +0.000 A 
+ENDBRANCH  21  22
+BRANCH  21  29
+ATOM     28  C10 OHT L   1      30.358   1.796  28.991  0.00  0.00    +0.000 C 
+ATOM     29  C9  OHT L   1      30.582   1.662  27.510  0.00  0.00    +0.000 C 
+ENDBRANCH  21  29
+ENDBRANCH   1  21
+TORSDOF 9
+ENDMDL
+
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  9 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_2  and  C8_3
+REMARK    2  A    between atoms: C8_3  and  C11_4
+REMARK    3  A    between atoms: C8_3  and  C7_10
+REMARK    4  A    between atoms: C7_10  and  C1_11
+REMARK    5  A    between atoms: C7_10  and  C17_18
+REMARK    6  A    between atoms: C20_21  and  O20_22
+REMARK    7  A    between atoms: O20_22  and  C23_23
+REMARK    8  A    between atoms: C23_23  and  C24_24
+REMARK    9  A    between atoms: C24_24  and  N24_25
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C7  OHT L   1      30.885  -0.789  27.159  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C1  OHT L   1      29.380  -0.896  27.173  0.00  0.00    +0.000 A 
+ATOM      3  C2  OHT L   1      28.716  -2.160  27.258  0.00  0.00    +0.000 A 
+ATOM      4  C3  OHT L   1      27.316  -2.235  27.216  0.00  0.00    +0.000 A 
+ATOM      5  C4  OHT L   1      26.567  -1.050  27.091  0.00  0.00    +0.000 A 
+ATOM      6  O4  OHT L   1      25.209  -1.150  27.032  0.00  0.00    +0.000 OA
+ATOM      7  C5  OHT L   1      27.213   0.205  27.009  0.00  0.00    +0.000 A 
+ATOM      8  C6  OHT L   1      28.601   0.258  27.051  0.00  0.00    +0.000 A 
+ENDBRANCH   1   2
+BRANCH   1   9
+ATOM      9  C17 OHT L   1      31.518  -1.546  26.075  0.00  0.00    +0.000 A 
+ATOM     10  C18 OHT L   1      32.294  -2.675  26.328  0.00  0.00    +0.000 A 
+ATOM     11  C19 OHT L   1      32.871  -3.407  25.330  0.00  0.00    +0.000 A 
+ATOM     12  C20 OHT L   1      32.684  -3.027  24.010  0.00  0.00    +0.000 A 
+ATOM     13  C21 OHT L   1      31.910  -1.891  23.717  0.00  0.00    +0.000 A 
+ATOM     14  C22 OHT L   1      31.344  -1.176  24.734  0.00  0.00    +0.000 A 
+BRANCH  12  15
+ATOM     15  O20 OHT L   1      33.194  -3.723  22.952  0.00  0.00    +0.000 OA
+BRANCH  15  16
+ATOM     16  C23 OHT L   1      33.256  -3.115  21.665  0.00  0.00    +0.000 C 
+BRANCH  16  17
+ATOM     17  C24 OHT L   1      34.520  -3.612  21.017  0.00  0.00    +0.000 C 
+BRANCH  17  18
+ATOM     18  N24 OHT L   1      34.369  -4.876  20.351  0.00  0.00    +0.000 NA
+ATOM     19  C25 OHT L   1      34.137  -4.708  18.916  0.00  0.00    +0.000 C 
+ATOM     20  C26 OHT L   1      35.590  -5.672  20.526  0.00  0.00    +0.000 C 
+ENDBRANCH  17  18
+ENDBRANCH  16  17
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH   1   9
+BRANCH   1  21
+ATOM     21  C8  OHT L   1      31.605  -0.071  28.070  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 OHT L   1      33.039   0.308  27.882  0.00  0.00    +0.000 A 
+ATOM     23  C16 OHT L   1      33.446   1.040  26.747  0.00  0.00    +0.000 A 
+ATOM     24  C15 OHT L   1      34.776   1.435  26.597  0.00  0.00    +0.000 A 
+ATOM     25  C14 OHT L   1      35.724   1.117  27.550  0.00  0.00    +0.000 A 
+ATOM     26  C13 OHT L   1      35.345   0.403  28.661  0.00  0.00    +0.000 A 
+ATOM     27  C12 OHT L   1      34.014   0.003  28.824  0.00  0.00    +0.000 A 
+ENDBRANCH  21  22
+BRANCH  21  29
+ATOM     28  C10 OHT L   1      30.624   1.870  29.316  0.00  0.00    +0.000 C 
+ATOM     29  C9  OHT L   1      31.014   0.418  29.376  0.00  0.00    +0.000 C 
+ENDBRANCH  21  29
+ENDBRANCH   1  21
+TORSDOF 9
+
+MODEL 3
+REMARK VINA RESULT:    -8.345      1.903      5.023
+REMARK INTER + INTRA:         -15.280
+REMARK INTER:                 -13.068
+REMARK INTRA:                  -2.212
+REMARK UNBOUND:                -2.545
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  9 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_2  and  C8_3
+REMARK    2  A    between atoms: C8_3  and  C11_4
+REMARK    3  A    between atoms: C8_3  and  C7_10
+REMARK    4  A    between atoms: C7_10  and  C1_11
+REMARK    5  A    between atoms: C7_10  and  C17_18
+REMARK    6  A    between atoms: C20_21  and  O20_22
+REMARK    7  A    between atoms: O20_22  and  C23_23
+REMARK    8  A    between atoms: C23_23  and  C24_24
+REMARK    9  A    between atoms: C24_24  and  N24_25
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C7  OHT L   1      31.904  -0.850  27.035  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C1  OHT L   1      33.121  -0.016  27.353  0.00  0.00    +0.000 A 
+ATOM      3  C2  OHT L   1      33.487   1.116  26.559  0.00  0.00    +0.000 A 
+ATOM      4  C3  OHT L   1      34.652   1.842  26.844  0.00  0.00    +0.000 A 
+ATOM      5  C4  OHT L   1      35.462   1.445  27.925  0.00  0.00    +0.000 A 
+ATOM      6  O4  OHT L   1      36.599   2.155  28.170  0.00  0.00    +0.000 OA
+ATOM      7  C5  OHT L   1      35.108   0.330  28.719  0.00  0.00    +0.000 A 
+ATOM      8  C6  OHT L   1      33.951  -0.377  28.418  0.00  0.00    +0.000 A 
+ENDBRANCH   1   2
+BRANCH   1   9
+ATOM      9  C17 OHT L   1      32.045  -1.656  25.819  0.00  0.00    +0.000 A 
+ATOM     10  C18 OHT L   1      31.671  -1.165  24.570  0.00  0.00    +0.000 A 
+ATOM     11  C19 OHT L   1      31.817  -1.892  23.423  0.00  0.00    +0.000 A 
+ATOM     12  C20 OHT L   1      32.359  -3.166  23.488  0.00  0.00    +0.000 A 
+ATOM     13  C21 OHT L   1      32.745  -3.695  24.732  0.00  0.00    +0.000 A 
+ATOM     14  C22 OHT L   1      32.588  -2.947  25.864  0.00  0.00    +0.000 A 
+BRANCH  12  15
+ATOM     15  O20 OHT L   1      32.574  -3.944  22.387  0.00  0.00    +0.000 OA
+BRANCH  15  16
+ATOM     16  C23 OHT L   1      33.125  -3.368  21.206  0.00  0.00    +0.000 C 
+BRANCH  16  17
+ATOM     17  C24 OHT L   1      34.571  -3.784  21.161  0.00  0.00    +0.000 C 
+BRANCH  17  18
+ATOM     18  N24 OHT L   1      35.484  -2.683  21.022  0.00  0.00    +0.000 NA
+ATOM     19  C25 OHT L   1      36.861  -3.143  20.838  0.00  0.00    +0.000 C 
+ATOM     20  C26 OHT L   1      35.110  -1.881  19.851  0.00  0.00    +0.000 C 
+ENDBRANCH  17  18
+ENDBRANCH  16  17
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH   1   9
+BRANCH   1  21
+ATOM     21  C8  OHT L   1      30.766  -0.853  27.791  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 OHT L   1      29.437  -1.315  27.286  0.00  0.00    +0.000 A 
+ATOM     23  C16 OHT L   1      29.047  -2.665  27.419  0.00  0.00    +0.000 A 
+ATOM     24  C15 OHT L   1      27.787  -3.084  26.992  0.00  0.00    +0.000 A 
+ATOM     25  C14 OHT L   1      26.894  -2.194  26.428  0.00  0.00    +0.000 A 
+ATOM     26  C13 OHT L   1      27.258  -0.876  26.290  0.00  0.00    +0.000 A 
+ATOM     27  C12 OHT L   1      28.519  -0.443  26.716  0.00  0.00    +0.000 A 
+ENDBRANCH  21  22
+BRANCH  21  29
+ATOM     28  C10 OHT L   1      30.344   1.063  29.350  0.00  0.00    +0.000 C 
+ATOM     29  C9  OHT L   1      30.740  -0.383  29.231  0.00  0.00    +0.000 C 
+ENDBRANCH  21  29
+ENDBRANCH   1  21
+TORSDOF 9
+ENDMDL
+
+MODEL 4
+REMARK VINA RESULT:    -7.758      2.112      5.233
+REMARK INTER + INTRA:         -14.386
+REMARK INTER:                 -11.844
+REMARK INTRA:                  -2.542
+REMARK UNBOUND:                -2.545
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  9 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_2  and  C8_3
+REMARK    2  A    between atoms: C8_3  and  C11_4
+REMARK    3  A    between atoms: C8_3  and  C7_10
+REMARK    4  A    between atoms: C7_10  and  C1_11
+REMARK    5  A    between atoms: C7_10  and  C17_18
+REMARK    6  A    between atoms: C20_21  and  O20_22
+REMARK    7  A    between atoms: O20_22  and  C23_23
+REMARK    8  A    between atoms: C23_23  and  C24_24
+REMARK    9  A    between atoms: C24_24  and  N24_25
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C7  OHT L   1      31.785  -0.522  26.428  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C1  OHT L   1      33.024   0.137  26.982  0.00  0.00    +0.000 A 
+ATOM      3  C2  OHT L   1      33.533  -0.186  28.279  0.00  0.00    +0.000 A 
+ATOM      4  C3  OHT L   1      34.656   0.479  28.791  0.00  0.00    +0.000 A 
+ATOM      5  C4  OHT L   1      35.280   1.473  28.014  0.00  0.00    +0.000 A 
+ATOM      6  O4  OHT L   1      36.358   2.120  28.542  0.00  0.00    +0.000 OA
+ATOM      7  C5  OHT L   1      34.787   1.799  26.730  0.00  0.00    +0.000 A 
+ATOM      8  C6  OHT L   1      33.673   1.129  26.241  0.00  0.00    +0.000 A 
+ENDBRANCH   1   2
+BRANCH   1   9
+ATOM      9  C17 OHT L   1      32.062  -1.502  25.374  0.00  0.00    +0.000 A 
+ATOM     10  C18 OHT L   1      32.601  -2.754  25.664  0.00  0.00    +0.000 A 
+ATOM     11  C19 OHT L   1      32.843  -3.689  24.698  0.00  0.00    +0.000 A 
+ATOM     12  C20 OHT L   1      32.545  -3.398  23.376  0.00  0.00    +0.000 A 
+ATOM     13  C21 OHT L   1      32.003  -2.143  23.046  0.00  0.00    +0.000 A 
+ATOM     14  C22 OHT L   1      31.770  -1.225  24.031  0.00  0.00    +0.000 A 
+BRANCH  12  15
+ATOM     15  O20 OHT L   1      32.721  -4.288  22.356  0.00  0.00    +0.000 OA
+BRANCH  15  16
+ATOM     16  C23 OHT L   1      33.751  -4.072  21.396  0.00  0.00    +0.000 C 
+BRANCH  16  17
+ATOM     17  C24 OHT L   1      33.643  -5.190  20.394  0.00  0.00    +0.000 C 
+BRANCH  17  18
+ATOM     18  N24 OHT L   1      34.006  -4.805  19.058  0.00  0.00    +0.000 NA
+ATOM     19  C25 OHT L   1      34.025  -5.953  18.150  0.00  0.00    +0.000 C 
+ATOM     20  C26 OHT L   1      33.033  -3.834  18.545  0.00  0.00    +0.000 C 
+ENDBRANCH  17  18
+ENDBRANCH  16  17
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH   1   9
+BRANCH   1  21
+ATOM     21  C8  OHT L   1      30.517  -0.232  26.846  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 OHT L   1      29.386  -1.208  26.799  0.00  0.00    +0.000 A 
+ATOM     23  C16 OHT L   1      29.344  -2.304  27.687  0.00  0.00    +0.000 A 
+ATOM     24  C15 OHT L   1      28.263  -3.186  27.675  0.00  0.00    +0.000 A 
+ATOM     25  C14 OHT L   1      27.212  -3.012  26.796  0.00  0.00    +0.000 A 
+ATOM     26  C13 OHT L   1      27.237  -1.950  25.923  0.00  0.00    +0.000 A 
+ATOM     27  C12 OHT L   1      28.315  -1.057  25.927  0.00  0.00    +0.000 A 
+ENDBRANCH  21  22
+BRANCH  21  29
+ATOM     28  C10 OHT L   1      30.087   1.125  28.908  0.00  0.00    +0.000 C 
+ATOM     29  C9  OHT L   1      30.130   1.121  27.404  0.00  0.00    +0.000 C 
+ENDBRANCH  21  29
+ENDBRANCH   1  21
+TORSDOF 9
+ENDMDL
+
+MODEL 5
+REMARK VINA RESULT:    -7.324      2.222      4.659
+REMARK INTER + INTRA:         -13.722
+REMARK INTER:                 -11.716
+REMARK INTRA:                  -2.007
+REMARK UNBOUND:                -2.545
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  9 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C9_2  and  C8_3
+REMARK    2  A    between atoms: C8_3  and  C11_4
+REMARK    3  A    between atoms: C8_3  and  C7_10
+REMARK    4  A    between atoms: C7_10  and  C1_11
+REMARK    5  A    between atoms: C7_10  and  C17_18
+REMARK    6  A    between atoms: C20_21  and  O20_22
+REMARK    7  A    between atoms: O20_22  and  C23_23
+REMARK    8  A    between atoms: C23_23  and  C24_24
+REMARK    9  A    between atoms: C24_24  and  N24_25
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C7  OHT L   1      31.828  -1.147  26.082  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C1  OHT L   1      32.926  -0.277  26.643  0.00  0.00    +0.000 A 
+ATOM      3  C2  OHT L   1      33.268   0.980  26.053  0.00  0.00    +0.000 A 
+ATOM      4  C3  OHT L   1      34.327   1.744  26.563  0.00  0.00    +0.000 A 
+ATOM      5  C4  OHT L   1      35.053   1.261  27.668  0.00  0.00    +0.000 A 
+ATOM      6  O4  OHT L   1      36.091   2.013  28.133  0.00  0.00    +0.000 OA
+ATOM      7  C5  OHT L   1      34.722   0.022  28.262  0.00  0.00    +0.000 A 
+ATOM      8  C6  OHT L   1      33.671  -0.721  27.740  0.00  0.00    +0.000 A 
+ENDBRANCH   1   2
+BRANCH   1   9
+ATOM      9  C17 OHT L   1      32.259  -1.985  24.959  0.00  0.00    +0.000 A 
+ATOM     10  C18 OHT L   1      33.148  -3.043  25.136  0.00  0.00    +0.000 A 
+ATOM     11  C19 OHT L   1      33.542  -3.850  24.105  0.00  0.00    +0.000 A 
+ATOM     12  C20 OHT L   1      33.045  -3.621  22.832  0.00  0.00    +0.000 A 
+ATOM     13  C21 OHT L   1      32.148  -2.560  22.616  0.00  0.00    +0.000 A 
+ATOM     14  C22 OHT L   1      31.770  -1.768  23.664  0.00  0.00    +0.000 A 
+BRANCH  12  15
+ATOM     15  O20 OHT L   1      33.358  -4.401  21.756  0.00  0.00    +0.000 OA
+BRANCH  15  16
+ATOM     16  C23 OHT L   1      33.955  -3.815  20.604  0.00  0.00    +0.000 C 
+BRANCH  16  17
+ATOM     17  C24 OHT L   1      35.442  -3.852  20.826  0.00  0.00    +0.000 C 
+BRANCH  17  18
+ATOM     18  N24 OHT L   1      36.081  -2.573  20.678  0.00  0.00    +0.000 NA
+ATOM     19  C25 OHT L   1      37.409  -2.698  20.075  0.00  0.00    +0.000 C 
+ATOM     20  C26 OHT L   1      35.265  -1.714  19.812  0.00  0.00    +0.000 C 
+ENDBRANCH  17  18
+ENDBRANCH  16  17
+ENDBRANCH  15  16
+ENDBRANCH  12  15
+ENDBRANCH   1   9
+BRANCH   1  21
+ATOM     21  C8  OHT L   1      30.547  -1.154  26.554  0.00  0.00    +0.000 C 
+BRANCH  21  22
+ATOM     22  C11 OHT L   1      29.941  -0.026  27.324  0.00  0.00    +0.000 A 
+ATOM     23  C16 OHT L   1      30.461   0.348  28.582  0.00  0.00    +0.000 A 
+ATOM     24  C15 OHT L   1      29.926   1.433  29.277  0.00  0.00    +0.000 A 
+ATOM     25  C14 OHT L   1      28.875   2.163  28.756  0.00  0.00    +0.000 A 
+ATOM     26  C13 OHT L   1      28.355   1.812  27.533  0.00  0.00    +0.000 A 
+ATOM     27  C12 OHT L   1      28.885   0.727  26.825  0.00  0.00    +0.000 A 
+ENDBRANCH  21  22
+BRANCH  21  29
+ATOM     28  C10 OHT L   1      28.798  -2.633  27.571  0.00  0.00    +0.000 C 
+ATOM     29  C9  OHT L   1      29.603  -2.320  26.340  0.00  0.00    +0.000 C 
+ENDBRANCH  21  29
+ENDBRANCH   1  21
+TORSDOF 9
+ENDMDL

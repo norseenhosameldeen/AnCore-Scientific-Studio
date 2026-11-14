@@ -134,14 +134,8 @@ fn load_workspace(project_dir: String) -> Result<Value, String> {
             .and_then(|f| f.get("crystal_ligand_pdb"))
             .and_then(|v| v.as_str());
 
-        let mut receptor_pdb = read_text_safe(rec_path);
-        if receptor_pdb.is_empty() {
-            receptor_pdb = read_text_safe(tdir.join("receptor_clean.pdb").to_str());
-        }
-        let mut crystal_ligand_pdb = read_text_safe(cryst_path);
-        if crystal_ligand_pdb.is_empty() {
-            crystal_ligand_pdb = read_text_safe(tdir.join("crystal_ligand.pdb").to_str());
-        }
+        let receptor_pdb = read_text_safe(rec_path);
+        let crystal_ligand_pdb = read_text_safe(cryst_path);
 
         let bundle = TargetBundle {
             pdb_id: pdb_id.clone(),

@@ -1,0 +1,77 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "beforeBuildCommand": "",
+    "beforeDevCommand": "",
+    "devPath": "../ui",
+    "distDir": "../ui",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "AnCore Scientific Studio",
+    "version": "1.2.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "all": true,
+        "scope": ["**"]
+      },
+      "path": {
+        "all": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "shell": {
+        "open": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "Education",
+      "copyright": "Copyright (c) 2026 Ahmed Senary & Norseen Hosam Eldeen (Galala University)",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": [],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "com.ancore.scientific.studio.v12",
+      "longDescription": "AnCore Scientific Studio v1.2: 6-Stage Structure-Based Virtual Screening, Tri-Scoring Consensus Docking (Vina + Vinardo + AutoDock4), 3D Pharmacophore Fingerprinting, and 3-Zone Intact-Topology OpenMM 300 K Langevin Relaxation Triage Workbench.",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "resources": [],
+      "shortDescription": "AnCore Scientific Studio v1.2",
+      "targets": "all"
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 940,
+        "resizable": true,
+        "title": "AnCore Scientific Studio v1.2 — 6-Stage Virtual Screening & 3-Zone OpenMM 300 K Relaxation Workbench",
+        "width": 1520,
+        "minWidth": 1240,
+        "minHeight": 780
+      }
+    ]
+  }
+}

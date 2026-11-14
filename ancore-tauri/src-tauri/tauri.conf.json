@@ -13,25 +13,15 @@
   "tauri": {
     "allowlist": {
       "all": false,
-      "shell": {
-        "all": false,
-        "open": true
-      },
-      "dialog": {
-        "all": true
-      },
-      "fs": {
-        "all": true,
-        "scope": ["**"]
-      }
+      "shell": { "all": false, "open": true },
+      "dialog": { "all": true },
+      "fs": { "all": true, "scope": ["**"] }
     },
     "bundle": {
       "active": true,
       "category": "Education",
       "copyright": "Copyright © Galala University — Apache-2.0 License",
-      "deb": {
-        "depends": []
-      },
+      "deb": { "depends": [] },
       "externalBin": [],
       "icon": [
         "icons/32x32.png",
@@ -41,7 +31,7 @@
         "icons/icon.ico"
       ],
       "identifier": "org.ancore.scientific.studio",
-      "longDescription": "AnCore Scientific Studio: 6-Stage Molecular Docking, Interaction Fingerprinting, and 300 K MD Triage Workbench",
+      "longDescription": "AnCore Scientific Studio: 6-Stage Chemoinformatics, Molecular Docking, Interaction Fingerprinting, and 300 K MD Triage Suite",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -53,18 +43,14 @@
       "shortDescription": "AnCore Scientific Studio",
       "targets": ["app", "dmg"]
     },
-    "security": {
-      "csp": null
-    },
-    "updater": {
-      "active": false
-    },
+    "security": { "csp": null },
+    "updater": { "active": false },
     "windows": [
       {
         "fullscreen": false,
         "height": 940,
         "resizable": true,
-        "title": "AnCore Scientific Studio — Molecular Docking & MD Stability Triage Workbench",
+        "title": "AnCore Scientific Studio — Structure-Based Chemoinformatics & MD Triage Suite",
         "width": 1540,
         "minWidth": 1180,
         "minHeight": 760

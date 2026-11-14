@@ -1,0 +1,320 @@
+[
+  {
+    "stage": 2,
+    "status": "COMPLETED",
+    "pdb_id": "1IEP",
+    "cocrystal_ligand_id": "STI",
+    "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+    "rmsd_threshold_A": 2.0,
+    "focused_box_size_A": [
+      15.0,
+      22.7,
+      19.5
+    ],
+    "focused_box_volume_A3": 6660.0,
+    "top_rmsd_A": 0.712,
+    "top_phase": "Phase B (Focused MC Mode #1)",
+    "score_vina": -11.71,
+    "score_vinardo": -7.71,
+    "naive_unfocused_rmsd_A": 0.711,
+    "naive_unfocused_score_vina": -11.71,
+    "gate_passed": true,
+    "verdict": "PASS (<= 2.0 A)",
+    "modes": [
+      {
+        "mode_rank": 1,
+        "phase": "Phase B (Focused MC Mode #1)",
+        "rmsd_A": 0.712,
+        "score_vina_kcal_mol": -11.71,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 2,
+        "phase": "Phase A (Local BFGS)",
+        "rmsd_A": 0.337,
+        "score_vina_kcal_mol": -11.3,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 3,
+        "phase": "Phase B (Focused MC Mode #2)",
+        "rmsd_A": 4.307,
+        "score_vina_kcal_mol": -9.47,
+        "gate_passed": false
+      },
+      {
+        "mode_rank": 4,
+        "phase": "Phase B (Focused MC Mode #3)",
+        "rmsd_A": 4.045,
+        "score_vina_kcal_mol": -9.35,
+        "gate_passed": false
+      }
+    ],
+    "files": {
+      "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1IEP/02_Stage2_Redocking_Gate/STI_cocrystal_input.pdbqt",
+      "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1IEP/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+      "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1IEP/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+      "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1IEP/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+    }
+  },
+  {
+    "stage": 2,
+    "status": "COMPLETED",
+    "pdb_id": "3ERT",
+    "cocrystal_ligand_id": "OHT",
+    "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+    "rmsd_threshold_A": 2.0,
+    "focused_box_size_A": [
+      16.4,
+      15.0,
+      16.7
+    ],
+    "focused_box_volume_A3": 4117.0,
+    "top_rmsd_A": 1.373,
+    "top_phase": "Phase B (Focused MC Mode #1)",
+    "score_vina": -9.28,
+    "score_vinardo": -7.0,
+    "naive_unfocused_rmsd_A": 1.317,
+    "naive_unfocused_score_vina": -9.25,
+    "gate_passed": true,
+    "verdict": "PASS (<= 2.0 A)",
+    "modes": [
+      {
+        "mode_rank": 1,
+        "phase": "Phase B (Focused MC Mode #1)",
+        "rmsd_A": 1.373,
+        "score_vina_kcal_mol": -9.28,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 2,
+        "phase": "Phase A (Local BFGS)",
+        "rmsd_A": 0.488,
+        "score_vina_kcal_mol": -8.89,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 3,
+        "phase": "Phase B (Focused MC Mode #3)",
+        "rmsd_A": 2.552,
+        "score_vina_kcal_mol": -8.35,
+        "gate_passed": false
+      },
+      {
+        "mode_rank": 4,
+        "phase": "Phase B (Focused MC Mode #4)",
+        "rmsd_A": 2.54,
+        "score_vina_kcal_mol": -7.76,
+        "gate_passed": false
+      },
+      {
+        "mode_rank": 5,
+        "phase": "Phase B (Focused MC Mode #5)",
+        "rmsd_A": 2.802,
+        "score_vina_kcal_mol": -7.32,
+        "gate_passed": false
+      }
+    ],
+    "files": {
+      "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/OHT_cocrystal_input.pdbqt",
+      "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+      "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+      "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+    }
+  },
+  {
+    "stage": 2,
+    "status": "COMPLETED",
+    "pdb_id": "1UYG",
+    "cocrystal_ligand_id": "PU2",
+    "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+    "rmsd_threshold_A": 2.0,
+    "focused_box_size_A": [
+      15.6,
+      15.0,
+      15.0
+    ],
+    "focused_box_volume_A3": 3521.0,
+    "top_rmsd_A": 0.761,
+    "top_phase": "Phase B (Focused MC Mode #1)",
+    "score_vina": -8.28,
+    "score_vinardo": -4.96,
+    "naive_unfocused_rmsd_A": 0.859,
+    "naive_unfocused_score_vina": -8.29,
+    "gate_passed": true,
+    "verdict": "PASS (<= 2.0 A)",
+    "modes": [
+      {
+        "mode_rank": 1,
+        "phase": "Phase B (Focused MC Mode #1)",
+        "rmsd_A": 0.761,
+        "score_vina_kcal_mol": -8.28,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 2,
+        "phase": "Phase A (Local BFGS)",
+        "rmsd_A": 0.64,
+        "score_vina_kcal_mol": -7.77,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 3,
+        "phase": "Phase B (Focused MC Mode #7)",
+        "rmsd_A": 1.423,
+        "score_vina_kcal_mol": -7.47,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 4,
+        "phase": "Phase B (Focused MC Mode #2)",
+        "rmsd_A": 2.679,
+        "score_vina_kcal_mol": -8.07,
+        "gate_passed": false
+      },
+      {
+        "mode_rank": 5,
+        "phase": "Phase B (Focused MC Mode #3)",
+        "rmsd_A": 4.672,
+        "score_vina_kcal_mol": -7.88,
+        "gate_passed": false
+      }
+    ],
+    "files": {
+      "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1UYG/02_Stage2_Redocking_Gate/PU2_cocrystal_input.pdbqt",
+      "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1UYG/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+      "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1UYG/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+      "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1UYG/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+    }
+  },
+  {
+    "stage": 2,
+    "status": "COMPLETED",
+    "pdb_id": "1M17",
+    "cocrystal_ligand_id": "AQ4",
+    "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+    "rmsd_threshold_A": 2.0,
+    "focused_box_size_A": [
+      21.7,
+      15.0,
+      15.0
+    ],
+    "focused_box_volume_A3": 4884.5,
+    "top_rmsd_A": 1.234,
+    "top_phase": "Phase B (Focused MC Mode #2)",
+    "score_vina": -6.95,
+    "score_vinardo": -4.36,
+    "naive_unfocused_rmsd_A": 5.549,
+    "naive_unfocused_score_vina": -7.18,
+    "gate_passed": true,
+    "verdict": "PASS (<= 2.0 A)",
+    "modes": [
+      {
+        "mode_rank": 1,
+        "phase": "Phase B (Focused MC Mode #2)",
+        "rmsd_A": 1.234,
+        "score_vina_kcal_mol": -6.95,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 2,
+        "phase": "Phase B (Focused MC Mode #4)",
+        "rmsd_A": 1.537,
+        "score_vina_kcal_mol": -6.79,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 3,
+        "phase": "Phase A (Local BFGS)",
+        "rmsd_A": 0.855,
+        "score_vina_kcal_mol": -6.16,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 4,
+        "phase": "Phase B (Focused MC Mode #1)",
+        "rmsd_A": 5.589,
+        "score_vina_kcal_mol": -7.24,
+        "gate_passed": false
+      },
+      {
+        "mode_rank": 5,
+        "phase": "Phase B (Focused MC Mode #3)",
+        "rmsd_A": 2.358,
+        "score_vina_kcal_mol": -6.85,
+        "gate_passed": false
+      }
+    ],
+    "files": {
+      "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/02_Stage2_Redocking_Gate/AQ4_cocrystal_input.pdbqt",
+      "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+      "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+      "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+    }
+  },
+  {
+    "stage": 2,
+    "status": "COMPLETED",
+    "pdb_id": "1STP",
+    "cocrystal_ligand_id": "BTN",
+    "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+    "rmsd_threshold_A": 2.0,
+    "focused_box_size_A": [
+      15.0,
+      15.0,
+      15.0
+    ],
+    "focused_box_volume_A3": 3375.0,
+    "top_rmsd_A": 0.449,
+    "top_phase": "Phase B (Focused MC Mode #1)",
+    "score_vina": -7.17,
+    "score_vinardo": -5.79,
+    "naive_unfocused_rmsd_A": 0.702,
+    "naive_unfocused_score_vina": -7.06,
+    "gate_passed": true,
+    "verdict": "PASS (<= 2.0 A)",
+    "modes": [
+      {
+        "mode_rank": 1,
+        "phase": "Phase B (Focused MC Mode #1)",
+        "rmsd_A": 0.449,
+        "score_vina_kcal_mol": -7.17,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 2,
+        "phase": "Phase B (Focused MC Mode #2)",
+        "rmsd_A": 0.877,
+        "score_vina_kcal_mol": -6.97,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 3,
+        "phase": "Phase A (Local BFGS)",
+        "rmsd_A": 0.302,
+        "score_vina_kcal_mol": -6.63,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 4,
+        "phase": "Phase B (Focused MC Mode #3)",
+        "rmsd_A": 1.753,
+        "score_vina_kcal_mol": -6.35,
+        "gate_passed": true
+      },
+      {
+        "mode_rank": 5,
+        "phase": "Phase B (Focused MC Mode #4)",
+        "rmsd_A": 5.958,
+        "score_vina_kcal_mol": -5.98,
+        "gate_passed": false
+      }
+    ],
+    "files": {
+      "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1STP/02_Stage2_Redocking_Gate/BTN_cocrystal_input.pdbqt",
+      "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1STP/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+      "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1STP/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+      "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1STP/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+    }
+  }
+]

@@ -1,0 +1,224 @@
+{
+  "stage": 1,
+  "status": "COMPLETED",
+  "pdb_id": "1M17",
+  "selected_chain": "A",
+  "cocrystal_ligand_id": "AQ4",
+  "ligand_heavy_atoms": 29,
+  "receptor_heavy_atoms": 2497,
+  "pocket_cutoff_A": 5.0,
+  "pocket_residue_count": 20,
+  "pocket_residues": [
+    {
+      "residue_id": "Leu694",
+      "res_name": "LEU",
+      "chain_id": "A",
+      "res_seq": 694,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.269,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Gly695",
+      "res_name": "GLY",
+      "chain_id": "A",
+      "res_seq": 695,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 4.503,
+      "heavy_atom_count": 4
+    },
+    {
+      "residue_id": "Val702",
+      "res_name": "VAL",
+      "chain_id": "A",
+      "res_seq": 702,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 4.191,
+      "heavy_atom_count": 7
+    },
+    {
+      "residue_id": "Ala719",
+      "res_name": "ALA",
+      "chain_id": "A",
+      "res_seq": 719,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.307,
+      "heavy_atom_count": 5
+    },
+    {
+      "residue_id": "Lys721",
+      "res_name": "LYS",
+      "chain_id": "A",
+      "res_seq": 721,
+      "chemical_class": "Charged/Salt-Bridge",
+      "min_distance_A": 3.7,
+      "heavy_atom_count": 9
+    },
+    {
+      "residue_id": "Glu738",
+      "res_name": "GLU",
+      "chain_id": "A",
+      "res_seq": 738,
+      "chemical_class": "Charged/Salt-Bridge",
+      "min_distance_A": 3.806,
+      "heavy_atom_count": 9
+    },
+    {
+      "residue_id": "Met742",
+      "res_name": "MET",
+      "chain_id": "A",
+      "res_seq": 742,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 4.632,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Leu764",
+      "res_name": "LEU",
+      "chain_id": "A",
+      "res_seq": 764,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.431,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Ile765",
+      "res_name": "ILE",
+      "chain_id": "A",
+      "res_seq": 765,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 4.451,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Thr766",
+      "res_name": "THR",
+      "chain_id": "A",
+      "res_seq": 766,
+      "chemical_class": "Polar H-Bonding",
+      "min_distance_A": 3.406,
+      "heavy_atom_count": 7
+    },
+    {
+      "residue_id": "Gln767",
+      "res_name": "GLN",
+      "chain_id": "A",
+      "res_seq": 767,
+      "chemical_class": "Polar H-Bonding",
+      "min_distance_A": 3.146,
+      "heavy_atom_count": 9
+    },
+    {
+      "residue_id": "Leu768",
+      "res_name": "LEU",
+      "chain_id": "A",
+      "res_seq": 768,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.496,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Met769",
+      "res_name": "MET",
+      "chain_id": "A",
+      "res_seq": 769,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 2.699,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Pro770",
+      "res_name": "PRO",
+      "chain_id": "A",
+      "res_seq": 770,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.107,
+      "heavy_atom_count": 7
+    },
+    {
+      "residue_id": "Phe771",
+      "res_name": "PHE",
+      "chain_id": "A",
+      "res_seq": 771,
+      "chemical_class": "Aromatic",
+      "min_distance_A": 3.446,
+      "heavy_atom_count": 11
+    },
+    {
+      "residue_id": "Gly772",
+      "res_name": "GLY",
+      "chain_id": "A",
+      "res_seq": 772,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.238,
+      "heavy_atom_count": 4
+    },
+    {
+      "residue_id": "Cys773",
+      "res_name": "CYS",
+      "chain_id": "A",
+      "res_seq": 773,
+      "chemical_class": "Polar H-Bonding",
+      "min_distance_A": 4.727,
+      "heavy_atom_count": 6
+    },
+    {
+      "residue_id": "Leu820",
+      "res_name": "LEU",
+      "chain_id": "A",
+      "res_seq": 820,
+      "chemical_class": "Hydrophobic",
+      "min_distance_A": 3.453,
+      "heavy_atom_count": 8
+    },
+    {
+      "residue_id": "Thr830",
+      "res_name": "THR",
+      "chain_id": "A",
+      "res_seq": 830,
+      "chemical_class": "Polar H-Bonding",
+      "min_distance_A": 3.652,
+      "heavy_atom_count": 7
+    },
+    {
+      "residue_id": "Asp831",
+      "res_name": "ASP",
+      "chain_id": "A",
+      "res_seq": 831,
+      "chemical_class": "Charged/Salt-Bridge",
+      "min_distance_A": 3.105,
+      "heavy_atom_count": 8
+    }
+  ],
+  "docking_box": {
+    "center_x": 21.697,
+    "center_y": 0.303,
+    "center_z": 52.093,
+    "size_x": 23.7,
+    "size_y": 16.0,
+    "size_z": 16.0,
+    "padding_A": 4.0,
+    "volume_A3": 6069.5
+  },
+  "post_minimization_closest_heavy_atom_A": 2.73,
+  "minimization_report": {
+    "pdbfixer_applied": true,
+    "openmm_minimized": true,
+    "forcefield": "amber14-all.xml + implicit/gbn2.xml",
+    "ph": 7.4,
+    "max_iterations": 200,
+    "energy_pre_kcal_mol": 7448.76,
+    "energy_post_kcal_mol": -11435.09
+  },
+  "pdbqt_compiler": "OpenBabel (-xr rigid receptor)",
+  "files": {
+    "raw_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/1M17_raw.pdb",
+    "minimized_receptor_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/receptor_prepared_pH74_minimized.pdb",
+    "receptor_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/receptor_prepared.pdbqt",
+    "cocrystal_ligand_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb",
+    "pocket_shell_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/binding_pocket_5A_shell.pdb",
+    "pocket_residues_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/pocket_residues_table.csv",
+    "vina_config_txt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1M17/01_Stage1_Target_and_Pocket/vina_grid_box_config.txt",
+    "minimized_receptor_sha256": "b3da8a567bb0fa1f2b31c45bf22617027a0d593edb585b10afa545310cef9d9d"
+  }
+}

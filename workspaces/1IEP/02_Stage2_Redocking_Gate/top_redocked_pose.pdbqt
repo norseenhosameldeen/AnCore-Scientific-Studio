@@ -1,0 +1,68 @@
+REMARK VINA RESULT:   -11.710      0.000      0.000
+REMARK INTER + INTRA:         -16.220
+REMARK INTER:                 -15.817
+REMARK INTRA:                  -0.402
+REMARK UNBOUND:                -0.402
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1IEP/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C5_3  and  C7_7
+REMARK    2  A    between atoms: N13_13  and  C14_14
+REMARK    3  A    between atoms: C16_18  and  N21_20
+REMARK    4  A    between atoms: C22_21  and  C23_22
+REMARK    5  A    between atoms: C27_25  and  C46_28
+REMARK    6  A    between atoms: C46_28  and  N48_29
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C14 STI L   1      15.861  54.712  12.554  0.00  0.00    +0.000 A 
+ATOM      2  C19 STI L   1      16.937  54.597  11.562  0.00  0.00    +0.000 A 
+ATOM      3  C18 STI L   1      17.949  53.601  11.772  0.00  0.00    +0.000 A 
+ATOM      4  C17 STI L   1      17.904  52.740  12.928  0.00  0.00    +0.000 A 
+ATOM      5  C16 STI L   1      16.859  52.847  13.891  0.00  0.00    +0.000 A 
+ATOM      6  C15 STI L   1      15.832  53.856  13.684  0.00  0.00    +0.000 A 
+ATOM      7  C20 STI L   1      17.032  55.489  10.302  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1  14
+ATOM      8  C7  STI L   1      14.221  59.217  12.778  0.00  0.00    +0.000 C 
+ATOM      9  C12 STI L   1      15.479  59.714  13.258  0.00  0.00    +0.000 C 
+ATOM     10  C11 STI L   1      16.520  58.777  13.440  0.00  0.00    +0.000 C 
+ATOM     11  N10 STI L   1      16.308  57.444  13.160  0.00  0.00    +0.000 NA
+ATOM     12  C9  STI L   1      15.082  56.998  12.701  0.00  0.00    +0.000 C 
+ATOM     13  N8  STI L   1      14.072  57.873  12.520  0.00  0.00    +0.000 NA
+ATOM     14  N13 STI L   1      14.849  55.663  12.406  0.00  0.00    +0.000 NA
+BRANCH   8  17
+ATOM     15  C1  STI L   1      11.744  62.245  12.767  0.00  0.00    +0.000 A 
+ATOM     16  C6  STI L   1      12.921  61.449  13.033  0.00  0.00    +0.000 A 
+ATOM     17  C5  STI L   1      13.026  60.085  12.532  0.00  0.00    +0.000 A 
+ATOM     18  C4  STI L   1      11.915  59.551  11.759  0.00  0.00    +0.000 A 
+ATOM     19  N3  STI L   1      10.794  60.340  11.520  0.00  0.00    +0.000 NA
+ATOM     20  C2  STI L   1      10.681  61.654  11.998  0.00  0.00    +0.000 A 
+ENDBRANCH   8  17
+ENDBRANCH   1  14
+BRANCH   5  21
+ATOM     21  N21 STI L   1      16.877  51.944  15.015  0.00  0.00    +0.000 NA
+ATOM     22  C22 STI L   1      15.846  51.660  15.895  0.00  0.00    +0.000 C 
+ATOM     23  O29 STI L   1      14.810  52.304  15.978  0.00  0.00    +0.000 OA
+BRANCH  22  24
+ATOM     24  C23 STI L   1      15.992  50.502  16.829  0.00  0.00    +0.000 A 
+ATOM     25  C25 STI L   1      14.825  49.892  17.472  0.00  0.00    +0.000 A 
+ATOM     26  C26 STI L   1      14.996  48.786  18.381  0.00  0.00    +0.000 A 
+ATOM     27  C27 STI L   1      16.340  48.283  18.652  0.00  0.00    +0.000 A 
+ATOM     28  C28 STI L   1      17.480  48.903  17.997  0.00  0.00    +0.000 A 
+ATOM     29  C29 STI L   1      17.316  49.987  17.105  0.00  0.00    +0.000 A 
+BRANCH  27  30
+ATOM     30  C46 STI L   1      16.618  47.121  19.625  0.00  0.00    +0.000 C 
+BRANCH  30  31
+ATOM     31  N48 STI L   1      17.908  47.153  20.376  0.00  0.00    +0.000 NA
+ATOM     32  C53 STI L   1      17.711  47.763  21.742  0.00  0.00    +0.000 C 
+ATOM     33  C52 STI L   1      19.047  47.824  22.534  0.00  0.00    +0.000 C 
+ATOM     34  N51 STI L   1      19.669  46.440  22.655  0.00  0.00    +0.000 NA
+ATOM     35  C54 STI L   1      20.934  46.440  23.403  0.00  0.00    +0.000 C 
+ATOM     36  C50 STI L   1      19.890  45.814  21.277  0.00  0.00    +0.000 C 
+ATOM     37  C49 STI L   1      18.530  45.760  20.507  0.00  0.00    +0.000 C 
+ENDBRANCH  30  31
+ENDBRANCH  27  30
+ENDBRANCH  22  24
+ENDBRANCH   5  21
+TORSDOF 6

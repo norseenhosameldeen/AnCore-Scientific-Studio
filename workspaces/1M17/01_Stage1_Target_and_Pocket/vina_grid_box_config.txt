@@ -1,0 +1,8 @@
+receptor = receptor_prepared.pdbqt
+center_x = 21.697
+center_y = 0.303
+center_z = 52.093
+size_x = 23.7
+size_y = 16.0
+size_z = 16.0
+exhaustiveness = 8

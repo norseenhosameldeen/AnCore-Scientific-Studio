@@ -352,7 +352,7 @@
           <button class="next-stage-btn" id="btn-next-stage" onclick="runAndAdvanceToNextStage()">
             Next Step: Run Stage 2 (Redock Gate) →
           </button>
-          <input id="proj-dir-input" type="hidden" value="__DEFAULT_PROJ_DIR__"/>
+          <input id="proj-dir-input" type="hidden" value="/Users/ahmedsenary/Desktop/AnCore_project"/>
           <div id="status-line" style="font-size:10.5px;color:#94A3B8;">Step-by-step mode ready. Execute the current stage or click Next Step.</div>
         </div>
       </div>
@@ -1312,7 +1312,7 @@
     if (window.__TAURI__) {
       try {
         await window.__TAURI__.invoke("run_python_pipeline", {
-          projectDir: projDir, pythonBin: "__PYTHON_BIN__",
+          projectDir: projDir, pythonBin: "/Library/miniconda3/bin/python",
           pdbId: curPdb, targetName: tb.target_name || curPdb, ligandCode: tb.ligand_resname || "AUTO",
           customSmiles: "", localPdbContent: null,
           sdfContent: (curStage === 3 && uploadedSdfContentStr) ? uploadedSdfContentStr : null,
@@ -1378,7 +1378,7 @@
     if (window.__TAURI__) {
       try {
         await window.__TAURI__.invoke("run_python_pipeline", {
-          projectDir: projDir, pythonBin: "__PYTHON_BIN__",
+          projectDir: projDir, pythonBin: "/Library/miniconda3/bin/python",
           pdbId, targetName: tName, ligandCode: lCode, customSmiles: smiles,
           localPdbContent: proteinSourceMode === "local" ? localPdbContentStr : null,
           sdfContent: sdfPayload,

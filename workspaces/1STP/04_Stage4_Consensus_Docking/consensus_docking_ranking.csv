@@ -1,0 +1,11 @@
+consensus_rank,ligand_id,name,role,score_vina,score_vinardo,score_ad4,rank_vina,rank_vinardo,rank_ad4,rrf_score,mean_z_score,ligand_efficiency,experimental_potency
+1,STP_DEC_03,ZINC_Decoy_S3,DECOY,-8.06,-6.79,-7.82,2,1,2,0.2576,-1.124,0.384,Decoy (>10 uM)
+2,STP_ACT_01,D-Biotin (STP_ACT_01),ACTIVE,-7.54,-6.27,-9.47,4,2,1,0.2457,-1.266,0.471,Kd = 0.04 pM
+3,STP_DEC_01,ZINC_Decoy_S1,DECOY,-7.57,-6.18,-7.79,3,3,3,0.2308,-0.69,0.445,Decoy (>10 uM)
+4,STP_DEC_02,ZINC_Decoy_S2,DECOY,-8.36,-6.01,-6.86,1,4,7,0.2212,-0.617,0.398,Decoy (>10 uM)
+5,STP_ACT_02,Desthiobiotin (STP_ACT_02),ACTIVE,-6.9,-5.9,-7.49,5,5,5,0.2,-0.229,0.46,Kd = 1.0 nM
+6,STP_DEC_04,ZINC_Decoy_S4,DECOY,-6.68,-4.35,-7.58,6,9,4,0.1866,0.432,0.393,Decoy (>10 uM)
+7,STP_ACT_03,2-Iminobiotin (STP_ACT_03),ACTIVE,-6.38,-5.4,-6.69,7,6,8,0.1769,0.426,0.375,Kd = 3.5 nM
+8,STP_ACT_04,Diaminobiotin (STP_ACT_04),ACTIVE,-5.95,-5.22,-7.18,9,7,6,0.174,0.498,0.425,Kd = 12 nM
+9,STP_DEC_05,ZINC_Decoy_S5,DECOY,-6.29,-4.06,-5.94,8,10,9,0.1582,1.232,0.349,Decoy (>10 uM)
+10,STP_ACT_05,alpha-Lipoic acid (STP_ACT_05),ACTIVE,-5.54,-4.71,-5.7,10,8,10,0.1556,1.339,0.462,Kd = 700 nM

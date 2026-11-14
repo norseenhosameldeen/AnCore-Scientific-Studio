@@ -1,0 +1,12 @@
+receptor_residue,receptor_resname,receptor_atom,ligand_atom,ligand_element,interaction_type,distance_A
+Thr830,THR,OG1,O,O,HBond,2.783
+Thr766,THR,OG1,O,O,HBond,3.3
+Met769,MET,O,O,O,HBond,3.375
+Lys721,LYS,CB,C,C,Hydrophobic,3.36
+Gly772,GLY,CA,C,C,Hydrophobic,3.516
+Thr766,THR,CG2,C,C,Hydrophobic,3.577
+Leu694,LEU,CD1,C,C,Hydrophobic,3.609
+Leu820,LEU,CD1,C,C,Hydrophobic,3.619
+Leu764,LEU,CB,C,C,Hydrophobic,3.62
+Ala719,ALA,CB,C,C,Hydrophobic,3.636
+Val702,VAL,CG1,C,C,Hydrophobic,3.768

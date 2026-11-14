@@ -1,0 +1,17 @@
+receptor_residue,receptor_resname,receptor_atom,ligand_atom,ligand_element,interaction_type,distance_A
+Thr184,THR,OG1,N,N,HBond,2.804
+Phe138,PHE,CD1,C,C,PiStacking,3.49
+Trp162,TRP,CE2,C,C,PiStacking,3.786
+Tyr139,TYR,CZ,C,C,PiStacking,3.794
+Met98,MET,CE,CL,CL,Hydrophobic,3.091
+Leu107,LEU,CD1,C,C,Hydrophobic,3.227
+Val150,VAL,CG1,CL,CL,Hydrophobic,3.443
+Thr184,THR,CG2,CL,CL,Hydrophobic,3.469
+Phe138,PHE,CD1,C,C,Hydrophobic,3.49
+Asn51,ASN,CB,C,C,Hydrophobic,3.503
+Val186,VAL,CG2,CL,CL,Hydrophobic,3.571
+Ala55,ALA,CB,C,C,Hydrophobic,3.653
+Trp162,TRP,CE2,C,C,Hydrophobic,3.786
+Tyr139,TYR,CZ,C,C,Hydrophobic,3.794
+Asp102,ASP,CG,C,C,Hydrophobic,3.9
+Ile96,ILE,CG2,C,C,Hydrophobic,3.954

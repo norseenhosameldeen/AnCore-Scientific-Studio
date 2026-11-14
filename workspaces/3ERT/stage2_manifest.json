@@ -1,0 +1,65 @@
+{
+  "stage": 2,
+  "status": "COMPLETED",
+  "pdb_id": "3ERT",
+  "cocrystal_ligand_id": "OHT",
+  "ligand_pdbqt_compiler": "OpenBabel Flexible Torsion Tree",
+  "rmsd_threshold_A": 2.0,
+  "focused_box_size_A": [
+    16.4,
+    15.0,
+    16.7
+  ],
+  "focused_box_volume_A3": 4117.0,
+  "top_rmsd_A": 1.373,
+  "top_phase": "Phase B (Focused MC Mode #1)",
+  "score_vina": -9.28,
+  "score_vinardo": -7.0,
+  "naive_unfocused_rmsd_A": 1.317,
+  "naive_unfocused_score_vina": -9.25,
+  "gate_passed": true,
+  "verdict": "PASS (<= 2.0 A)",
+  "modes": [
+    {
+      "mode_rank": 1,
+      "phase": "Phase B (Focused MC Mode #1)",
+      "rmsd_A": 1.373,
+      "score_vina_kcal_mol": -9.28,
+      "gate_passed": true
+    },
+    {
+      "mode_rank": 2,
+      "phase": "Phase A (Local BFGS)",
+      "rmsd_A": 0.488,
+      "score_vina_kcal_mol": -8.89,
+      "gate_passed": true
+    },
+    {
+      "mode_rank": 3,
+      "phase": "Phase B (Focused MC Mode #3)",
+      "rmsd_A": 2.552,
+      "score_vina_kcal_mol": -8.35,
+      "gate_passed": false
+    },
+    {
+      "mode_rank": 4,
+      "phase": "Phase B (Focused MC Mode #4)",
+      "rmsd_A": 2.54,
+      "score_vina_kcal_mol": -7.76,
+      "gate_passed": false
+    },
+    {
+      "mode_rank": 5,
+      "phase": "Phase B (Focused MC Mode #5)",
+      "rmsd_A": 2.802,
+      "score_vina_kcal_mol": -7.32,
+      "gate_passed": false
+    }
+  ],
+  "files": {
+    "cocrystal_input_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/OHT_cocrystal_input.pdbqt",
+    "redocked_modes_pdbqt": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redocked_modes_1_to_5.pdbqt",
+    "superposition_complex_pdb": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redock_superposition_complex.pdb",
+    "validation_metrics_csv": "/Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/3ERT/02_Stage2_Redocking_Gate/redock_validation_metrics.csv"
+  }
+}

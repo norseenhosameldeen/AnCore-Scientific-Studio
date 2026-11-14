@@ -1,0 +1,13 @@
+receptor_residue,receptor_resname,receptor_atom,ligand_atom,ligand_element,interaction_type,distance_A
+Ile360,ILE,O,N,N,HBond,3.473
+Asp381,ASP,OD2,N,N,SaltBridge,3.727
+Val299,VAL,CG1,C,C,Hydrophobic,3.147
+Leu298,LEU,CD2,C,C,Hydrophobic,3.351
+Met290,MET,CG,C,C,Hydrophobic,3.402
+Ile293,ILE,CD1,C,C,Hydrophobic,3.403
+Val289,VAL,CG1,C,C,Hydrophobic,3.565
+His361,HIS,C,C,C,Hydrophobic,3.752
+Ala380,ALA,CA,C,C,Hydrophobic,3.85
+Ile360,ILE,CB,C,C,Hydrophobic,3.862
+Lys285,LYS,CE,C,C,Hydrophobic,3.903
+Val379,VAL,C,C,C,Hydrophobic,3.968

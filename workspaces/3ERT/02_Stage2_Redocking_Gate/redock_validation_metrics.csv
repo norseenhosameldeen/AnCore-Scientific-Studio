@@ -1,0 +1,6 @@
+mode_rank,phase,rmsd_A,score_vina_kcal_mol,gate_passed
+1,Phase B (Focused MC Mode #1),1.373,-9.28,True
+2,Phase A (Local BFGS),0.488,-8.89,True
+3,Phase B (Focused MC Mode #3),2.552,-8.35,False
+4,Phase B (Focused MC Mode #4),2.54,-7.76,False
+5,Phase B (Focused MC Mode #5),2.802,-7.32,False

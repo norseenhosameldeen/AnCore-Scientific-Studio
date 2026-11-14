@@ -1,0 +1,32 @@
+; AnCore v1.2 Mode C — GROMACS 2024 Explicit-Solvent NPT Production Parameters
+; Target: 1UYG | Top Hit: Ganetespib (HSP_ACT_03) (HSP_ACT_03)
+integrator              = md
+dt                      = 0.002     ; 2.0 fs timestep
+nsteps                  = 5000000   ; 10.0 ns production
+nstxout-compressed      = 5000      ; 10 ps trajectory output
+nstenergy               = 5000
+nstlog                  = 5000
+continuation            = yes
+constraint_algorithm    = lincs
+constraints             = h-bonds
+lincs_iter              = 1
+lincs_order             = 4
+cutoff-scheme           = Verlet
+ns_type                 = grid
+nstlist                 = 20
+rcoulomb                = 1.0       ; 10.0 A PME short-range cutoff
+rvdw                    = 1.0       ; 10.0 A Van der Waals cutoff
+DispCorr                = EnerPres
+coulombtype             = PME
+pme_order               = 4
+fourierspacing          = 0.12
+tcoupl                  = V-rescale
+tc-grps                 = Protein_LIG Water_and_ions
+tau_t                   = 0.1       0.1
+ref_t                   = 300       300
+pcoupl                  = C-rescale
+pcoupltype              = isotropic
+tau_p                   = 2.0
+ref_p                   = 1.0
+compressibility         = 4.5e-5
+pbc                     = xyz

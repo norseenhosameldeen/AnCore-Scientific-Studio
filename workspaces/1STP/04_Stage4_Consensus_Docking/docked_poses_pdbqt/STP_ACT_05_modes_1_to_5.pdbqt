@@ -1,0 +1,230 @@
+MODEL 1
+REMARK VINA RESULT:    -5.543      0.000      0.000
+REMARK INTER + INTRA:          -7.764
+REMARK INTER:                  -7.325
+REMARK INTRA:                  -0.438
+REMARK UNBOUND:                -0.438
+REMARK  Name = alpha-Lipoic acid (STP_ACT_05)
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  O_3
+REMARK    2  A    between atoms: C_2  and  C_4
+REMARK    3  A    between atoms: C_4  and  C_5
+REMARK    4  A    between atoms: C_5  and  C_6
+REMARK    5  A    between atoms: C_6  and  C_7
+REMARK    6  A    between atoms: C_7  and  C_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      10.104   1.196  -8.351  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C   UNL     1      10.791   2.179  -9.308  0.00  0.00    +0.000 C 
+BRANCH   2   3
+ATOM      3  C   UNL     1      10.867   1.749 -10.779  0.00  0.00    +0.000 C 
+ATOM      4  C   UNL     1       9.874   0.619 -11.082  0.00  0.00    +0.000 C 
+ATOM      5  C   UNL     1       9.842   0.343 -12.581  0.00  0.00    +0.000 C 
+ATOM      6  S   UNL     1       9.614   1.939 -13.402  0.00  0.00    +0.000 S 
+ATOM      7  S   UNL     1      10.445   3.098 -11.930  0.00  0.00    +0.000 S 
+ENDBRANCH   2   3
+ENDBRANCH   1   2
+BRANCH   1   8
+ATOM      8  C   UNL     1      11.078   0.459  -7.429  0.00  0.00    +0.000 C 
+BRANCH   8   9
+ATOM      9  C   UNL     1      11.553  -0.846  -8.058  0.00  0.00    +0.000 C 
+BRANCH   9  11
+ATOM     10  O   UNL     1      13.359  -0.831  -9.685  0.00  0.00    +0.000 OA
+ATOM     11  C   UNL     1      12.972  -0.726  -8.534  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  O   UNL     1      13.840  -0.490  -7.534  0.00  0.00    +0.000 OA
+ATOM     13  H   UNL     1      14.209   0.393  -7.744  0.00  0.00    +0.000 HD
+ENDBRANCH  11  12
+ENDBRANCH   9  11
+ENDBRANCH   8   9
+ENDBRANCH   1   8
+TORSDOF 6
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -5.376      4.452      6.167
+REMARK INTER + INTRA:          -7.543
+REMARK INTER:                  -7.331
+REMARK INTRA:                  -0.212
+REMARK UNBOUND:                -0.438
+REMARK  Name = alpha-Lipoic acid (STP_ACT_05)
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  O_3
+REMARK    2  A    between atoms: C_2  and  C_4
+REMARK    3  A    between atoms: C_4  and  C_5
+REMARK    4  A    between atoms: C_5  and  C_6
+REMARK    5  A    between atoms: C_6  and  C_7
+REMARK    6  A    between atoms: C_7  and  C_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      11.547   2.596 -12.257  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C   UNL     1      10.578   2.392 -11.086  0.00  0.00    +0.000 C 
+BRANCH   2   3
+ATOM      3  C   UNL     1      11.179   1.790  -9.808  0.00  0.00    +0.000 C 
+ATOM      4  C   UNL     1      10.158   1.781  -8.662  0.00  0.00    +0.000 C 
+ATOM      5  C   UNL     1      10.722   1.014  -7.471  0.00  0.00    +0.000 C 
+ATOM      6  S   UNL     1      11.325  -0.569  -8.106  0.00  0.00    +0.000 S 
+ATOM      7  S   UNL     1      11.695   0.055 -10.022  0.00  0.00    +0.000 S 
+ENDBRANCH   2   3
+ENDBRANCH   1   2
+BRANCH   1   8
+ATOM      8  C   UNL     1      11.069   3.636 -13.272  0.00  0.00    +0.000 C 
+BRANCH   8   9
+ATOM      9  C   UNL     1       9.749   4.265 -12.839  0.00  0.00    +0.000 C 
+BRANCH   9  11
+ATOM     10  O   UNL     1       7.874   5.115 -14.132  0.00  0.00    +0.000 OA
+ATOM     11  C   UNL     1       8.776   4.310 -13.981  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  O   UNL     1       8.979   3.327 -14.879  0.00  0.00    +0.000 OA
+ATOM     13  H   UNL     1       9.944   3.166 -14.838  0.00  0.00    +0.000 HD
+ENDBRANCH  11  12
+ENDBRANCH   9  11
+ENDBRANCH   8   9
+ENDBRANCH   1   8
+TORSDOF 6
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -5.268      2.267      2.802
+REMARK INTER + INTRA:          -7.401
+REMARK INTER:                  -7.257
+REMARK INTRA:                  -0.144
+REMARK UNBOUND:                -0.438
+REMARK  Name = alpha-Lipoic acid (STP_ACT_05)
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  O_3
+REMARK    2  A    between atoms: C_2  and  C_4
+REMARK    3  A    between atoms: C_4  and  C_5
+REMARK    4  A    between atoms: C_5  and  C_6
+REMARK    5  A    between atoms: C_6  and  C_7
+REMARK    6  A    between atoms: C_7  and  C_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      11.491   1.349 -11.319  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C   UNL     1      11.717   2.583 -12.202  0.00  0.00    +0.000 C 
+BRANCH   2   3
+ATOM      3  C   UNL     1      10.458   3.361 -12.611  0.00  0.00    +0.000 C 
+ATOM      4  C   UNL     1      10.777   4.418 -13.676  0.00  0.00    +0.000 C 
+ATOM      5  C   UNL     1       9.485   5.042 -14.192  0.00  0.00    +0.000 C 
+ATOM      6  S   UNL     1       8.383   3.677 -14.630  0.00  0.00    +0.000 S 
+ATOM      7  S   UNL     1       9.177   2.292 -13.344  0.00  0.00    +0.000 S 
+ENDBRANCH   2   3
+ENDBRANCH   1   2
+BRANCH   1   8
+ATOM      8  C   UNL     1      11.982   1.529  -9.881  0.00  0.00    +0.000 C 
+BRANCH   8   9
+ATOM      9  C   UNL     1      11.804   0.248  -9.073  0.00  0.00    +0.000 C 
+BRANCH   9  11
+ATOM     10  O   UNL     1      13.839  -0.953  -9.643  0.00  0.00    +0.000 OA
+ATOM     11  C   UNL     1      13.129  -0.411  -8.815  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  O   UNL     1      13.492  -0.364  -7.520  0.00  0.00    +0.000 OA
+ATOM     13  H   UNL     1      13.972  -1.206  -7.379  0.00  0.00    +0.000 HD
+ENDBRANCH  11  12
+ENDBRANCH   9  11
+ENDBRANCH   8   9
+ENDBRANCH   1   8
+TORSDOF 6
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -5.256      1.878      2.324
+REMARK INTER + INTRA:          -7.384
+REMARK INTER:                  -7.124
+REMARK INTRA:                  -0.260
+REMARK UNBOUND:                -0.438
+REMARK  Name = alpha-Lipoic acid (STP_ACT_05)
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  O_3
+REMARK    2  A    between atoms: C_2  and  C_4
+REMARK    3  A    between atoms: C_4  and  C_5
+REMARK    4  A    between atoms: C_5  and  C_6
+REMARK    5  A    between atoms: C_6  and  C_7
+REMARK    6  A    between atoms: C_7  and  C_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      10.502   2.413  -9.435  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C   UNL     1      11.101   1.843 -10.727  0.00  0.00    +0.000 C 
+BRANCH   2   3
+ATOM      3  C   UNL     1      10.578   2.445 -12.039  0.00  0.00    +0.000 C 
+ATOM      4  C   UNL     1       9.677   3.658 -11.775  0.00  0.00    +0.000 C 
+ATOM      5  C   UNL     1       9.326   4.341 -13.092  0.00  0.00    +0.000 C 
+ATOM      6  S   UNL     1      10.882   4.594 -13.981  0.00  0.00    +0.000 S 
+ATOM      7  S   UNL     1      11.916   3.049 -13.119  0.00  0.00    +0.000 S 
+ENDBRANCH   2   3
+ENDBRANCH   1   2
+BRANCH   1   8
+ATOM      8  C   UNL     1       9.900   1.347  -8.518  0.00  0.00    +0.000 C 
+BRANCH   8   9
+ATOM      9  C   UNL     1      10.836   1.023  -7.359  0.00  0.00    +0.000 C 
+BRANCH   9  11
+ATOM     10  O   UNL     1      11.248  -1.257  -8.094  0.00  0.00    +0.000 OA
+ATOM     11  C   UNL     1      11.660  -0.195  -7.660  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  O   UNL     1      12.967  -0.022  -7.388  0.00  0.00    +0.000 OA
+ATOM     13  H   UNL     1      13.009  -0.042  -6.410  0.00  0.00    +0.000 HD
+ENDBRANCH  11  12
+ENDBRANCH   9  11
+ENDBRANCH   8   9
+ENDBRANCH   1   8
+TORSDOF 6
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -5.175      2.607      2.936
+REMARK INTER + INTRA:          -7.277
+REMARK INTER:                  -6.872
+REMARK INTRA:                  -0.406
+REMARK UNBOUND:                -0.438
+REMARK  Name = alpha-Lipoic acid (STP_ACT_05)
+REMARK  6 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_2  and  O_3
+REMARK    2  A    between atoms: C_2  and  C_4
+REMARK    3  A    between atoms: C_4  and  C_5
+REMARK    4  A    between atoms: C_5  and  C_6
+REMARK    5  A    between atoms: C_6  and  C_7
+REMARK    6  A    between atoms: C_7  and  C_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1       9.699   0.883  -8.800  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1   2
+ATOM      2  C   UNL     1       9.973   0.692 -10.297  0.00  0.00    +0.000 C 
+BRANCH   2   3
+ATOM      3  C   UNL     1       9.617  -0.683 -10.880  0.00  0.00    +0.000 C 
+ATOM      4  C   UNL     1       9.962  -1.811  -9.898  0.00  0.00    +0.000 C 
+ATOM      5  C   UNL     1       9.430  -3.139 -10.425  0.00  0.00    +0.000 C 
+ATOM      6  S   UNL     1       7.695  -2.871 -10.863  0.00  0.00    +0.000 S 
+ATOM      7  S   UNL     1       7.837  -0.860 -11.230  0.00  0.00    +0.000 S 
+ENDBRANCH   2   3
+ENDBRANCH   1   2
+BRANCH   1   8
+ATOM      8  C   UNL     1      10.940   1.276  -7.996  0.00  0.00    +0.000 C 
+BRANCH   8   9
+ATOM      9  C   UNL     1      12.182   1.309  -8.880  0.00  0.00    +0.000 C 
+BRANCH   9  11
+ATOM     10  O   UNL     1      14.246   0.028  -8.971  0.00  0.00    +0.000 OA
+ATOM     11  C   UNL     1      13.138   0.214  -8.501  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  O   UNL     1      12.645  -0.604  -7.552  0.00  0.00    +0.000 OA
+ATOM     13  H   UNL     1      11.675  -0.494  -7.627  0.00  0.00    +0.000 HD
+ENDBRANCH  11  12
+ENDBRANCH   9  11
+ENDBRANCH   8   9
+ENDBRANCH   1   8
+TORSDOF 6
+ENDMDL

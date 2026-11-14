@@ -1,0 +1,11 @@
+consensus_rank,ligand_id,name,role,score_vina,score_vinardo,score_ad4,rank_vina,rank_vinardo,rank_ad4,rrf_score,mean_z_score,ligand_efficiency,experimental_potency
+1,ABL_ACT_03,Ponatinib (ABL_ACT_03),ACTIVE,-11.65,-7.69,-13.78,2,1,1,0.2652,-1.485,0.299,IC50 = 0.4 nM
+2,ABL_ACT_01,Imatinib (ABL_ACT_01),ACTIVE,-12.05,-7.36,-13.35,1,2,2,0.2576,-1.443,0.326,IC50 = 13 nM
+3,ABL_ACT_02,Nilotinib (ABL_ACT_02),ACTIVE,-11.15,-6.86,-12.91,3,3,3,0.2308,-1.139,0.286,IC50 = 15 nM
+4,ABL_DEC_02,ZINC_Decoy_A2,DECOY,-9.11,-5.49,-9.74,4,4,5,0.2095,-0.21,0.325,Decoy (>10 uM)
+5,ABL_DEC_04,ZINC_Decoy_A4,DECOY,-8.41,-4.74,-10.34,5,6,4,0.2006,0.023,0.3,Decoy (>10 uM)
+6,ABL_DEC_05,ZINC_Decoy_A5,DECOY,-7.89,-4.47,-5.4,7,7,6,0.1801,0.604,0.292,Decoy (>10 uM)
+7,ABL_DEC_01,ZINC_Decoy_A1,DECOY,-7.92,-4.87,-4.3,6,5,10,0.1792,0.607,0.273,Decoy (>10 uM)
+8,ABL_ACT_05,Bosutinib (ABL_ACT_05),ACTIVE,-6.79,-3.72,-4.96,9,9,7,0.1641,0.996,0.189,IC50 = 1.2 nM
+9,ABL_ACT_04,Dasatinib (ABL_ACT_04),ACTIVE,-7.8,-4.14,-4.54,8,8,9,0.1637,0.767,0.236,IC50 = 0.8 nM
+10,ABL_DEC_03,ZINC_Decoy_A3,DECOY,-6.16,-2.98,-4.82,10,10,8,0.1556,1.28,0.228,Decoy (>10 uM)

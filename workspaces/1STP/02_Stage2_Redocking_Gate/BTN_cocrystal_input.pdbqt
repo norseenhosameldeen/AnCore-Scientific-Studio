@@ -1,0 +1,39 @@
+REMARK  Name = /Users/ahmedsenary/Desktop/AnCore_project/AnCore_v1.2/workspaces/1STP/01_Stage1_Target_and_Pocket/cocrystal_reference_ligand.pdb
+REMARK  5 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C11_1  and  C10_4
+REMARK    2  A    between atoms: C10_4  and  C9_5
+REMARK    3  A    between atoms: C9_5  and  C8_6
+REMARK    4  A    between atoms: C8_6  and  C7_7
+REMARK    5  A    between atoms: C7_7  and  C2_8
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C2  BTN L   1      10.923   1.086 -10.195  0.00  0.00    +0.000 C 
+ATOM      2  S1  BTN L   1      10.884   2.103  -8.662  0.00  0.00    +0.000 S 
+ATOM      3  C6  BTN L   1      10.299   0.620  -7.760  0.00  0.00    +0.000 C 
+ATOM      4  C5  BTN L   1      11.142  -0.543  -8.274  0.00  0.00    +0.000 C 
+ATOM      5  N1  BTN L   1      12.443  -0.631  -7.613  0.00  0.00    +0.000 NA
+ATOM      6  C3  BTN L   1      13.467  -0.443  -8.453  0.00  0.00    +0.000 C 
+ATOM      7  O3  BTN L   1      14.692  -0.446  -8.205  0.00  0.00    +0.000 OA
+ATOM      8  N2  BTN L   1      12.974  -0.237  -9.695  0.00  0.00    +0.000 NA
+ATOM      9  C4  BTN L   1      11.513  -0.265  -9.727  0.00  0.00    +0.000 C 
+ENDROOT
+BRANCH   1  10
+ATOM     10  C7  BTN L   1      11.627   1.558 -11.402  0.00  0.00    +0.000 C 
+BRANCH  10  11
+ATOM     11  C8  BTN L   1      11.487   2.972 -11.964  0.00  0.00    +0.000 C 
+BRANCH  11  12
+ATOM     12  C9  BTN L   1      10.215   3.247 -12.658  0.00  0.00    +0.000 C 
+BRANCH  12  13
+ATOM     13  C10 BTN L   1      10.321   4.413 -13.702  0.00  0.00    +0.000 C 
+BRANCH  13  14
+ATOM     14  C11 BTN L   1       9.051   4.576 -14.459  0.00  0.00    +0.000 C 
+ATOM     15  O11 BTN L   1       8.147   5.373 -14.172  0.00  0.00    +0.000 OA
+ATOM     16  O12 BTN L   1       8.697   3.498 -15.132  0.00  0.00    +0.000 OA
+ENDBRANCH  13  14
+ENDBRANCH  12  13
+ENDBRANCH  11  12
+ENDBRANCH  10  11
+ENDBRANCH   1  10
+TORSDOF 5

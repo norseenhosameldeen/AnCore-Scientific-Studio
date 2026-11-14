@@ -1,0 +1,15 @@
+; AnCore v1.2 Mode C — GROMACS Master Topology for 100.0 ns Production MD
+; Target: 1UYG | Ligand: Luminespib (HSP_ACT_04) (HSP_ACT_04)
+
+#include "amber99sb-ildn.ff/forcefield.itp"
+#include "ligand_gaff.itp"
+#include "amber99sb-ildn.ff/tip3p.itp"
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+1UYG_HSP_ACT_04_100ns_Production_Complex
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1
+LIG                 1

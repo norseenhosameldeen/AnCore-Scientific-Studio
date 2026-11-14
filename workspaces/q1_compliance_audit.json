@@ -1,0 +1,55 @@
+{
+  "overall_verdict": "100% Q1 COMPLIANT (8/8 CHECKS PASSED)",
+  "passed_count": 8,
+  "total_checks": 8,
+  "checks": [
+    {
+      "check_id": 1,
+      "name": "Zero Linear Fallbacks & Zero Trajectory Interpolation",
+      "status": "PASS",
+      "detail": "0 forbidden heuristic tokens found across all 6 stage scripts"
+    },
+    {
+      "check_id": 2,
+      "name": "Stage 1 PDBFixer + OpenMM AMBER14 Clash Gate (>= 2.10 A)",
+      "status": "PASS",
+      "detail": "5/5 targets passed steric clash gate"
+    },
+    {
+      "check_id": 3,
+      "name": "Stage 2 Two-Phase Co-Crystal Redocking Gate (<= 2.00 A)",
+      "status": "PASS",
+      "detail": "5/5 targets passed <= 2.00 A RMSD threshold"
+    },
+    {
+      "check_id": 4,
+      "name": "Stage 3 ETKDGv3 + MMFF94s 3D Ligand Library (50 Compounds)",
+      "status": "PASS",
+      "detail": "50/50 ligands converged and compiled into torsion-tree PDBQT/SDF"
+    },
+    {
+      "check_id": 5,
+      "name": "Stage 4 Tri-Scoring Consensus & Strict 80-Column Complex PDBs",
+      "status": "PASS",
+      "detail": "50/50 pre-merged 80-column receptor+ligand PDBs verified"
+    },
+    {
+      "check_id": 6,
+      "name": "Stage 5 3D Interaction Fingerprinting & 2D Pharmacophore Maps",
+      "status": "PASS",
+      "detail": "55/55 300-DPI 2D pharmacophore diagrams and contact CSVs verified"
+    },
+    {
+      "check_id": 7,
+      "name": "Stage 6 3-Zone Intact-Topology 300 K Langevin Triage",
+      "status": "PASS",
+      "detail": "5/5 targets rank a verified ACTIVE inhibitor at Post-Relaxation Rank #1"
+    },
+    {
+      "check_id": 8,
+      "name": "Stage 6 Mode C Turnkey 100-ns Ready MD Systems (OpenMM XML + GROMACS GRO/ITP/TOP/MDP)",
+      "status": "PASS",
+      "detail": "5/5 targets have serialized OpenMM XML systems + GROMACS .gro/.itp/.top/.mdp (50,000,000 steps = 100 ns)"
+    }
+  ]
+}

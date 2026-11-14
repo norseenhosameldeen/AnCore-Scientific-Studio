@@ -1,0 +1,11 @@
+consensus_rank,ligand_id,name,role,score_vina,score_vinardo,score_ad4,rank_vina,rank_vinardo,rank_ad4,rrf_score,mean_z_score,ligand_efficiency,experimental_potency
+1,HSP_ACT_03,Ganetespib (HSP_ACT_03),ACTIVE,-9.31,-5.79,-7.86,1,1,9,0.2344,-0.498,0.345,IC50 = 4.0 nM
+2,HSP_DEC_02,ZINC_Decoy_H2,DECOY,-8.74,-5.3,-8.56,3,3,5,0.2205,-0.403,0.336,Decoy (>10 uM)
+3,HSP_DEC_05,ZINC_Decoy_H5,DECOY,-8.8,-5.58,-7.23,2,2,10,0.2167,0.007,0.326,Decoy (>10 uM)
+4,HSP_DEC_01,ZINC_Decoy_H1,DECOY,-8.48,-5.24,-8.95,5,4,4,0.2095,-0.424,0.339,Decoy (>10 uM)
+5,HSP_ACT_04,Luminespib (HSP_ACT_04),ACTIVE,-8.42,-4.46,-9.78,6,7,2,0.2047,-0.525,0.248,IC50 = 1.7 nM
+6,HSP_ACT_02,BIIB021 (HSP_ACT_02),ACTIVE,-8.69,-5.09,-8.21,4,5,8,0.1937,-0.198,0.395,IC50 = 5.1 nM
+7,HSP_ACT_05,Onalespib (HSP_ACT_05),ACTIVE,-6.8,-1.03,-10.29,10,10,1,0.1909,0.797,0.227,IC50 = 0.7 nM
+8,HSP_DEC_04,ZINC_Decoy_H4,DECOY,-7.26,-2.86,-9.56,9,9,3,0.1822,0.437,0.279,Decoy (>10 uM)
+9,HSP_ACT_01,PU3 purine (HSP_ACT_01),ACTIVE,-7.39,-4.74,-8.33,8,6,7,0.1769,0.395,0.274,IC50 = 15 nM
+10,HSP_DEC_03,ZINC_Decoy_H3,DECOY,-7.58,-4.04,-8.51,7,8,6,0.1769,0.414,0.292,Decoy (>10 uM)

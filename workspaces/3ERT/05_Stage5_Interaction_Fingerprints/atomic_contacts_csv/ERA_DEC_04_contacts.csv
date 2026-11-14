@@ -1,0 +1,14 @@
+receptor_residue,receptor_resname,receptor_atom,ligand_atom,ligand_element,interaction_type,distance_A
+Asp351,ASP,OD1,O,O,HBond,3.29
+Thr347,THR,O,O,O,HBond,3.427
+Asp351,ASP,OD1,N,N,SaltBridge,3.997
+Trp383,TRP,CH2,C,C,PiStacking,3.573
+Leu346,LEU,CB,C,C,Hydrophobic,3.372
+Leu384,LEU,CD1,C,C,Hydrophobic,3.561
+Trp383,TRP,CH2,C,C,Hydrophobic,3.573
+Leu536,LEU,CB,C,C,Hydrophobic,3.663
+Thr347,THR,CG2,C,C,Hydrophobic,3.703
+Ala350,ALA,CB,C,C,Hydrophobic,3.723
+Leu349,LEU,CD2,C,C,Hydrophobic,3.754
+Met343,MET,SD,C,C,Hydrophobic,3.757
+Leu525,LEU,CD2,C,C,Hydrophobic,3.782

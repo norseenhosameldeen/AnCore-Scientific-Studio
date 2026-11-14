@@ -1,0 +1,21 @@
+residue_id,res_name,chain_id,res_seq,chemical_class,min_distance_A,heavy_atom_count
+Leu694,LEU,A,694,Hydrophobic,3.269,8
+Gly695,GLY,A,695,Hydrophobic,4.503,4
+Val702,VAL,A,702,Hydrophobic,4.191,7
+Ala719,ALA,A,719,Hydrophobic,3.307,5
+Lys721,LYS,A,721,Charged/Salt-Bridge,3.7,9
+Glu738,GLU,A,738,Charged/Salt-Bridge,3.806,9
+Met742,MET,A,742,Hydrophobic,4.632,8
+Leu764,LEU,A,764,Hydrophobic,3.431,8
+Ile765,ILE,A,765,Hydrophobic,4.451,8
+Thr766,THR,A,766,Polar H-Bonding,3.406,7
+Gln767,GLN,A,767,Polar H-Bonding,3.146,9
+Leu768,LEU,A,768,Hydrophobic,3.496,8
+Met769,MET,A,769,Hydrophobic,2.699,8
+Pro770,PRO,A,770,Hydrophobic,3.107,7
+Phe771,PHE,A,771,Aromatic,3.446,11
+Gly772,GLY,A,772,Hydrophobic,3.238,4
+Cys773,CYS,A,773,Polar H-Bonding,4.727,6
+Leu820,LEU,A,820,Hydrophobic,3.453,8
+Thr830,THR,A,830,Polar H-Bonding,3.652,7
+Asp831,ASP,A,831,Charged/Salt-Bridge,3.105,8

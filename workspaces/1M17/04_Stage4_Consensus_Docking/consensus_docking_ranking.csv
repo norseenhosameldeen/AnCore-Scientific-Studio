@@ -1,0 +1,11 @@
+consensus_rank,ligand_id,name,role,score_vina,score_vinardo,score_ad4,rank_vina,rank_vinardo,rank_ad4,rrf_score,mean_z_score,ligand_efficiency,experimental_potency
+1,EGF_ACT_04,Lapatinib (EGF_ACT_04),ACTIVE,-8.82,-5.67,-9.25,1,1,1,0.2727,-1.725,0.221,IC50 = 10.8 nM
+2,EGF_ACT_03,Afatinib (EGF_ACT_03),ACTIVE,-8.3,-5.66,-7.77,3,2,4,0.2317,-0.78,0.244,IC50 = 0.5 nM
+3,EGF_ACT_02,Gefitinib (EGF_ACT_02),ACTIVE,-7.97,-5.18,-8.47,5,3,2,0.2269,-0.611,0.257,IC50 = 33 nM
+4,EGF_DEC_02,ZINC_Decoy_G2,DECOY,-8.5,-5.01,-6.6,2,5,10,0.2,-0.001,0.327,Decoy (>10 uM)
+5,EGF_ACT_05,Osimertinib (EGF_ACT_05),ACTIVE,-7.82,-4.72,-8.11,6,7,3,0.1982,-0.097,0.211,IC50 = 12 nM
+6,EGF_DEC_05,ZINC_Decoy_G5,DECOY,-7.7,-5.04,-7.32,7,4,6,0.1928,0.125,0.296,Decoy (>10 uM)
+7,EGF_DEC_01,ZINC_Decoy_G1,DECOY,-8.12,-4.25,-7.63,4,9,5,0.1907,0.218,0.312,Decoy (>10 uM)
+8,EGF_DEC_03,ZINC_Decoy_G3,DECOY,-7.43,-4.8,-7.19,8,6,7,0.1769,0.478,0.265,Decoy (>10 uM)
+9,EGF_DEC_04,ZINC_Decoy_G4,DECOY,-7.43,-4.47,-7.11,9,8,8,0.1637,0.708,0.286,Decoy (>10 uM)
+10,EGF_ACT_01,Erlotinib (EGF_ACT_01),ACTIVE,-6.67,-3.78,-6.8,10,10,9,0.1526,1.685,0.23,IC50 = 2.0 nM

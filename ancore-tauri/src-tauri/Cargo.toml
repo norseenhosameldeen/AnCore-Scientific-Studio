@@ -1,7 +1,7 @@
 [package]
 name = "ancore-studio"
 version = "1.0.0"
-description = "AnCore Scientific Studio — Molecular Docking & 300 K MD Stability Triage Workbench"
+description = "AnCore Scientific Studio — Chemoinformatics, Molecular Docking & 300 K MD Triage Suite"
 authors = ["Norseen Hossam El-Deen", "Ahmed M. Senary"]
 license = "Apache-2.0"
 edition = "2021"

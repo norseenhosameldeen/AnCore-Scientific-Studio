@@ -1,0 +1,11 @@
+ligand_id,name,role,mw,clogp,tpsa_A2,hbd_hba,rot_bonds,qed,mmff94s_energy_kcal_mol,lipinski_pass,experimental_potency
+STP_ACT_01,D-Biotin (STP_ACT_01),ACTIVE,244.3,0.8,78.4,3/3,5,0.493,-55.84,True,Kd = 0.04 pM
+STP_ACT_02,Desthiobiotin (STP_ACT_02),ACTIVE,214.3,1.09,78.4,3/2,6,0.579,-85.16,True,Kd = 1.0 nM
+STP_ACT_03,2-Iminobiotin (STP_ACT_03),ACTIVE,257.4,0.65,87.7,3/5,5,0.629,-95.19,True,Kd = 3.5 nM
+STP_ACT_04,Diaminobiotin (STP_ACT_04),ACTIVE,216.3,0.67,66.3,2/4,5,0.522,-26.68,True,Kd = 12 nM
+STP_ACT_05,alpha-Lipoic acid (STP_ACT_05),ACTIVE,206.3,2.79,37.3,1/3,5,0.554,-18.05,True,Kd = 700 nM
+STP_DEC_01,ZINC_Decoy_S1,DECOY,253.3,1.39,63.2,1/3,3,0.885,-17.88,True,Decoy (>10 uM)
+STP_DEC_02,ZINC_Decoy_S2,DECOY,299.8,3.78,37.4,0/2,2,0.792,57.55,True,Decoy (>10 uM)
+STP_DEC_03,ZINC_Decoy_S3,DECOY,287.3,3.01,37.4,0/2,2,0.796,30.15,True,Decoy (>10 uM)
+STP_DEC_04,ZINC_Decoy_S4,DECOY,235.2,1.28,66.8,1/3,3,0.856,16.39,True,Decoy (>10 uM)
+STP_DEC_05,ZINC_Decoy_S5,DECOY,246.3,1.94,49.4,1/2,2,0.867,20.58,True,Decoy (>10 uM)
