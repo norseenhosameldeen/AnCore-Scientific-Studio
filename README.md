@@ -5,7 +5,6 @@
 **Authors:** Norseen H. Abdelhakim and Ahmed M. Senary  
 **Affiliation:** Department of Medicinal Chemistry, Faculty of Pharmacy, Galala University, New Galala 43713, Egypt  
 **Repository:** [github.com/norseenhosameldeen/AnCore-Scientific-Studio](https://github.com/norseenhosameldeen/AnCore-Scientific-Studio)  
-**Preprint DOI:** [10.26434/chemrxiv.15012010/v1](https://www.google.com/search?q=https://doi.org/10.26434/chemrxiv.15012010/v1)  
 **Current Release:** `v1.2.0` (Six-Stage Pipeline & 5-Target Benchmark Suite)  
 **License:** Apache-2.0 License
 
